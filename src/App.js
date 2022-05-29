@@ -22,12 +22,63 @@ function App() {
           Learn React
         </a> */}
         <ListThread/>
+        <div style={{height: 20}}></div>
+        <ListThreadVote/>
       </header>
     </div>
   );
 }
 
 export default App;
+
+
+class ListThreadVote extends Component {
+  render() {
+    return (
+      <div
+      className="listThreadVote"
+      style={{
+        height: 100,
+        width: 50,
+        position: 'relative',
+        backgroundColor: "white",
+        display: "flex",
+        flexDirection: "column"
+        // justifyContent: "space-around",
+      }}
+    >
+
+      <img src={require('./up-arrow.png')} 
+        style={{ 
+          width: 30,
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginTop: "auto",
+          marginBottom: "auto"
+        }}
+      />
+
+      <p style={{
+        color: "black",
+        marginTop: 0,
+        marginBottom: 0,
+        }}>458</p>
+
+      <img src={require('./down-arrow.png')} 
+        style={{ 
+          width: 30,
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginTop: "auto",
+          marginBottom: "auto"
+        }}
+      />
+    </div>
+    )
+  }
+}
 
 
 class ListThread extends Component {
