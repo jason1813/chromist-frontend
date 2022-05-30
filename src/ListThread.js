@@ -1,7 +1,7 @@
 
 import ListThreadVote from './ListThreadVote.js'
 
-function ListThread() {
+function ListThread(props) {
   return (
     <div
       className="listThread"
@@ -35,7 +35,7 @@ function ListThread() {
             maxHeight: 60,
           }}
         >
-          {this.props.title}
+          {props.title}
         </h1>
 
         <div
@@ -52,7 +52,7 @@ function ListThread() {
               color: "blue"
             }}
           >
-            {this.props.author}
+            {props.author}
           </p>
           <p
             style={{
@@ -64,12 +64,12 @@ function ListThread() {
               color: "black"
             }}
           >
-            {this.props.numberOfComments} comments
+            {props.numberOfComments} comments
           </p>
         </div>
       </div>
 
-      <ListThreadVote upVoteScore={this.props.upVoteScore} />
+      <ListThreadVote upVoteScore={props.upVoteScore} />
     </div>
   );
 }

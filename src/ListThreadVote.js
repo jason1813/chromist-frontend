@@ -1,5 +1,5 @@
 
-function ListThreadVote() {
+function ListThreadVote(props) {
   return (
     <div
       className="listThreadVote"
@@ -33,7 +33,7 @@ function ListThreadVote() {
         marginBottom: 0,
         fontSize: 17,
       }}>
-        {this.props.upVoteScore}
+        {props.upVoteScore}
       </p>
 
       <img src={require('./down-arrow.png')}
