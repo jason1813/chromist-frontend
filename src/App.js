@@ -5,11 +5,23 @@ import React from 'react';
 import { View } from 'react';
 import { Text } from 'react';
 
+const threadInfo = {
+  id: 0,
+  dateCreated: new Date(2018, 11, 24, 10, 33, 30, 0),
+  author: "Ghewrof324",
+  title: "Billy Napier: Florida Football Wont Get Involved in NIL Bidding Wars adsf  awer asdf",
+  description: "Can you imagine listening to the Tennessee and Oklahoma bands battle it out all game when they play each other?",
+  numberOfComments: 21,
+  upVoteScore: -221
+}
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <ListThread/>
+        <ListThread
+          threadInfo={threadInfo}
+        />
       </header>
     </div>
   );
@@ -25,38 +37,45 @@ class ListThreadVote extends Component {
       className="listThreadVote"
       style={
         {
-        height: 100,
-        width: 50,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: 'space-around',
-        marginRight: 15,
-        marginLeft: 8,
-        marginTop: 'auto',
-        marginBottom: 'auto',
+          height: 100,
+          width: 40,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: 'space-around',
+          marginRight: 15,
+          marginLeft: 8,
+          border: 2,
+          borderColor: "green",
+        }
       }
-    }
-    >
+      >
 
       <img src={require('./up-arrow.png')} 
         style={{ 
-          width: "100%",
-          marginTop: 0,
+          width: 30,
+          marginTop: 10,
           marginBottom: 0,
+          marginLeft: "auto",
+          marginRight: "auto",
         }}
       />
 
       <p style={{
         color: "black",
+        minWidth: "100%",
         marginTop: 0,
         marginBottom: 0,
-        }}>458</p>
+        }}>
+          {this.props.upVoteScore}
+          </p>
 
       <img src={require('./down-arrow.png')} 
         style={{ 
-          width: "100%",
+          width: 30,
           marginTop: 0,
-          marginBottom: 0,
+          marginBottom: 10,
+          marginLeft: "auto",
+          marginRight: "auto",
         }}
       />
     </div>
@@ -69,6 +88,7 @@ class ListThread extends Component {
   render() {
     return (
         <div
+          className="listThread"
           style={{
             height: 100,
             width: "100%",
@@ -78,7 +98,7 @@ class ListThread extends Component {
           }}
         >
           <div
-            className="thread"
+            className="textContent"
             style={{
               marginLeft: 15,
               marginTop: 8,
@@ -96,7 +116,7 @@ class ListThread extends Component {
                 marginTop: 0,
               }}
             >
-              Billy Napier: Florida Football Wont Get Involved in NIL Bidding Wars adsf  awer asdf
+              {this.props.threadInfo.title}
             </h1>
 
             <div
@@ -113,7 +133,7 @@ class ListThread extends Component {
                   color: "blue"
                 }}
               >
-                hiwe5qf89q3u4
+                {this.props.threadInfo.author}
               </p>
               <p
                 style={{
@@ -125,12 +145,12 @@ class ListThread extends Component {
                   color: "black"
                 }}
               >
-                45 comments
+                {this.props.threadInfo.numberOfComments} comments
               </p>
             </div>
           </div>
 
-          <ListThreadVote/>
+          <ListThreadVote upVoteScore={this.props.threadInfo.upVoteScore}/>
         </div>
     )
   }
