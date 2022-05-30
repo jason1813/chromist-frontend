@@ -1,0 +1,10 @@
+:root {
+    --beau: #B4D6F0;
+    --oxford: #002141;
+    --usafa: #0056A0;
+    --honolulu: #006EA6;
+    --Prussian: #003958;
+    --gray: #6D6D6D;
+    --gray-filter: invert(47%) sepia(8%) saturate(17%) hue-rotate(359deg) brightness(87%) contrast(81%);
+    --honolulu-filter: invert(29%) sepia(96%) saturate(1178%) hue-rotate(174deg) brightness(87%) contrast(101%);
+  }

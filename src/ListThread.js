@@ -20,7 +20,7 @@ function ListThread(props) {
         </div>
       </div>
 
-      <ListThreadVote upVoteScore={props.upVoteScore} />
+      <ListThreadVote upVoteScore={props.upVoteScore} userUpvoted={props.userUpvoted} />
     </div>
   );
 }

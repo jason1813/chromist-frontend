@@ -1,4 +1,6 @@
 
+@import "colors.css";
+
 .ListThread {
     height: 100px;
     width: 100%;
@@ -35,7 +37,7 @@
     text-align: left;
     font-size: 14px;
     margin: 0px;
-    color: blue;
+    color: var(--usafa);
 }
 
 .ListThread-number-of-comments {

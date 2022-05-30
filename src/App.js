@@ -12,7 +12,7 @@ const threadData = [
     description: "Can you imagine listening to the Tennessee and Oklahoma bands battle it out all game when they play each other? adsfasdf aser aefa asdrf aser adgf tadfs asdf",
     numberOfComments: 21,
     upVoteScore: -221,
-    userUpvoted: "neutral",
+    userUpvoted: "up",
   },
   {
     id: 1,
@@ -22,7 +22,7 @@ const threadData = [
     description: "Can you imagine listening to the Tennessee and Oklahoma bands battle it out all game when they play each other? adsfasdf aser aefa asdrf aser adgf tadfs asdf",
     numberOfComments: 3,
     upVoteScore: 11,
-    userUpvoted: "neutral",
+    userUpvoted: "down",
   },
 ]
 
