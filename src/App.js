@@ -54,8 +54,8 @@ class App extends Component {
 
   render() {
 
-    const threadProps = this.state.threadData.map((threadDataItem) => 
-      <ListThread 
+    const threadProps = this.state.threadData.map((threadDataItem) =>
+      <ListThread
         id={threadDataItem.id}
         dateCreated={threadDataItem.dateCreated}
         author={threadDataItem.author}
@@ -70,7 +70,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-            {threadProps}
+          {threadProps}
         </header>
       </div>
     )
