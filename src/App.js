@@ -9,21 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
         <ListThread/>
-        <div style={{height: 20}}></div>
-        <ListThreadVote/>
       </header>
     </div>
   );
@@ -37,25 +23,26 @@ class ListThreadVote extends Component {
     return (
       <div
       className="listThreadVote"
-      style={{
+      style={
+        {
         height: 100,
         width: 50,
-        position: 'relative',
-        backgroundColor: "white",
         display: "flex",
-        flexDirection: "column"
-        // justifyContent: "space-around",
-      }}
+        flexDirection: "column",
+        justifyContent: 'space-around',
+        marginRight: 15,
+        marginLeft: 8,
+        marginTop: 'auto',
+        marginBottom: 'auto',
+      }
+    }
     >
 
       <img src={require('./up-arrow.png')} 
         style={{ 
-          width: 30,
-          display: "block",
-          marginLeft: "auto",
-          marginRight: "auto",
-          marginTop: "auto",
-          marginBottom: "auto"
+          width: "100%",
+          marginTop: 0,
+          marginBottom: 0,
         }}
       />
 
@@ -67,12 +54,9 @@ class ListThreadVote extends Component {
 
       <img src={require('./down-arrow.png')} 
         style={{ 
-          width: 30,
-          display: "block",
-          marginLeft: "auto",
-          marginRight: "auto",
-          marginTop: "auto",
-          marginBottom: "auto"
+          width: "100%",
+          marginTop: 0,
+          marginBottom: 0,
         }}
       />
     </div>
@@ -85,59 +69,68 @@ class ListThread extends Component {
   render() {
     return (
         <div
-          className="thread"
           style={{
             height: 100,
             width: "100%",
-            position: 'relative',
-            backgroundColor: "white"
+            display: "flex",
+            flexDirection: "row",
+            backgroundColor: "white",
           }}
         >
-          <h1
-            style={{
-              textAlign: "left",
-              color: "black",
-              verticalAlign: "top",
-              fontSize: "17px",
-              marginRight: "50px",
-              marginLeft: "12px",
-              marginTop: "8px"
-            }}
-          >
-            Billy Napier: Florida Football Wont Get Involved in NIL Bidding Wars
-          </h1>
-
           <div
+            className="thread"
             style={{
-              position: "absolute",
-              bottom: 0,
-              display: "flex"
+              marginLeft: 15,
+              marginTop: 8,
+              marginBottom: 8,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: 'space-between',
             }}
           >
-            <p
+            <h1
               style={{
                 textAlign: "left",
-                marginLeft: "12px",
-                marginBottom: "8px",
-                fontSize: "14px",
-                color: "blue"
+                color: "black",
+                fontSize: "17px",
+                marginTop: 0,
               }}
             >
-              hiwe5qf89q3u4
-            </p>
-            <p
+              Billy Napier: Florida Football Wont Get Involved in NIL Bidding Wars adsf  awer asdf
+            </h1>
+
+            <div
               style={{
-                textAlign: "left",
-                marginLeft: "12px",
-                marginBottom: "8px",
-                fontSize: "14px",
-                color: "black"
+                display: "flex",
+                flexDirection: "row",
               }}
             >
-              45 comments
-            </p>
+              <p
+                style={{
+                  textAlign: "left",
+                  fontSize: "14px",
+                  margin: 0,
+                  color: "blue"
+                }}
+              >
+                hiwe5qf89q3u4
+              </p>
+              <p
+                style={{
+                  textAlign: "left",
+                  marginLeft: "12px",
+                  marginTop: 0,
+                  marginBottom: 0,
+                  fontSize: "14px",
+                  color: "black"
+                }}
+              >
+                45 comments
+              </p>
+            </div>
           </div>
 
+          <ListThreadVote/>
         </div>
     )
   }
