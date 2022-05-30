@@ -13,7 +13,8 @@ class ListThread extends Component {
               display: "flex",
               flexDirection: "row",
               backgroundColor: "white",
-              justifyContent: 'space-between'
+              justifyContent: 'space-between',
+              marginTop: 4,
             }}
           >
             <div
@@ -36,7 +37,7 @@ class ListThread extends Component {
                   maxHeight: 60,
                 }}
               >
-                {this.props.threadInfo.title}
+                {this.props.title}
               </h1>
   
               <div
@@ -53,7 +54,7 @@ class ListThread extends Component {
                     color: "blue"
                   }}
                 >
-                  {this.props.threadInfo.author}
+                  {this.props.author}
                 </p>
                 <p
                   style={{
@@ -65,12 +66,12 @@ class ListThread extends Component {
                     color: "black"
                   }}
                 >
-                  {this.props.threadInfo.numberOfComments} comments
+                  {this.props.numberOfComments} comments
                 </p>
               </div>
             </div>
   
-            <ListThreadVote upVoteScore={this.props.threadInfo.upVoteScore}/>
+            <ListThreadVote upVoteScore={this.props.upVoteScore}/>
           </div>
       )
     }
