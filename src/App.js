@@ -18,7 +18,7 @@ const threadData = [
     id: 1,
     dateCreated: new Date(2018, 11, 24, 10, 33, 30, 0),
     author: "twreuw45h",
-    title: "Cubs Bearts Bulls Buckeyes",
+    title: "Cubs Bears Bulls Buckeyes",
     description: "Can you imagine listening to the Tennessee and Oklahoma bands battle it out all game when they play each other? adsfasdf aser aefa asdrf aser adgf tadfs asdf",
     numberOfComments: 3,
     upVoteScore: 11,
@@ -34,24 +34,7 @@ class App extends Component {
       threadData: threadData
     }
   }
-
-  // componentDidMount() {
-  //   this.timerID = setInterval(
-  //     () => this.tick(),
-  //     1500
-  //   );
-  // }
-
-  // componentWillUnmount() {
-  //   clearInterval(this.timerID);
-  // }
-
-  // tick() {
-  //   this.setState({
-  //     threadData: [threadData[0]]
-  //   });
-  // }
-
+  
   render() {
 
     const threadProps = this.state.threadData.map((threadDataItem) =>
