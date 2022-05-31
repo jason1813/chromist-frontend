@@ -20,6 +20,7 @@
 }
 
 .ListThreadVote-upvote-score {
+    text-align: center;
     color: black;
     min-width: 100%;
     margin-top: 0px;

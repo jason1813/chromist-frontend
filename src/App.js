@@ -1,4 +1,4 @@
-import './App.css';
+import './css/App.css';
 import { Component } from 'react';
 import React from 'react';
 import ListThread from './ListThread.js'
@@ -52,9 +52,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          {threadProps}
-        </header>
+        {threadProps}
       </div>
     )
   }

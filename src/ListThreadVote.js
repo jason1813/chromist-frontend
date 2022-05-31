@@ -1,6 +1,6 @@
 
-import './ListThreadVote.css';
-import './colors.css'
+import './css/ListThreadVote.css';
+import './css/colors.css'
 
 function ListThreadVote(props) {
   return (
@@ -8,7 +8,7 @@ function ListThreadVote(props) {
 
       <img
         className='ListThreadVote-up-arrow'
-        src={require('./up-arrow.png')}
+        src={require('./img/up-arrow.png')}
         alt="up arrow"
         style={
           props.userUpvoted === "up" ? {
@@ -25,7 +25,7 @@ function ListThreadVote(props) {
 
       <img
         className='ListThreadVote-down-arrow'
-        src={require('./down-arrow.png')}
+        src={require('./img/down-arrow.png')}
         alt="down arrow"
         style={
           props.userUpvoted === "down" ? {

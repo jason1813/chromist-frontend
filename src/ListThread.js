@@ -1,5 +1,5 @@
 
-import './ListThread.css';
+import './css/ListThread.css';
 import ListThreadVote from './ListThreadVote.js'
 
 function ListThread(props) {
