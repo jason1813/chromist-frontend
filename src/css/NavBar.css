@@ -1,0 +1,36 @@
+
+.NavBar {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--beau);
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+}
+
+.NavBar-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.NavBar-crosshairs {
+    width: 30px;
+    height: 30px;
+    filter: var(--honolulu-filter)
+}
+
+.Chromist-text {
+    padding: 10px;
+}
+
+.NavBar-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 12px;
+}

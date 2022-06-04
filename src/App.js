@@ -3,6 +3,7 @@ import { Component } from 'react';
 import React from 'react';
 import ListThread from './ListThread.js'
 import getThreads from './network/network_calls';
+import NavBar from './NavBar.js'
 
 
 class App extends Component {
@@ -39,7 +40,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        {threadProps}
+        <NavBar/>
+        <div className='threads'>
+          {threadProps}
+        </div>
       </div>
     )
   }
