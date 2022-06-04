@@ -20,7 +20,7 @@ function ListThreadVote(props) {
       />
 
       <p className='ListThreadVote-upvote-score'>
-        {props.upVoteScore}
+        {props.upvoteScore}
       </p>
 
       <img

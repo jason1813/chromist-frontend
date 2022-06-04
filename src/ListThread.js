@@ -12,7 +12,7 @@ function ListThread(props) {
 
         <div className='ListThread-info'>
           <p className='ListThread-author'>
-            {props.author}
+            {props.author.username}
           </p>
           <p className='ListThread-number-of-comments'>
             {props.numberOfComments} comments
@@ -20,7 +20,7 @@ function ListThread(props) {
         </div>
       </div>
 
-      <ListThreadVote upVoteScore={props.upVoteScore} userUpvoted={props.userUpvoted} />
+      <ListThreadVote upvoteScore={props.upvoteScore} userUpvoted={props.userUpvoted} />
     </div>
   );
 }
