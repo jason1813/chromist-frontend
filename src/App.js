@@ -4,6 +4,7 @@ import React from 'react';
 import ListThread from './ListThread.js'
 import getThreads from './network/network_calls';
 import NavBar from './NavBar.js'
+import BottomBar from './BottomBar.js'
 
 
 class App extends Component {
@@ -39,10 +40,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        <NavBar isLoggedIn={true} />
+        <NavBar isLoggedIn={false} />
         <div className='threads'>
           {threadProps}
         </div>
+        <BottomBar isNext={true} isPrevious={true} />
       </div>
     )
   }
