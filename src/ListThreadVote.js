@@ -1,6 +1,5 @@
 
 import './css/ListThreadVote.css';
-import './css/colors.css'
 
 function ListThreadVote(props) {
   return (

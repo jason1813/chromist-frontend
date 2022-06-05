@@ -19,8 +19,6 @@
 }
 
 .NavBar-crosshairs {
-    width: 30px;
-    height: 30px;
     filter: var(--honolulu-filter)
 }
 
@@ -33,4 +31,13 @@
     flex-direction: row;
     align-items: center;
     margin-right: 12px;
+}
+
+.NavBar-profile {
+    margin-left: 16px;
+}
+
+.NavBar img {
+    width: 30px;
+    height: 30px;
 }

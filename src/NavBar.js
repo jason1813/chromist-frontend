@@ -27,9 +27,26 @@ function NavBar(props) {
       </div>
 
       <div className='NavBar-right'>
-        <Button primary>LOGIN / SIGNUP</Button>
+        {
+          props.isLoggedIn ? (
+            <div>
+              <img
+                className='NavBar-pencil'
+                src={require('./img/pencil.png')}
+                alt="pencil"
+              />
+              <img
+                className='NavBar-profile'
+                src={require('./img/profile.png')}
+                alt="pencil"
+              />
+            </div>
+          ) : (
+            <Button primary>LOGIN / SIGNUP</Button>
+          )
+        }
       </div>
-    </div>
+    </div >
   )
 }
 

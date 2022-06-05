@@ -16,7 +16,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-
     getThreads.then(data => {
       this.setState({threadData: data})
       console.log(this.state)
@@ -40,7 +39,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <NavBar/>
+        <NavBar isLoggedIn={true} />
         <div className='threads'>
           {threadProps}
         </div>
