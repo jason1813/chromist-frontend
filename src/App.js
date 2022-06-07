@@ -1,10 +1,10 @@
 import './misc/css/App.css';
 import { Component } from 'react';
 import React from 'react';
-import ListThread from './threads/ListThread.js'
+import ListThread from './pages/threads/ListThread.js'
 import getThreads from './network/network_calls';
 import NavBar from './misc/js/NavBar.js'
-import BottomBar from './threads/BottomBar.js'
+import BottomBar from './pages/threads/BottomBar.js'
 
 
 class App extends Component {

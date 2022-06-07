@@ -7,7 +7,7 @@ function ListThreadVote(props) {
 
       <img
         className='ListThreadVote-up-arrow'
-        src={require('../misc/img/up-arrow.png')}
+        src={require('../../misc/img/up-arrow.png')}
         alt="up arrow"
         style={
           props.userUpvoted === "up" ? {
@@ -24,7 +24,7 @@ function ListThreadVote(props) {
 
       <img
         className='ListThreadVote-down-arrow'
-        src={require('../misc/img/down-arrow.png')}
+        src={require('../../misc/img/down-arrow.png')}
         alt="down arrow"
         style={
           props.userUpvoted === "down" ? {
