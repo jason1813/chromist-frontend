@@ -1,0 +1,14 @@
+
+.threads {
+    background-color: var(--oxford);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .threads-list {
+    position: relative;
+    top: 50px;
+    z-index: 0;
+  }
+  
