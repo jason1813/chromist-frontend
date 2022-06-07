@@ -1,5 +1,5 @@
 
-import './css/NavBar.css';
+import '../css/NavBar.css';
 import StyledButton from './StyledComponents'
 
 function NavBar(props) {
@@ -9,7 +9,7 @@ function NavBar(props) {
       <div className='NavBar-left'>
         <img
           className='NavBar-crosshairs'
-          src={require('./img/crosshairs.png')}
+          src={require('../img/crosshairs.png')}
           alt="crosshairs"
         />
 
@@ -22,12 +22,12 @@ function NavBar(props) {
             <div>
               <img
                 className='NavBar-pencil'
-                src={require('./img/pencil.png')}
+                src={require('../img/pencil.png')}
                 alt="pencil"
               />
               <img
                 className='NavBar-profile'
-                src={require('./img/profile.png')}
+                src={require('../img/profile.png')}
                 alt="pencil"
               />
             </div>

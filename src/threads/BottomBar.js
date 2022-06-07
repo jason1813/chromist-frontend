@@ -1,6 +1,6 @@
 
-import './css/BottomBar.css';
-import StyledButton from './StyledComponents'
+import './BottomBar.css';
+import StyledButton from '../misc/js/StyledComponents'
 
 function BottomBar(props) {
     return (
