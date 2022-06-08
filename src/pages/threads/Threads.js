@@ -1,4 +1,4 @@
-// import './Threads.css';
+import './Threads.css';
 import { Component } from 'react';
 import React from 'react';
 import ListThread from './ListThread.js'
@@ -17,7 +17,6 @@ class Threads extends Component {
     componentDidMount() {
         getThreads.then(data => {
             this.setState({ threadData: data })
-            console.log(this.state)
         })
     }
 
@@ -41,7 +40,7 @@ class Threads extends Component {
                 <div className='threads-list'>
                     {threadProps}
                 </div>
-                <BottomBar isNext={true} isPrevious={true} />
+                <BottomBar isNext={true} isPrevious={false} />
             </div>
         )
     }

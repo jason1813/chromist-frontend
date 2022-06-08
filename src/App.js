@@ -1,4 +1,3 @@
-import './misc/css/App.css';
 import { Component } from 'react';
 import React from 'react';
 import NavBar from './misc/js/NavBar.js'
