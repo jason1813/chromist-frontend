@@ -1,0 +1,33 @@
+
+.thread-detail-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+
+    padding-left: 12px;
+    padding-right: 12px;
+
+    /* position: relative;
+    top: 300px; */
+}
+
+.thread-detail-top-left-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.thread-detail-top-profile{
+    width: 30px;
+    height: 30px;
+}
+
+.thread-detail-top-author-date{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 0;
+    margin-left: 10px;
+}
