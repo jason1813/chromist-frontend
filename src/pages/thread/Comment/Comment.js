@@ -12,9 +12,9 @@ function Comment(props) {
                 alt="profile"
             />
             <div className='comment-content'>
-                <p className='comment-author'>blabbermania78435</p>
-                <p className='comment-text'>Lorem ipsum dolor sit amet, alii rebum postea eam ex. Et mei laoreet officiis, summo sensibus id mei.</p>
-                <SideBySideVote userUpvoted="neutral" upvoteScore="432" />
+                <p className='comment-author'>{props.author}</p>
+                <p className='comment-text'>{props.text}</p>
+                <SideBySideVote userUpvoted={props.userUpvoted} upvoteScore={props.upvoteScore} />
             </div>
         </div>
     )
