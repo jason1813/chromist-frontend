@@ -7,11 +7,9 @@
     background-color: white;
 }
 
-
-.comment-profile-line {
+.comment-link {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     align-items: center;
 }
 
@@ -21,23 +19,22 @@
 }
 
 .comment-line {
-    width: 20px;
-    flex-grow: 1;
-    /* background-color: lightgray; */
-}
-
-.comment-actual-line {
     width: 2px;
-    height: 100%;
-    margin: 0 auto;
-    background-color: lightgray;
+    margin: 0;
+    flex-grow: 1;
     border-width: 0;
+    background-color: lightgray;
 }
 
-.comment-profile-line:hover > .comment-actual-line {
+.comment-link:hover .comment-line {
     background-color: orange;
 }
 
+.comment-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
 
 .comment-author {
     margin: 0px;
@@ -46,10 +43,4 @@
 
 .comment-text {
     margin: 0px;
-}
-
-.comment-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
 }

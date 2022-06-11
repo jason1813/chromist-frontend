@@ -9,17 +9,14 @@ function Comment(props) {
 
     return (
         <div className="comment">
-            <div className='comment-profile-line'>
-                {/* <a href='blah'> */}
-                    <img
-                        className='comment-profile'
-                        src={require('../../../misc/img/profile.png')}
-                        alt="profile"
-                    />
-                    {/* <a href='blah'> */}
-                    <hr className='comment-actual-line' />
-                {/* </a> */}
-            </div>
+            <a href='blah' className='comment-link'>
+                <img
+                    className='comment-profile'
+                    src={require('../../../misc/img/profile.png')}
+                    alt="profile"
+                />
+                <hr className='comment-line' />
+            </a>
             <div className='comment-content'>
                 <p className='comment-author'>{props.author}</p>
                 <p className='comment-text'>{props.text}</p>
