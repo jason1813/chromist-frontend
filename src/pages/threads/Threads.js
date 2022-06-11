@@ -37,9 +37,7 @@ class Threads extends Component {
 
         return (
             <div className="threads">
-                <div className='threads-list'>
-                    {threadProps}
-                </div>
+                {threadProps}
                 <BottomBar isNext={true} isPrevious={false} />
             </div>
         )
