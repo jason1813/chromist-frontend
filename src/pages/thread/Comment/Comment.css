@@ -1,0 +1,28 @@
+.comment {
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+    padding: 5px;
+
+    background-color: white;
+}
+
+.comment-profile {
+    width: 30px;
+    height: 30px;
+}
+
+.comment-author {
+    margin: 0px;
+    color: var(--honolulu);
+}
+
+.comment-text {
+    margin: 0px;
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
