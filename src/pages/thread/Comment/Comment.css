@@ -7,10 +7,37 @@
     background-color: white;
 }
 
+
+.comment-profile-line {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
 .comment-profile {
     width: 30px;
     height: 30px;
 }
+
+.comment-line {
+    width: 20px;
+    flex-grow: 1;
+    /* background-color: lightgray; */
+}
+
+.comment-actual-line {
+    width: 2px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: lightgray;
+    border-width: 0;
+}
+
+.comment-profile-line:hover > .comment-actual-line {
+    background-color: orange;
+}
+
 
 .comment-author {
     margin: 0px;
