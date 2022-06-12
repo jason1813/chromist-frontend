@@ -8,7 +8,16 @@ function Comment(props) {
     console.log(props.replies)
 
     return (
-        <div className="comment">
+        <div className="comment"
+            style={
+                props.isReply ? {
+                    marginTop: '6px',
+                    marginLeft: '-5px'
+                } : {
+                    padding: '5px'
+                }
+            }
+        >
             <a href='blah' className='comment-link'>
                 <img
                     className='comment-profile'
@@ -21,16 +30,23 @@ function Comment(props) {
                 <p className='comment-author'>{props.author}</p>
                 <p className='comment-text'>{props.text}</p>
                 <SideBySideVote userUpvoted={props.userUpvoted} upvoteScore={props.upvoteScore} />
-                {props.replies != undefined && props.replies.length != 0 &&
+
+                {props.replies !== undefined && props.replies.length !== 0 &&
                     <div className='replies'>
-                        <Comment
-                            author={props.replies[0].author}
-                            text={props.replies[0].text}
-                            userUpvoted={props.replies[0].userUpvoted}
-                            upvoteScore={props.replies[0].upvoteScore}
-                        />
+                        {
+                            props.replies.map((reply) =>
+                                <Comment
+                                    author={reply.author}
+                                    text={reply.text}
+                                    userUpvoted={reply.userUpvoted}
+                                    upvoteScore={reply.upvoteScore}
+                                    isReply={true}
+                                />
+                            )
+                        }
                     </div>
                 }
+
             </div>
         </div>
     )
