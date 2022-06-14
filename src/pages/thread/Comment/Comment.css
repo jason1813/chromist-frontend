@@ -43,3 +43,9 @@
 .comment-text {
     margin: 0px;
 }
+
+.comment-more-replies {
+    color: var(--usafa);
+    margin-top: 7px;
+    margin-bottom: 7px;
+}

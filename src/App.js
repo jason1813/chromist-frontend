@@ -20,13 +20,17 @@ class App extends Component {
         author: "biblemania34",
         text: "Lorem ipsum dolor sit amet, alii rebum postea eam ex. Et mei laoreet officiis, summo sensibus id mei.",
         userUpvoted: "up",
-        upvoteScore: "543"
+        upvoteScore: 543,
+        replyCount: 5,
+        id: 324
       },
       {
         author: "biblfdia34",
         text: "Lorem ipsum dolor sit amet, alii rebum postea eam ex. Et mei laoreet officiis, summo sensibus id mei.",
         userUpvoted: "up",
-        upvoteScore: "543"
+        upvoteScore: -27,
+        replyCount: 12,
+        id: 436589234
       }
     ]
 
@@ -43,8 +47,9 @@ class App extends Component {
               author="biblemania34"
               text="Lorem ipsum dolor sit amet, alii rebum postea eam ex. Et mei laoreet officiis, summo sensibus id mei."
               userUpvoted="up"
-              upvoteScore="543"
+              upvoteScore={98}
               replies={replies}
+              replyCount={3}
             />} />
 
           </Routes>
