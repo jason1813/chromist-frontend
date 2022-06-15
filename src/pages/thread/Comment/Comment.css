@@ -22,6 +22,7 @@
     margin: 0;
     flex-grow: 1;
     border-width: 0;
+    min-height: 20px;
     background-color: lightgray;
 }
 
@@ -37,6 +38,7 @@
 
 .comment-author {
     margin: 0px;
+    margin-bottom: 4px;
     color: var(--honolulu);
 }
 
@@ -46,6 +48,6 @@
 
 .comment-more-replies {
     color: var(--usafa);
-    margin-top: 7px;
-    margin-bottom: 7px;
+    margin-top: 0px;
+    margin-bottom: 17px;
 }
