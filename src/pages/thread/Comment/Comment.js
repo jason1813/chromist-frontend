@@ -4,6 +4,7 @@ import React from 'react';
 import { Component } from 'react';
 import SideBySideVote from '../SideBySideVote';
 import Network from '../../../network/network_calls';
+import timeSince from '../../../misc/js/TimeSince';
 
 class Comment extends Component {
 
@@ -16,7 +17,6 @@ class Comment extends Component {
     }
 
     render() {
-
         return (
             <div className="comment"
                 style={
@@ -28,7 +28,7 @@ class Comment extends Component {
                     }
                 }
             >
-                <a href='#' className='comment-link'
+                <div className='comment-link'
                     onClick={() => {
                         this.setState({ expandContent: !this.state.expandContent })
                     }}
@@ -39,9 +39,12 @@ class Comment extends Component {
                         alt="profile"
                     />
                     <hr className='comment-line' />
-                </a>
+                </div>
                 <div>
-                    <p className='comment-author'>{this.props.author}</p>
+                    <div className='comment-author-date'>
+                        <p className='comment-author'>{this.props.author}</p>
+                        <p className='comment-date'>{timeSince(new Date(this.props.dateCreated))}</p>
+                    </div>
                     {
                         this.state.expandContent &&
                         <this.CommentContent
@@ -83,6 +86,7 @@ class Comment extends Component {
                                     upvoteScore={reply.upvoteScore}
                                     isReply={true}
                                     replyCount={reply.replyCount}
+                                    dateCreated={reply.dateCreated}
                                     replies={[]}
                                 />
                             )
@@ -91,7 +95,7 @@ class Comment extends Component {
                 }
                 {
                     moreRepliesCount > 0 &&
-                    <a className='comment-more-replies' href="#" onClick={
+                    <a className='comment-more-replies' href="/#" onClick={
                         () => {
                             Network.getReplies(props.id, props.replies.length).then(data => {
                                 props.callback(data)

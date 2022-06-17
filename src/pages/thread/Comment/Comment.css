@@ -34,12 +34,23 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    margin-top: 12px;
+}
+
+.comment-author-date {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3px;
+    gap: 15px;
 }
 
 .comment-author {
     margin: 0px;
-    margin-bottom: 4px;
     color: var(--honolulu);
+}
+
+.comment-date {
+    margin: 0px;
 }
 
 .comment-text {
