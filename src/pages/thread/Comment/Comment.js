@@ -96,10 +96,11 @@ class Comment extends Component {
                 {
                     moreRepliesCount > 0 &&
                     <a className='comment-more-replies' href="/#" onClick={
-                        () => {
+                        (e) => {
                             Network.getReplies(props.id, props.replies.length).then(data => {
                                 props.callback(data)
                             })
+                            e.preventDefault()
                         }
                     }>{moreRepliesCount} more replies</a>
                 }

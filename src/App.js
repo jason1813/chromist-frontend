@@ -45,6 +45,7 @@ class App extends Component {
             {/* <Route path="/" element={<SideBySideVote upvoteScore='4' userUpvoted="up" />} /> */}
             <Route path="/" element={<Comment
               id={34246245}
+              dateCreated="2022-06-18T12:59:25.358Z"
               author="biblemania34"
               text="Lorem ipsum dolor sit amet, alii rebum postea eam ex. Et mei laoreet officiis, summo sensibus id mei."
               userUpvoted="up"
