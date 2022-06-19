@@ -1,4 +1,5 @@
 
+import './Comments.css';
 import { Component } from 'react';
 import React from 'react';
 import Network from '../../../network/network_calls';
@@ -16,7 +17,6 @@ class Comments extends Component {
     componentDidMount() {
         Network.getComments(this.props.threadID).then(data => {
             this.setState({ comments: data })
-            console.log(`state comments = ${data}`)
         })
     }
 

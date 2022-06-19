@@ -10,7 +10,6 @@ function ThreadDetail(props) {
             <ThreadDetailTop />
             <h2>{props.title}</h2>
             <p>{props.description}</p>
-            <Comments threadID={435634264} />
         </div>
     )
 }
