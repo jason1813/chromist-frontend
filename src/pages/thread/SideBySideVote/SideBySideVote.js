@@ -7,7 +7,7 @@ function SideBySideVote(props) {
 
       <img
         className='SideBySideVote-up-arrow'
-        src={require('../../misc/img/up-arrow.png')}
+        src={require('../../../misc/img/up-arrow.png')}
         alt="up arrow"
         style={
           props.userUpvoted === "up" ? {
@@ -24,7 +24,7 @@ function SideBySideVote(props) {
 
       <img
         className='SideBySideVote-down-arrow'
-        src={require('../../misc/img/down-arrow.png')}
+        src={require('../../../misc/img/down-arrow.png')}
         alt="down arrow"
         style={
           props.userUpvoted === "down" ? {

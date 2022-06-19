@@ -1,7 +1,7 @@
 import './ThreadDetailTop.css';
 import { Component } from 'react';
 import React from 'react';
-import SideBySideVote from './SideBySideVote';
+import SideBySideVote from '../SideBySideVote/SideBySideVote';
 
 class ThreadDetailTop extends Component {
 
@@ -11,7 +11,7 @@ class ThreadDetailTop extends Component {
                 <div className='thread-detail-top-left-side'>
                     <img
                         className='thread-detail-top-profile'
-                        src={require('../../misc/img/profile.png')}
+                        src={require('../../../misc/img/profile.png')}
                         alt="profile"
                     />
                     <div className='thread-detail-top-author-date'>

@@ -2,7 +2,7 @@
 import './Comment.css';
 import React from 'react';
 import { Component } from 'react';
-import SideBySideVote from '../SideBySideVote';
+import SideBySideVote from '../SideBySideVote/SideBySideVote';
 import Network from '../../../network/network_calls';
 import timeSince from '../../../misc/js/TimeSince';
 

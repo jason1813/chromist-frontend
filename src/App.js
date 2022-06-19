@@ -3,9 +3,6 @@ import React from 'react';
 import NavBar from './misc/js/NavBar.js'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Threads from "./pages/threads/Threads"
-import ThreadDetailTop from "./pages/thread/ThreadDetailTop"
-import ThreadDetail from "./pages/thread/ThreadDetail"
-import SideBySideVote from './pages/thread/SideBySideVote'
 import Comment from './pages/thread/Comment/Comment.js';
 import './misc/css/App.css';
 import Comments from './pages/thread/Comments/Comments.js';

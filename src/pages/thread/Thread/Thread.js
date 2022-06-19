@@ -1,7 +1,7 @@
 
 import './Thread.css';
 import React from 'react';
-import ThreadDetail from '../ThreadDetail';
+import ThreadDetail from '../ThreadDetail/ThreadDetail';
 import Comments from '../Comments/Comments';
 
 function Thread(props) {

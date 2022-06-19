@@ -1,7 +1,7 @@
 import './ThreadDetail.css';
 import React from 'react';
-import ThreadDetailTop from './ThreadDetailTop';
-import Comments from './Comments/Comments';
+import ThreadDetailTop from '../ThreadDetailTop/ThreadDetailTop';
+import Comments from '../Comments/Comments';
 
 function ThreadDetail(props) {
 
