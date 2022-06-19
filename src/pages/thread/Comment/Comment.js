@@ -17,6 +17,7 @@ class Comment extends Component {
     }
 
     render() {
+
         return (
             <div className="comment"
                 style={
@@ -42,7 +43,7 @@ class Comment extends Component {
                 </div>
                 <div>
                     <div className='comment-author-date'>
-                        <p className='comment-author'>{this.props.author}</p>
+                        <p className='comment-author'>{this.props.author.username}</p>
                         <p className='comment-date'>{timeSince(new Date(this.props.dateCreated))}</p>
                     </div>
                     {
@@ -84,10 +85,10 @@ class Comment extends Component {
                                     text={reply.text}
                                     userUpvoted={reply.userUpvoted}
                                     upvoteScore={reply.upvoteScore}
-                                    isReply={true}
                                     replyCount={reply.replyCount}
                                     dateCreated={reply.dateCreated}
                                     replies={[]}
+                                    isReply={true}
                                 />
                             )
                         }

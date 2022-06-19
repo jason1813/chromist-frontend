@@ -10,9 +10,18 @@ class Network {
       .catch(error => reject(error))
   })
 
-  static getReplies = function (commentID, startIndex) {
+  static getReplies = function (commentID, startIndex = 0, count = 5) {
     return new Promise((resolve, reject) => {
-      fetch(`${baseUrl}/comments/${commentID}/replies?startIndex=${startIndex}&count=5`)
+      fetch(`${baseUrl}/comments/${commentID}/replies?startIndex=${startIndex}&count=${count}`)
+        .then(res => res.json())
+        .then(data => resolve(data))
+        .catch(error => reject(error))
+    })
+  }
+
+  static getComments = function (threadID, startIndex = 0, count = 10) {
+    return new Promise((resolve, reject) => {
+      fetch(`${baseUrl}/threads/${threadID}/comments?startIndex=${startIndex}&count=${count}`)
         .then(res => res.json())
         .then(data => resolve(data))
         .catch(error => reject(error))
