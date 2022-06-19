@@ -23,7 +23,7 @@ class Comments extends Component {
     render() {
 
         const comments = this.state.comments.map((comment) =>
-            <Comment {...comment} />
+            <Comment key={comment.id} {...comment} />
         )
 
         return (
