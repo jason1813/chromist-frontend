@@ -24,6 +24,7 @@ class Threads extends Component {
 
         const threadProps = this.state.threadData.map((threadDataItem) =>
             <ListThread
+                key={threadDataItem.id}
                 id={threadDataItem.id}
                 dateCreated={threadDataItem.dateCreated}
                 author={threadDataItem.author}
