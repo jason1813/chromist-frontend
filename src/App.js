@@ -38,9 +38,9 @@ class App extends Component {
         <NavBar isLoggedIn={false} />
         <div className='app'>
           <Routes>
-            {/* <Route path="/" element={<Threads />} /> */}
+            <Route exact path="/" element={<Threads />} />
             {/* <Route path="/" element={<ThreadDetailTop />} /> */}
-            <Route path="/" element={<Thread />} />
+            <Route exact path="/threads/:id" element={<Thread />} />
             {/* <Route path="/" element={<SideBySideVote upvoteScore='4' userUpvoted="up" />} /> */}
             {/* <Route path="/" element={<Comment
               id={34246245}
