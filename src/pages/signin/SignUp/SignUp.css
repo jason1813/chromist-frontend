@@ -1,0 +1,31 @@
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background-color: white;
+}
+
+.signup-header {
+    text-align: center;
+    margin: 0px;
+}
+
+.signup-username {
+    font-size: 25px;
+}
+
+.signup-password {
+    font-size: 25px;
+}
+
+.signup-login-link {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.signup-account-text {
+    margin: 0;
+}
