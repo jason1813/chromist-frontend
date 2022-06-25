@@ -1,5 +1,5 @@
 
-.signup {
+.signin {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -7,25 +7,25 @@
     background-color: white;
 }
 
-.signup-header {
+.signin-header {
     text-align: center;
     margin: 0px;
 }
 
-.signup-username {
+.signin-username {
     font-size: 25px;
 }
 
-.signup-password {
+.signin-password {
     font-size: 25px;
 }
 
-.signup-login-link {
+.signin-login-link {
     display: flex;
     flex-direction: row;
     gap: 5px;
 }
 
-.signup-account-text {
+.signin-account-text {
     margin: 0;
 }

@@ -7,7 +7,7 @@ import Comment from './pages/thread/Comment/Comment.js';
 import './misc/css/App.css';
 import Comments from './pages/thread/Comments/Comments.js';
 import Thread from './pages/thread/Thread/Thread.js';
-import SignUp from './pages/signin/SignUp/SignUp';
+import SignIn from './pages/signin/SignUp/SignIn';
 
 
 class App extends Component {
@@ -23,7 +23,7 @@ class App extends Component {
             <Route exact path="/" element={<Threads />} />
             {/* <Route path="/" element={<ThreadDetailTop />} /> */}
             <Route exact path="/threads/:id" element={<Thread />} />
-            <Route exact path="/signin" element={<SignUp />} />
+            <Route exact path="/signin" element={<SignIn />} />
             {/* <Route path="/" element={<SideBySideVote upvoteScore='4' userUpvoted="up" />} /> */}
             {/* <Route path="/" element={<Comment
               id={34246245}
