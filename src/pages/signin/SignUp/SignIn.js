@@ -7,7 +7,18 @@ import StyledButton from '../../../misc/js/StyledComponents';
 class SignIn extends Component {
     constructor(props) {
         super(props);
-        this.state = { hasAccount: true };
+        this.state = {
+            hasAccount: true,
+            username: '',
+            password: ''
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
     }
 
     render() {
@@ -27,9 +38,21 @@ class SignIn extends Component {
         return (
             <div className="signin">
                 <h1 className='signin-header'>{contentText.header}</h1>
-                <input type="text" id="username" name="username" className='signin-username' placeholder="Username"></input>
-                <input type="text" id="password" name="password" className='signin-password' placeholder="Password"></input>
-                <StyledButton primary>{contentText.buttonText}</StyledButton>
+                <input type="text"
+                    id="username" name="username" className='signin-username' placeholder="Username" onChange={this.handleChange}>
+                </input>
+                <input type="password"
+                    id="password" name="password" className='signin-password' placeholder="Password" onChange={this.handleChange}>
+                </input>
+                <StyledButton
+                    disabled={this.state.username === '' || this.state.password === ''}
+                    primary
+                    onClick={() => {
+                        console.log('blahh')
+                    }}
+                >
+                    {contentText.buttonText}
+                </StyledButton>
 
                 <div className='signin-login-link'>
                     <p className='signin-account-text'>{contentText.questionText}</p>
