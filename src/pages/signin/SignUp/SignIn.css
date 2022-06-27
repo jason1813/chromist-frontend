@@ -12,13 +12,16 @@
     margin: 0px;
 }
 
-.signin-username {
+input {
     font-size: 25px;
+    margin-bottom: 0px;
 }
 
-.signin-password {
-    font-size: 25px;
+input.error {
+    border: 3px solid #eb516d;
+    outline: none;
 }
+
 
 .signin-login-link {
     display: flex;
@@ -28,4 +31,10 @@
 
 .signin-account-text {
     margin: 0;
+}
+
+.signin-username-error, .signin-password-error {
+    color: red;
+    margin-top: 0px;
+    margin-bottom: 8px;
 }

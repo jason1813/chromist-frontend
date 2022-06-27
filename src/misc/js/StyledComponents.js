@@ -13,4 +13,22 @@ const StyledButton = styled.button`
   border-radius: 3px;
 `;
 
-export default StyledButton;
+const StyledSubmitButton = styled.input.attrs({
+  type: 'submit'
+})`
+  background: ${props => props.primary ? "var(--honolulu)" : "white"};
+  color: ${props => props.primary ? "white" : "var(--honolulu)"};
+
+  opacity: ${props => props.disabled ? "0.2" : "1.0"};
+  // value: ${props => props.value};
+
+  font-size: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid var(--honolulu);
+  border-radius: 3px;
+`;
+
+export {
+  StyledButton,
+  StyledSubmitButton,
+}

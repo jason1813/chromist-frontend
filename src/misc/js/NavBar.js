@@ -1,6 +1,6 @@
 
 import '../css/NavBar.css';
-import StyledButton from './StyledComponents'
+import { StyledButton } from './StyledComponents';
 
 function NavBar(props) {
   return (
