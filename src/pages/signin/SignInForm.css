@@ -1,13 +1,11 @@
 
-.signin {
+.signinform {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding: 20px;
-    background-color: white;
 }
 
-.signin-header {
+.signinform-header {
     text-align: center;
     margin: 0px;
 }
@@ -22,18 +20,7 @@ input.error {
     outline: none;
 }
 
-
-.signin-login-link {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-}
-
-.signin-account-text {
-    margin: 0;
-}
-
-.signin-username-error, .signin-password-error {
+.signinform-username-error, .signinform-password-error {
     color: red;
     margin-top: 0px;
     margin-bottom: 8px;

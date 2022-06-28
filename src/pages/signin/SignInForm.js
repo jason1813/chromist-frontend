@@ -1,14 +1,13 @@
 
-import './SignIn.css';
+import './SignInForm.css';
 import React from 'react';
 import { Component } from 'react';
-import { StyledSubmitButton } from '../../../misc/js/StyledComponents';
+import { StyledSubmitButton } from '../../misc/js/StyledComponents';
 
-class SignIn extends Component {
+class SignInForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hasAccount: true,
             username: '',
             password: '',
             usernameError: '',
@@ -27,11 +26,7 @@ class SignIn extends Component {
     }
 
     handleSubmit(event) {
-        if (!this.state.hasAccount) {
-            this.handleSignupError()
-        } else {
-            this.handleLoginError()
-        }
+        this.props.signup ? this.handleSignupError() : this.handleLoginError()
         event.preventDefault();
     }
 
@@ -86,61 +81,51 @@ class SignIn extends Component {
         })
     }
 
+    contentText = this.props.signup ? {
+        header: "SIGN UP",
+        buttonText: "SIGN UP",
+        linkText: "Log in"
+    } : {
+        header: "LOG IN",
+        buttonText: "LOG IN",
+        linkText: "Sign up"
+    }
+
     render() {
 
-        const contentText = this.state.hasAccount ? {
-            header: "LOG IN",
-            buttonText: "LOG IN",
-            questionText: "Don't have an account?",
-            linkText: "Sign up"
-        } : {
-            header: "SIGN UP",
-            buttonText: "SIGN UP",
-            questionText: "Already have an account?",
-            linkText: "Log in"
-        }
-
         return (
-            <form className="signin" onSubmit={this.handleSubmit}>
-                <h1 className='signin-header'>{contentText.header}</h1>
-                <input type="text"
-                    id="username" name="username"
+            <form className="signinform" onSubmit={this.handleSubmit}>
+                <h1 className='signinform-header'>{this.contentText.header}</h1>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
                     className={this.state.usernameError === '' ? '' : 'error'}
-                    placeholder="Username" onChange={this.handleChange}>
-                </input>
+                    placeholder="Username" 
+                    onChange={this.handleChange}
+                />
                 {this.state.usernameError !== '' &&
-                    <p className='signin-username-error'>{this.state.usernameError}</p>
+                    <p className='signinform-username-error'>{this.state.usernameError}</p>
                 }
-                <input type="password"
-                    id="password" name="password"
+                <input 
+                    type="password"
+                    id="password"
+                    name="password"
                     className={this.state.passwordError === '' ? '' : 'error'}
-                    placeholder="Password" onChange={this.handleChange}>
-                </input>
+                    placeholder="Password"
+                    onChange={this.handleChange}
+                />
                 {this.state.passwordError !== '' &&
-                    <p className='signin-password-error'>{this.state.passwordError}</p>
+                    <p className='signinform-password-error'>{this.state.passwordError}</p>
                 }
                 <StyledSubmitButton
                     disabled={this.state.username === '' || this.state.password === ''}
                     primary
-                    value={contentText.buttonText}
+                    value={this.contentText.buttonText}
                 />
-
-                <div className='signin-login-link'>
-                    <p className='signin-account-text'>{contentText.questionText}</p>
-                    <a href="/#" className='signin-login-hyperlink'
-                        onClick={(e) => {
-                            this.setState({
-                                hasAccount: !this.state.hasAccount,
-                                usernameError: '',
-                                passwordError: ''
-                            });
-                            e.preventDefault()
-                        }}
-                    >{contentText.linkText}</a>
-                </div>
             </form>
         )
     }
 }
 
-export default SignIn;
+export default SignInForm;

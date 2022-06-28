@@ -1,0 +1,18 @@
+
+.signin {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px;
+    background-color: white;
+}
+
+.signin-login-link {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+} 
+
+.signin-account-text {
+    margin: 0;
+}

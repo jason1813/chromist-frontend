@@ -7,7 +7,7 @@ import Comment from './pages/thread/Comment/Comment.js';
 import './misc/css/App.css';
 import Comments from './pages/thread/Comments/Comments.js';
 import Thread from './pages/thread/Thread/Thread.js';
-import SignIn from './pages/signin/SignUp/SignIn';
+import SignIn from './pages/signin/SignIn.js';
 
 
 class App extends Component {
