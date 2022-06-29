@@ -3,6 +3,7 @@ import './SignInForm.css';
 import React from 'react';
 import { Component } from 'react';
 import { StyledSubmitButton } from '../../misc/js/StyledComponents';
+import SignInFrontEndMessageDisplayer from './SignInFrontEndMessageDisplayer';
 
 class SignInForm extends Component {
     constructor(props) {
@@ -26,59 +27,15 @@ class SignInForm extends Component {
     }
 
     handleSubmit(event) {
-        this.props.signup ? this.handleSignupError() : this.handleLoginError()
-        event.preventDefault();
-    }
+        event.preventDefault()
 
-    handleSignupError() {
-        if (this.state.username.length < 3 || this.state.username.length > 20) {
-            this.setState({
-                usernameError: 'username must be between 3 and 20 characters',
-                passwordError: ''
-            });
-            return
-        }
+        const signInMessageDisplayer = new SignInFrontEndMessageDisplayer(this.state.username, this.state.password)
 
-        if (!/^[0-9a-zA-Z_-]+$/.test(this.state.username)) {
-            this.setState({
-                usernameError: 'username must contain letters, numbers, dashes, and underscores only',
-                passwordError: ''
-            });
-            return
-        }
-
-        if (this.state.password.length < 6 || this.state.password.length > 20) {
-            this.setState({
-                passwordError: 'password must be between 6 and 20 characters',
-                usernameError: ''
-            });
-            return
-        }
-
-        this.setState({
-            usernameError: '',
-            passwordError: ''
-        })
-    }
-
-    handleLoginError() {
-        if (
-            this.state.username.length < 3 ||
-            this.state.username.length > 20 ||
-            !/^[0-9a-zA-Z_-]+$/.test(this.state.username) ||
-            this.state.password.length < 6 || this.state.password.length > 20
-        ) {
-            this.setState({
-                usernameError: 'Incorrect username or password',
-                passwordError: ''
-            })
-            return
-        }
-
-        this.setState({
-            usernameError: '',
-            passwordError: ''
-        })
+        this.setState(
+            this.props.signup ?
+                signInMessageDisplayer.handleSignupError() :
+                signInMessageDisplayer.handleLoginError()
+        )
     }
 
     contentText = this.props.signup ? {
@@ -101,13 +58,13 @@ class SignInForm extends Component {
                     id="username"
                     name="username"
                     className={this.state.usernameError === '' ? '' : 'error'}
-                    placeholder="Username" 
+                    placeholder="Username"
                     onChange={this.handleChange}
                 />
                 {this.state.usernameError !== '' &&
                     <p className='signinform-username-error'>{this.state.usernameError}</p>
                 }
-                <input 
+                <input
                     type="password"
                     id="password"
                     name="password"
