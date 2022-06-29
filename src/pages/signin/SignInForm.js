@@ -14,8 +14,8 @@ class SignInForm extends Component {
             usernameError: '',
             passwordError: ''
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange(event) {
@@ -23,7 +23,7 @@ class SignInForm extends Component {
             [event.target.name]: event.target.value,
             usernameError: '',
             passwordError: '',
-        });
+        })
     }
 
     handleSubmit(event) {
@@ -31,11 +31,17 @@ class SignInForm extends Component {
 
         const signInMessageDisplayer = new SignInFrontEndMessageDisplayer(this.state.username, this.state.password)
 
-        this.setState(
-            this.props.signup ?
-                signInMessageDisplayer.handleSignupError() :
-                signInMessageDisplayer.handleLoginError()
-        )
+        if (this.props.signup) {
+            const usernameError = signInMessageDisplayer.signupUsernameErrorMessage()
+            this.setState({ 
+                usernameError: usernameError,
+                passwordError: usernameError ? '' : signInMessageDisplayer.signupPasswordErrorMessage()
+            })
+        } else {
+            this.setState({
+                usernameError: signInMessageDisplayer.loginErrorMessage()
+            })
+        }
     }
 
     contentText = this.props.signup ? {
@@ -57,22 +63,22 @@ class SignInForm extends Component {
                     type="text"
                     id="username"
                     name="username"
-                    className={this.state.usernameError === '' ? '' : 'error'}
+                    className={this.state.usernameError ? 'error' : ''}
                     placeholder="Username"
                     onChange={this.handleChange}
                 />
-                {this.state.usernameError !== '' &&
+                {this.state.usernameError &&
                     <p className='signinform-username-error'>{this.state.usernameError}</p>
                 }
                 <input
                     type="password"
                     id="password"
                     name="password"
-                    className={this.state.passwordError === '' ? '' : 'error'}
+                    className={this.state.passwordError ? 'error' : ''}
                     placeholder="Password"
                     onChange={this.handleChange}
                 />
-                {this.state.passwordError !== '' &&
+                {this.state.passwordError &&
                     <p className='signinform-password-error'>{this.state.passwordError}</p>
                 }
                 <StyledSubmitButton
@@ -85,4 +91,4 @@ class SignInForm extends Component {
     }
 }
 
-export default SignInForm;
+export default SignInForm
