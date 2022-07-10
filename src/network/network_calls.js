@@ -27,6 +27,22 @@ class Network {
         .catch(error => reject(error))
     })
   }
+
+  static authIn = function (action, username, password) {
+    return new Promise((resolve, reject) => {
+      fetch(`${baseUrl}/auth/tokens?action=${action}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: username,
+          hashedPassword: password
+        })
+      })
+        .then(res => res.json())
+        .then(data => resolve(data))
+        .catch(error => reject(error))
+    })
+  }
 }
 
 export default Network;

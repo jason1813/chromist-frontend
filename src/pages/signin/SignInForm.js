@@ -4,6 +4,7 @@ import React from 'react';
 import { Component } from 'react';
 import { StyledSubmitButton } from '../../misc/js/StyledComponents';
 import SignInFrontEndMessageDisplayer from './SignInFrontEndMessageDisplayer';
+import Network from '../../network/network_calls';
 
 class SignInForm extends Component {
     constructor(props) {
@@ -32,11 +33,13 @@ class SignInForm extends Component {
         const signInMessageDisplayer = new SignInFrontEndMessageDisplayer(this.state.username, this.state.password)
 
         if (this.props.signup) {
-            const usernameError = signInMessageDisplayer.signupUsernameErrorMessage()
-            this.setState({ 
-                usernameError: usernameError,
-                passwordError: usernameError ? '' : signInMessageDisplayer.signupPasswordErrorMessage()
-            })
+            const signupError = signInMessageDisplayer.signupErrorMessage()
+
+            if (signupError) {
+                this.setState({ signupError })
+            } else {
+                Network.authIn('signup', this.state.username, this.state.password)
+            }
         } else {
             this.setState({
                 usernameError: signInMessageDisplayer.loginErrorMessage()
