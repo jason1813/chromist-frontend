@@ -5,8 +5,11 @@ import { Component } from 'react';
 import { StyledSubmitButton } from '../../misc/js/StyledComponents';
 import SignInFrontEndMessageDisplayer from './SignInFrontEndMessageDisplayer';
 import Network from '../../network/network_calls';
+import NetworkPersistence from '../../network/NetworkPersistence';
+import { useNavigate } from "react-router-dom";
 
 class SignInForm extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -36,9 +39,14 @@ class SignInForm extends Component {
             const signupError = signInMessageDisplayer.signupErrorMessage()
 
             if (signupError) {
-                this.setState({ signupError })
+                this.setState( signupError )
             } else {
-                Network.authIn('signup', this.state.username, this.state.password)
+                NetworkPersistence.authIn('signup', this.state.username, this.state.password).then(data => {
+                    this.props.setLoginStatus(true)
+                    // window.location.href = '../';
+                    // let navigate = useNavigate()
+                    // navigate('../', { replace: true })
+                })
             }
         } else {
             this.setState({
