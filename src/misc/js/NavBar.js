@@ -1,12 +1,24 @@
 
+import { useNavigate } from 'react-router-dom';
 import '../css/NavBar.css';
 import { StyledButton } from './StyledComponents';
 
 function NavBar(props) {
+
+  let navigate = useNavigate()
+
+  function navigateToSignIn() {
+    navigate('/signin')
+  }
+
+  function navigateToHome() {
+    navigate('../')
+  }
+
   return (
     <div className='NavBar'>
 
-      <div className='NavBar-left'>
+      <div className='NavBar-left' onClick={navigateToHome}>
         <img
           className='NavBar-crosshairs'
           src={require('../img/crosshairs.png')}
@@ -32,7 +44,7 @@ function NavBar(props) {
               />
             </div>
           ) : (
-            <StyledButton primary>LOGIN / SIGNUP</StyledButton>
+            <StyledButton primary onClick={navigateToSignIn}>LOGIN / SIGNUP</StyledButton>
           )
         }
       </div>
