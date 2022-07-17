@@ -10,7 +10,7 @@ class Network {
       .catch(error => reject(error))
   })
 
-  static getReplies = function (commentID, startIndex = 0, count = 5) {
+  static getReplies(commentID, startIndex = 0, count = 5) {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/comments/${commentID}/replies?startIndex=${startIndex}&count=${count}`)
         .then(res => res.json())
@@ -19,7 +19,7 @@ class Network {
     })
   }
 
-  static getComments = function (threadID, startIndex = 0, count = 10) {
+  static getComments(threadID, startIndex = 0, count = 10) {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/threads/${threadID}/comments?startIndex=${startIndex}&count=${count}`)
         .then(res => res.json())
@@ -28,7 +28,7 @@ class Network {
     })
   }
 
-  static authIn = function (action, username, password) {
+  static authIn(action, username, password) {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/auth/tokens?action=${action}`, {
         method: 'POST',

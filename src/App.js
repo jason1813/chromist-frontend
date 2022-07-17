@@ -8,13 +8,14 @@ import './misc/css/App.css';
 import Comments from './pages/thread/Comments/Comments.js';
 import Thread from './pages/thread/Thread/Thread.js';
 import SignIn from './pages/signin/SignIn.js';
+import Cookie from './network/Cookie.js';
 
 
 class App extends Component {
 
   constructor(props) {
-    super(props);
-    this.state = { loggedIn: false }
+    super(props)
+    this.state = { loggedIn: Cookie.getCookie(`token`) ? true : false }
     this.setLoginStatus = this.setLoginStatus.bind(this)
   }
 

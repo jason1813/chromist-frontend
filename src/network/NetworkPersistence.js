@@ -1,11 +1,12 @@
 import Network from "./network_calls"
+import Cookie from "./Cookie.js"
 
 class NetworkPersistence {
 
-    static authIn = function (action, username, password) {
+    static authIn(action, username, password) {
         return new Promise((resolve, reject) => {
             Network.authIn(action, username, password).then(data => {
-                document.cookie = `token=${data.token}`
+                Cookie.setCookie(`token`, `${data.token}`, 1)
                 resolve(data)
             })
             .catch(error => reject(error))
