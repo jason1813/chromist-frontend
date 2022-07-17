@@ -1,24 +1,19 @@
 
-class SignInFrontEndValidator {
-
-    constructor(username, password) {
-        this.username = username
-        this.password = password
-    }
+function SignInFrontEndValidator(username, password) {
     
-    usernameMeetsLengthRequirement() {
-        return this.username.length >= 3 && this.username.length <= 20
+    this.usernameMeetsLengthRequirement = function() {
+        return username.length >= 3 && username.length <= 20
     }
 
-    usernameHasValidCharacters() {
-        return /^[0-9a-zA-Z_-]+$/.test(this.username)
+    this.usernameHasValidCharacters = function() {
+        return /^[0-9a-zA-Z_-]+$/.test(username)
     }
 
-    passwordMeetsLengthRequirement() {
-        return this.password.length >= 6 && this.password.length <= 20
+    this.passwordMeetsLengthRequirement = function() {
+        return password.length >= 6 && password.length <= 20
     }
 
-    meetsAllRequirements() {
+    this.meetsAllRequirements = function() {
         return (
             this.usernameMeetsLengthRequirement() &&
             this.usernameHasValidCharacters() &&

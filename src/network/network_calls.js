@@ -35,7 +35,7 @@ class Network {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           username: username,
-          hashedPassword: password
+          password: password
         })
       })
         .then(res => res.json())

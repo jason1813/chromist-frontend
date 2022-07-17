@@ -1,28 +1,26 @@
 
 import SignInFrontEndValidator from "./SignInFrontEndValidator"
 
-class SignInFrontEndMessageDisplayer {
+function SignInFrontEndMessageDisplayer(username, password) {
+    
+    const signinValidator = new SignInFrontEndValidator(username, password)
 
-    constructor(username, password) {
-        this.signinValidator = new SignInFrontEndValidator(username, password)
-    }
-
-    signupErrorMessage() {
-        if (!this.signinValidator.usernameMeetsLengthRequirement()) {
+    this.signupErrorMessage = function() {
+        if (!signinValidator.usernameMeetsLengthRequirement()) {
             return { usernameError: 'username must be between 3 and 20 characters' }
         }
 
-        if (!this.signinValidator.usernameHasValidCharacters()) {
+        if (!signinValidator.usernameHasValidCharacters()) {
             return { usernameError: 'username must contain letters, numbers, dashes, and underscores only' }
         }
 
-        if (!this.signinValidator.passwordMeetsLengthRequirement()) {
+        if (!signinValidator.passwordMeetsLengthRequirement()) {
             return { passwordError: 'password must be between 6 and 20 characters' }
         }
     }
 
-    loginErrorMessage() {
-        if (!this.signinValidator.meetsAllRequirements()) {
+    this.loginErrorMessage = function() {
+        if (!signinValidator.meetsAllRequirements()) {
             return { usernameError: 'incorrect username or password' }
         }
     }

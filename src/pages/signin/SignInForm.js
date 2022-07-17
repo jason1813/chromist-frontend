@@ -1,6 +1,6 @@
 
-import './SignInForm.css';
-import React from 'react';
+import './SignInForm.css'; 
+import React, { useState } from 'react';
 import { Component } from 'react';
 import { StyledSubmitButton } from '../../misc/js/StyledComponents';
 import SignInFrontEndMessageDisplayer from './SignInFrontEndMessageDisplayer';
@@ -8,54 +8,46 @@ import Network from '../../network/network_calls';
 import NetworkPersistence from '../../network/NetworkPersistence';
 import { useNavigate } from "react-router-dom";
 
-class SignInForm extends Component {
+function SignInForm(props) {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: '',
-            password: '',
-            usernameError: '',
-            passwordError: ''
-        };
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+    const [username, setUsername] = useState(``)
+    const [password, setPassword] = useState(``)
+
+    const [loginError, setError] = useState({
+        usernameError: '',
+        passwordError: ''
+    })
+
+    const clearErrors = () => {
+        setError({})
     }
 
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value,
-            usernameError: '',
-            passwordError: '',
-        })
-    }
+    let navigate = useNavigate()
 
-    handleSubmit(event) {
+    const handleSubmit = event => {
         event.preventDefault()
 
-        const signInMessageDisplayer = new SignInFrontEndMessageDisplayer(this.state.username, this.state.password)
+        const signInMessageDisplayer = new SignInFrontEndMessageDisplayer(username, password)
 
-        if (this.props.signup) {
+        if (props.signup) {
             const signupError = signInMessageDisplayer.signupErrorMessage()
 
             if (signupError) {
-                this.setState( signupError )
+                setError(signupError)
             } else {
-                NetworkPersistence.authIn('signup', this.state.username, this.state.password).then(data => {
-                    this.props.setLoginStatus(true)
-                    // window.location.href = '../';
-                    // let navigate = useNavigate()
-                    // navigate('../', { replace: true })
+                NetworkPersistence.authIn('signup', username, password).then(data => {
+                    props.setLoginStatus(true)
+                    navigate('../', { replace: true })
                 })
             }
         } else {
-            this.setState({
+            setError({
                 usernameError: signInMessageDisplayer.loginErrorMessage()
             })
         }
     }
 
-    contentText = this.props.signup ? {
+    const contentText = props.signup ? {
         header: "SIGN UP",
         buttonText: "SIGN UP",
         linkText: "Log in"
@@ -65,41 +57,44 @@ class SignInForm extends Component {
         linkText: "Sign up"
     }
 
-    render() {
-
-        return (
-            <form className="signinform" onSubmit={this.handleSubmit}>
-                <h1 className='signinform-header'>{this.contentText.header}</h1>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    className={this.state.usernameError ? 'error' : ''}
-                    placeholder="Username"
-                    onChange={this.handleChange}
-                />
-                {this.state.usernameError &&
-                    <p className='signinform-username-error'>{this.state.usernameError}</p>
-                }
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    className={this.state.passwordError ? 'error' : ''}
-                    placeholder="Password"
-                    onChange={this.handleChange}
-                />
-                {this.state.passwordError &&
-                    <p className='signinform-password-error'>{this.state.passwordError}</p>
-                }
-                <StyledSubmitButton
-                    disabled={this.state.username === '' || this.state.password === ''}
-                    primary
-                    value={this.contentText.buttonText}
-                />
-            </form>
-        )
-    }
+    return (
+        <form className="signinform" onSubmit={handleSubmit}>
+            <h1 className='signinform-header'>{contentText.header}</h1>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                className={loginError.usernameError ? 'error' : ''}
+                placeholder="Username"
+                onChange={e => {
+                    setUsername(e.target.value)
+                    clearErrors()
+                }}
+            />
+            {loginError.usernameError &&
+                <p className='signinform-username-error'>{loginError.usernameError}</p>
+            }
+            <input
+                type="password"
+                id="password"
+                name="password"
+                className={loginError.passwordError ? 'error' : ''}
+                placeholder="Password"
+                onChange={e => {
+                    setPassword(e.target.value)
+                    clearErrors()
+                }}
+            />
+            {loginError.passwordError &&
+                <p className='signinform-password-error'>{loginError.passwordError}</p>
+            }
+            <StyledSubmitButton
+                disabled={username === '' || password === ''}
+                primary
+                value={contentText.buttonText}
+            />
+        </form>
+    )
 }
 
 export default SignInForm

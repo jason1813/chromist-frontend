@@ -23,7 +23,7 @@ class SignIn extends Component {
 
         return (
             <div className="signin">
-                <SignInForm key={ this.state.signup ? `signup` : `login` } signup={this.state.signup}/>
+                <SignInForm key={ this.state.signup ? `signup` : `login` } signup={this.state.signup} setLoginStatus={this.props.setLoginStatus} />
 
                 <div className='signin-login-link'>
                     <p className='signin-account-text'>{ contentText.questionText }</p>

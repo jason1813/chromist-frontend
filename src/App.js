@@ -11,19 +11,30 @@ import SignIn from './pages/signin/SignIn.js';
 
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { loggedIn: false }
+    this.setLoginStatus = this.setLoginStatus.bind(this)
+  }
+
+  setLoginStatus(status) {
+    this.setState({ loggedIn: status })
+  }
+
   render() {
 
     document.body.style.backgroundColor = "var(--oxford)";
 
     return (
       <Router>
-        <NavBar isLoggedIn={false} />
+        <NavBar isLoggedIn={this.state.loggedIn} />
         <div className='app'>
           <Routes>
             <Route exact path="/" element={<Threads />} />
             {/* <Route path="/" element={<ThreadDetailTop />} /> */}
             <Route exact path="/threads/:id" element={<Thread />} />
-            <Route exact path="/signin" element={<SignIn />} />
+            <Route exact path="/signin" element={<SignIn setLoginStatus={this.setLoginStatus} />} />
             {/* <Route path="/" element={<SideBySideVote upvoteScore='4' userUpvoted="up" />} /> */}
             {/* <Route path="/" element={<Comment
               id={34246245}
