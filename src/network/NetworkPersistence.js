@@ -1,5 +1,6 @@
 import Network from "./network_calls"
 import Cookie from "./Cookie.js"
+import SignInBackEndErrorDisplayer from "../pages/signin/SignInBackEndErrorDisplayer"
 
 class NetworkPersistence {
 
@@ -9,7 +10,9 @@ class NetworkPersistence {
                 Cookie.setCookie(`token`, `${data.token}`, 1)
                 resolve(data)
             })
-            .catch(error => reject(error))
+            .catch(error => {
+                reject(SignInBackEndErrorDisplayer(error))
+            })
         })
     }
 }

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Component } from 'react';
 import { StyledSubmitButton } from '../../misc/js/StyledComponents';
 import SignInFrontEndMessageDisplayer from './SignInFrontEndMessageDisplayer';
+import SignInBackEndErrorDisplayer from './SignInBackEndErrorDisplayer';
 import Network from '../../network/network_calls';
 import NetworkPersistence from '../../network/NetworkPersistence';
 import { useNavigate } from "react-router-dom";
@@ -38,6 +39,12 @@ function SignInForm(props) {
                 NetworkPersistence.authIn('signup', username, password).then(data => {
                     props.setLoginStatus(true)
                     navigate('../', { replace: true })
+                }).catch(error => {
+                    if (error.networkError) {
+                        alert(`NETWORK ERROR: ${error.networkError}`)
+                    } else if (error.usernameError) {
+                        setError(error.usernameError)
+                    }
                 })
             }
         } else {
