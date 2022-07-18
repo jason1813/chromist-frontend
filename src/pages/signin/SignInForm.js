@@ -15,8 +15,8 @@ function SignInForm(props) {
     const [password, setPassword] = useState(``)
 
     const [loginError, setError] = useState({
-        usernameError: '',
-        passwordError: ''
+        usernameError: ``,
+        passwordError: ``
     })
 
     const clearErrors = () => {
@@ -25,33 +25,39 @@ function SignInForm(props) {
 
     let navigate = useNavigate()
 
-    const handleSubmit = event => {
+    const handleSignupSubmit = event => {
         event.preventDefault()
 
-        const signInMessageDisplayer = new SignInFrontEndMessageDisplayer(username, password)
+        const frontEndSignupError = SignInFrontEndMessageDisplayer.signupErrorMessage(username, password)
 
-        if (props.signup) {
-            const signupError = signInMessageDisplayer.signupErrorMessage()
-
-            if (signupError) {
-                setError(signupError)
-            } else {
-                NetworkPersistence.authIn('signup', username, password).then(data => {
-                    props.setLoginStatus(true)
-                    navigate('../', { replace: true })
-                }).catch(error => {
-                    if (error.networkError) {
-                        alert(`NETWORK ERROR: ${error.networkError}`)
-                    } else if (error.usernameError) {
-                        setError(error.usernameError)
-                    }
-                })
-            }
-        } else {
-            setError({
-                usernameError: signInMessageDisplayer.loginErrorMessage()
-            })
+        if (frontEndSignupError) {
+            setError(frontEndSignupError)
+            return
         }
+
+        NetworkPersistence.authIn(`signup`, username, password).then(data => {
+            props.setLoginStatus(true)
+            navigate('../', { replace: true })
+        }).catch(error => {
+            if (error.networkError) {
+                alert(`NETWORK ERROR: ${error.networkError}`)
+            } else if (error.usernameError) {
+                setError(error.usernameError)
+            }
+        })
+    }
+
+    const handleLoginSubmit = event => {
+        event.preventDefault()
+
+        const frontEndLoginError = SignInFrontEndMessageDisplayer.loginErrorMessage(username, password)
+
+        if (frontEndLoginError) {
+            setError(frontEndLoginError)
+            return
+        }
+
+        // TODO: network call
     }
 
     const contentText = props.signup ? {
@@ -65,14 +71,15 @@ function SignInForm(props) {
     }
 
     return (
-        <form className="signinform" onSubmit={handleSubmit}>
+        <form className="signinform" onSubmit={props.signup ? handleSignupSubmit : handleLoginSubmit}>
             <h1 className='signinform-header'>{contentText.header}</h1>
             <input
-                type="text"
+                type='text'
                 id="username"
                 name="username"
                 className={loginError.usernameError ? 'error' : ''}
                 placeholder="Username"
+                maxLength={20}
                 onChange={e => {
                     setUsername(e.target.value)
                     clearErrors()
@@ -87,6 +94,7 @@ function SignInForm(props) {
                 name="password"
                 className={loginError.passwordError ? 'error' : ''}
                 placeholder="Password"
+                maxLength={20}
                 onChange={e => {
                     setPassword(e.target.value)
                     clearErrors()
@@ -96,7 +104,7 @@ function SignInForm(props) {
                 <p className='signinform-password-error'>{loginError.passwordError}</p>
             }
             <StyledSubmitButton
-                disabled={username === '' || password === ''}
+                disabled={ !username || !password }
                 primary
                 value={contentText.buttonText}
             />

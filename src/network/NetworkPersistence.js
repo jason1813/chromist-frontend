@@ -17,4 +17,4 @@ class NetworkPersistence {
     }
 }
 
-export default NetworkPersistence;
+export default NetworkPersistence

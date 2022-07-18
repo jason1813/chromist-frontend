@@ -1,11 +1,11 @@
 
 import SignInFrontEndValidator from "./SignInFrontEndValidator"
 
-function SignInFrontEndMessageDisplayer(username, password) {
+class SignInFrontEndMessageDisplayer {
     
-    const signinValidator = new SignInFrontEndValidator(username, password)
+    static signupErrorMessage(username, password) {
+        const signinValidator = new SignInFrontEndValidator(username, password)
 
-    this.signupErrorMessage = function() {
         if (!signinValidator.usernameMeetsLengthRequirement()) {
             return { usernameError: 'username must be between 3 and 20 characters' }
         }
@@ -19,7 +19,9 @@ function SignInFrontEndMessageDisplayer(username, password) {
         }
     }
 
-    this.loginErrorMessage = function() {
+    static loginErrorMessage(username, password) {
+        const signinValidator = new SignInFrontEndValidator(username, password)
+
         if (!signinValidator.meetsAllRequirements()) {
             return { usernameError: 'incorrect username or password' }
         }
