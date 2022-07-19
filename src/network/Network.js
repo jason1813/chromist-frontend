@@ -1,12 +1,12 @@
-import Network from "./network_calls"
+import NetworkCall from "./NetworkCall"
 import Cookie from "./Cookie.js"
 import SignInBackEndErrorDisplayer from "../pages/signin/SignInBackEndErrorDisplayer"
 
-class NetworkPersistence {
+class Network {
 
     static authIn(action, username, password) {
         return new Promise((resolve, reject) => {
-            Network.authIn(action, username, password).then(data => {
+            NetworkCall.authIn(action, username, password).then(data => {
                 Cookie.setCookie(`token`, `${data.token}`, 1)
                 resolve(data)
             })
@@ -17,4 +17,4 @@ class NetworkPersistence {
     }
 }
 
-export default NetworkPersistence
+export default Network

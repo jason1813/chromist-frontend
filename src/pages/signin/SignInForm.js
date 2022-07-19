@@ -1,13 +1,9 @@
 
 import './SignInForm.css'; 
 import React, { useState } from 'react';
-import { Component } from 'react';
 import { StyledSubmitButton } from '../../misc/js/StyledComponents';
 import SignInFrontEndMessageDisplayer from './SignInFrontEndMessageDisplayer';
-import SignInBackEndErrorDisplayer from './SignInBackEndErrorDisplayer';
-import Network from '../../network/network_calls';
-import NetworkPersistence from '../../network/NetworkPersistence';
-import { useNavigate } from "react-router-dom";
+import Network from '../../network/Network';
 
 function SignInForm(props) {
 
@@ -23,8 +19,6 @@ function SignInForm(props) {
         setError({})
     }
 
-    let navigate = useNavigate()
-
     const handleSignupSubmit = event => {
         event.preventDefault()
 
@@ -35,9 +29,9 @@ function SignInForm(props) {
             return
         }
 
-        NetworkPersistence.authIn(`signup`, username, password).then(data => {
+        Network.authIn(`signup`, username, password).then(data => {
             props.setLoginStatus(true)
-            navigate('../', { replace: true })
+            document.location.href = '../'
         }).catch(error => {
             if (error.networkError) {
                 alert(`NETWORK ERROR: ${error.networkError}`)

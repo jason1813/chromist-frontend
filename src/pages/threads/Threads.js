@@ -2,7 +2,7 @@ import './Threads.css';
 import { Component } from 'react';
 import React from 'react';
 import ListThread from './ListThread.js'
-import Network from '../../network/network_calls';
+import NetworkCall from '../../network/NetworkCall';
 import BottomBar from './BottomBar.js'
 
 class Threads extends Component {
@@ -15,7 +15,7 @@ class Threads extends Component {
     }
 
     componentDidMount() {
-        Network.getThreads.then(data => {
+        NetworkCall.getThreads.then(data => {
             this.setState({ threadData: data })
         })
     }

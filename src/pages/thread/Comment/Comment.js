@@ -3,7 +3,7 @@ import './Comment.css';
 import React from 'react';
 import { Component } from 'react';
 import SideBySideVote from '../SideBySideVote/SideBySideVote';
-import Network from '../../../network/network_calls';
+import NetworkCall from '../../../network/NetworkCall';
 import timeSince from '../../../misc/js/TimeSince';
 
 class Comment extends Component {
@@ -98,7 +98,7 @@ class Comment extends Component {
                     moreRepliesCount > 0 &&
                     <a className='comment-more-replies' href="/#" onClick={
                         (e) => {
-                            Network.getReplies(props.id, props.replies.length).then(data => {
+                            NetworkCall.getReplies(props.id, props.replies.length).then(data => {
                                 props.callback(data)
                             })
                             e.preventDefault()

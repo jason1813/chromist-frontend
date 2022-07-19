@@ -2,7 +2,7 @@
 import './Comments.css';
 import { Component } from 'react';
 import React from 'react';
-import Network from '../../../network/network_calls';
+import NetworkCall from '../../../network/NetworkCall';
 import Comment from '../Comment/Comment';
 
 class Comments extends Component {
@@ -15,7 +15,7 @@ class Comments extends Component {
     }
 
     componentDidMount() {
-        Network.getComments(this.props.threadID).then(data => {
+        NetworkCall.getComments(this.props.threadID).then(data => {
             this.setState({ comments: data })
         })
     }
