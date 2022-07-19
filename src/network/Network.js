@@ -1,6 +1,6 @@
 import NetworkCall from "./NetworkCall"
 import Cookie from "./Cookie.js"
-import SignInBackEndErrorDisplayer from "../pages/signin/SignInBackEndErrorDisplayer"
+import { SignUpBackEndErrorDisplayer, LoginBackendErrorDisplayer } from "../pages/signin/SignInBackEndErrorDisplayer"
 
 class Network {
 
@@ -10,9 +10,13 @@ class Network {
                 Cookie.setCookie(`token`, `${data.token}`, 1)
                 resolve(data)
             })
-            .catch(error => {
-                reject(SignInBackEndErrorDisplayer(error))
-            })
+                .catch(error => {
+                    reject(
+                        action === 'signup' ?
+                            SignUpBackEndErrorDisplayer(error) :
+                            LoginBackendErrorDisplayer(error)
+                    )
+                })
         })
     }
 }

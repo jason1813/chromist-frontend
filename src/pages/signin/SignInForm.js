@@ -1,5 +1,5 @@
 
-import './SignInForm.css'; 
+import './SignInForm.css';
 import React, { useState } from 'react';
 import { StyledSubmitButton } from '../../misc/js/StyledComponents';
 import SignInFrontEndMessageDisplayer from './SignInFrontEndMessageDisplayer';
@@ -19,39 +19,28 @@ function SignInForm(props) {
         setError({})
     }
 
-    const handleSignupSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault()
 
-        const frontEndSignupError = SignInFrontEndMessageDisplayer.signupErrorMessage(username, password)
+        const frontEndError = props.signup ?
+            SignInFrontEndMessageDisplayer.signupErrorMessage(username, password) :
+            SignInFrontEndMessageDisplayer.loginErrorMessage(username, password)
 
-        if (frontEndSignupError) {
-            setError(frontEndSignupError)
+        if (frontEndError) {
+            setError(frontEndError)
             return
         }
 
-        Network.authIn(`signup`, username, password).then(data => {
+        Network.authIn(props.signup ? 'signup' : 'login', username, password).then(data => {
             props.setLoginStatus(true)
             document.location.href = '../'
         }).catch(error => {
             if (error.networkError) {
                 alert(`NETWORK ERROR: ${error.networkError}`)
             } else if (error.usernameError) {
-                setError(error.usernameError)
+                setError(error)
             }
         })
-    }
-
-    const handleLoginSubmit = event => {
-        event.preventDefault()
-
-        const frontEndLoginError = SignInFrontEndMessageDisplayer.loginErrorMessage(username, password)
-
-        if (frontEndLoginError) {
-            setError(frontEndLoginError)
-            return
-        }
-
-        // TODO: network call
     }
 
     const contentText = props.signup ? {
@@ -65,7 +54,7 @@ function SignInForm(props) {
     }
 
     return (
-        <form className="signinform" onSubmit={props.signup ? handleSignupSubmit : handleLoginSubmit}>
+        <form className="signinform" onSubmit={ handleSubmit }>
             <h1 className='signinform-header'>{contentText.header}</h1>
             <input
                 type='text'
@@ -98,7 +87,7 @@ function SignInForm(props) {
                 <p className='signinform-password-error'>{loginError.passwordError}</p>
             }
             <StyledSubmitButton
-                disabled={ !username || !password }
+                disabled={!username || !password}
                 primary
                 value={contentText.buttonText}
             />
