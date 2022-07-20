@@ -34,7 +34,7 @@ function SignInForm(props) {
         const action = props.signup ? Network.authinAction.SIGNUP : Network.authinAction.LOGIN
 
         Network.authIn(action, username, password).then(data => {
-            props.setLoginStatus(true)
+            // props.setLoginStatus(true)
             document.location.href = '../'
         }).catch(error => {
             if (error.networkError) {

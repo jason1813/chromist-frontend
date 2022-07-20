@@ -13,15 +13,15 @@ import Cookie from './network/Cookie.js';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = { loggedIn: Cookie.getCookie(`token`) ? true : false }
-    this.setLoginStatus = this.setLoginStatus.bind(this)
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = { loggedIn: Cookie.getCookie(`token`) ? true : false }
+  //   this.setLoginStatus = this.setLoginStatus.bind(this)
+  // }
 
-  setLoginStatus(status) {
-    this.setState({ loggedIn: status })
-  }
+  // setLoginStatus(status) {
+  //   this.setState({ loggedIn: status })
+  // }
 
   render() {
 
@@ -29,13 +29,14 @@ class App extends Component {
 
     return (
       <Router>
-        <NavBar isLoggedIn={this.state.loggedIn} />
+        {/* <NavBar isLoggedIn={this.state.loggedIn} /> */}
+        <NavBar isLoggedIn={Cookie.getCookie(`token`) ? true : false} />
         <div className='app'>
           <Routes>
             <Route exact path="/" element={<Threads />} />
             {/* <Route path="/" element={<ThreadDetailTop />} /> */}
             <Route exact path="/threads/:id" element={<Thread />} />
-            <Route exact path="/signin" element={<SignIn setLoginStatus={this.setLoginStatus} />} />
+            <Route exact path="/signin" element={<SignIn /*setLoginStatus={this.setLoginStatus}*/ />} />
             {/* <Route path="/" element={<SideBySideVote upvoteScore='4' userUpvoted="up" />} /> */}
             {/* <Route path="/" element={<Comment
               id={34246245}
