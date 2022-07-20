@@ -7,6 +7,8 @@ export function SignUpBackEndErrorDisplayer(error) {
     if (error.message === `username is taken`) {  // Todo: Figure this out later
         return { usernameError: `username already taken` }
     }
+
+    return {}
 }
 
 export function LoginBackendErrorDisplayer(error) {
@@ -17,4 +19,6 @@ export function LoginBackendErrorDisplayer(error) {
     if (error.message === `incorrect username`) {  // Todo: Figure this out later
         return { usernameError: `incorrect username or password` }
     }
+
+    return {}
 }

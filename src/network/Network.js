@@ -4,6 +4,11 @@ import { SignUpBackEndErrorDisplayer, LoginBackendErrorDisplayer } from "../page
 
 class Network {
 
+    static authinAction = {
+        SIGNUP: 'signup',
+        LOGIN: 'login'
+    }
+
     static authIn(action, username, password) {
         return new Promise((resolve, reject) => {
             NetworkCall.authIn(action, username, password).then(data => {
@@ -12,7 +17,7 @@ class Network {
             })
                 .catch(error => {
                     reject(
-                        action === 'signup' ?
+                        action === this.authinAction.SIGNUP ?
                             SignUpBackEndErrorDisplayer(error) :
                             LoginBackendErrorDisplayer(error)
                     )
