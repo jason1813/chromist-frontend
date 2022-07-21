@@ -3,6 +3,7 @@ import './CreateThread.css';
 import React, { useState } from 'react';
 import { StyledButton, StyledSubmitButton, StyledCancelButton } from '../../misc/js/StyledComponents';
 import Network from '../../network/Network';
+import { useNavigate } from 'react-router-dom';
 
 function CreateThread(props) {
 
@@ -12,6 +13,8 @@ function CreateThread(props) {
     const handleSubmit = event => {
         event.preventDefault()
     }
+
+    const navigate = useNavigate()
 
     return (
         <form className="createthread-form" onSubmit={handleSubmit}>
@@ -34,7 +37,10 @@ function CreateThread(props) {
                 onChange={e => setDescription(e.target.value)}
             />
             <div className='createthread-buttons'>
-                <StyledCancelButton className='createthread-cancel'>
+                <StyledCancelButton
+                    className='createthread-cancel'
+                    onClick={() => navigate(-1)}
+                >
                     Cancel
                 </StyledCancelButton>
                 <StyledSubmitButton
