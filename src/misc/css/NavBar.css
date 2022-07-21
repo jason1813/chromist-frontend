@@ -16,14 +16,16 @@
     flex-direction: row;
     align-items: center;
     margin-left: 12px;
+    text-decoration: none;
+    height: 100%;
 }
 
 .NavBar-crosshairs {
-    filter: var(--honolulu-filter)
+    filter: var(--honolulu-filter);
 }
 
 .Chromist-text {
-    padding: 10px;
+    margin-left: 10px;
 }
 
 .NavBar-right {

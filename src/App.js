@@ -34,8 +34,8 @@ class App extends Component {
         <NavBar isLoggedIn={Cookie.getCookie(`token`) ? true : false} />
         <div className='app'>
           <Routes>
-            {/* <Route exact path="/" element={<Threads />} /> */}
-            <Route path="/" element={<CreateThread/>} />
+            <Route exact path="/" element={<Threads />} />
+            <Route path="/new-thread" element={<CreateThread/>} />
             <Route exact path="/threads/:id" element={<Thread />} />
             <Route exact path="/signin" element={<SignIn /*setLoginStatus={this.setLoginStatus}*/ />} />
             {/* <Route path="/" element={<SideBySideVote upvoteScore='4' userUpvoted="up" />} /> */}
