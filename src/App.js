@@ -9,6 +9,7 @@ import Comments from './pages/thread/Comments/Comments.js';
 import Thread from './pages/thread/Thread/Thread.js';
 import SignIn from './pages/signin/SignIn.js';
 import Cookie from './network/Cookie.js';
+import CreateThread from './pages/create_thread/CreateThread.js';
 
 
 class App extends Component {
@@ -33,8 +34,8 @@ class App extends Component {
         <NavBar isLoggedIn={Cookie.getCookie(`token`) ? true : false} />
         <div className='app'>
           <Routes>
-            <Route exact path="/" element={<Threads />} />
-            {/* <Route path="/" element={<ThreadDetailTop />} /> */}
+            {/* <Route exact path="/" element={<Threads />} /> */}
+            <Route path="/" element={<CreateThread/>} />
             <Route exact path="/threads/:id" element={<Thread />} />
             <Route exact path="/signin" element={<SignIn /*setLoginStatus={this.setLoginStatus}*/ />} />
             {/* <Route path="/" element={<SideBySideVote upvoteScore='4' userUpvoted="up" />} /> */}

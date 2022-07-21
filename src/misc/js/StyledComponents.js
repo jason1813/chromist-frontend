@@ -18,9 +18,7 @@ const StyledSubmitButton = styled.input.attrs({
 })`
   background: ${props => props.primary ? "var(--honolulu)" : "white"};
   color: ${props => props.primary ? "white" : "var(--honolulu)"};
-
-  opacity: ${props => props.disabled ? "0.2" : "1.0"};
-  // value: ${props => props.value};
+  opacity: ${props => props.disabled ? "0.5" : "1.0"};
 
   font-size: 1em;
   padding: 0.25em 1em;
@@ -28,7 +26,18 @@ const StyledSubmitButton = styled.input.attrs({
   border-radius: 3px;
 `;
 
+const StyledCancelButton = styled.button`
+  background: red;
+  color: white;
+
+  font-size: 1em;
+  padding: 0.25em 1em;
+  border: 1px solid red;
+  border-radius: 3px;
+`;
+
 export {
   StyledButton,
   StyledSubmitButton,
+  StyledCancelButton
 }
