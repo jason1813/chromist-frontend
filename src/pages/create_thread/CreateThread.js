@@ -12,6 +12,12 @@ function CreateThread(props) {
 
     const handleSubmit = event => {
         event.preventDefault()
+
+        Network.postNewThread(title, description).then(data => {
+            console.log(`data = ${JSON.stringify(data)}`)
+        }).catch(error => {
+            alert(`NETWORK ERROR: Thread could not be posted`)
+        })
     }
 
     const navigate = useNavigate()
@@ -38,6 +44,7 @@ function CreateThread(props) {
             />
             <div className='createthread-buttons'>
                 <StyledCancelButton
+                    type="button"  // This stops it from being a submit button
                     className='createthread-cancel'
                     onClick={() => navigate(-1)}
                 >

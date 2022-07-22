@@ -24,6 +24,14 @@ class Network {
                 })
         })
     }
+
+    static postNewThread(title, description) {
+        return new Promise((resolve, reject) => {
+            NetworkCall.postNewThread(title, description)
+                .then(data => resolve(data))
+                .catch(error => reject(error))
+        })
+    }
 }
 
 export default Network

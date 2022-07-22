@@ -43,6 +43,22 @@ class NetworkCall {
         .catch(error => reject(error))
     })
   }
+
+  static postNewThread(title, description) {
+    return new Promise((resolve, reject) => {
+      fetch(`${baseUrl}/threads`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: title,
+          description: description
+        })
+      })
+        .then(res => res.json())
+        .then(data => resolve(data))
+        .catch(error => reject(error))
+    })
+  }
 }
 
 export default NetworkCall;
