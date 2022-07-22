@@ -11,11 +11,10 @@ function Thread() {
 
     const { id } = useParams()
     const location = useLocation()
-    const { title, description } = location.state;
 
     return (
         <div className="thread">
-            <ThreadDetail title={title} description={description} />
+            <ThreadDetail {...location.state} />
             <Comments threadID={id} />
         </div>
     )

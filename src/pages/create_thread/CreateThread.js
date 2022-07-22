@@ -10,17 +10,17 @@ function CreateThread(props) {
     const [title, setTitle] = useState(``)
     const [description, setDescription] = useState(``)
 
+    const navigate = useNavigate()
+
     const handleSubmit = event => {
         event.preventDefault()
 
         Network.postNewThread(title, description).then(data => {
-            console.log(`data = ${JSON.stringify(data)}`)
+            navigate(`/threads/${data.id}`, { replace: true, state: data })
         }).catch(error => {
             alert(`NETWORK ERROR: Thread could not be posted`)
         })
     }
-
-    const navigate = useNavigate()
 
     return (
         <form className="createthread-form" onSubmit={handleSubmit}>

@@ -5,7 +5,7 @@ import { StyledButton } from './StyledComponents';
 
 function NavBar(props) {
 
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
   return (
     <div className='NavBar'>
