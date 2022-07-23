@@ -4,7 +4,7 @@ import React from 'react';
 import { Component } from 'react';
 import SideBySideVote from '../SideBySideVote/SideBySideVote';
 import NetworkCall from '../../../network/NetworkCall';
-import timeSince from '../../../misc/js/TimeSince';
+import DateFormatter from '../../../misc/js/DateFormatter';
 
 class Comment extends Component {
 
@@ -44,7 +44,7 @@ class Comment extends Component {
                 <div>
                     <div className='comment-author-date'>
                         <p className='comment-author'>{this.props.author.username}</p>
-                        <p className='comment-date'>{timeSince(new Date(this.props.dateCreated))}</p>
+                        <p className='comment-date'>{DateFormatter.timeSince(new Date(this.props.dateCreated))}</p>
                     </div>
                     {
                         this.state.expandContent &&

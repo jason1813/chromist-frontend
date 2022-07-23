@@ -16,7 +16,7 @@ function ThreadDetailTop(props) {
                 />
                 <div className='thread-detail-top-author-date'>
                     <p className='thread-detail-top-author'>{props.author.username}</p>
-                    <p className='thread-detail-top-date'>{DateFormatter.toLongDateString(props.dateCreated)}</p>
+                    <p className='thread-detail-top-date'>{DateFormatter.isoToLongDateString(props.dateCreated)}</p>
                 </div>
             </div>
             <SideBySideVote upvoteScore={props.upvoteScore} userUpvoted={props.userUpvoted} />
