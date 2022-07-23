@@ -2,27 +2,26 @@ import './ThreadDetailTop.css';
 import { Component } from 'react';
 import React from 'react';
 import SideBySideVote from '../SideBySideVote/SideBySideVote';
+import DateFormatter from '../../../misc/js/DateFormatter';
 
-class ThreadDetailTop extends Component {
+function ThreadDetailTop(props) {
 
-    render() {
-        return (
-            <div className="thread-detail-top">
-                <div className='thread-detail-top-left-side'>
-                    <img
-                        className='thread-detail-top-profile'
-                        src={require('../../../misc/img/profile.png')}
-                        alt="profile"
-                    />
-                    <div className='thread-detail-top-author-date'>
-                        <p className='thread-detail-top-author'>bibleman6543</p>
-                        <p className='thread-detail-top-date'>May 15, 2022 at 12:22pm</p>
-                    </div>
+    return (
+        <div className="thread-detail-top">
+            <div className='thread-detail-top-left-side'>
+                <img
+                    className='thread-detail-top-profile'
+                    src={require('../../../misc/img/profile.png')}
+                    alt="profile"
+                />
+                <div className='thread-detail-top-author-date'>
+                    <p className='thread-detail-top-author'>{props.author.username}</p>
+                    <p className='thread-detail-top-date'>{DateFormatter.toLongDateString(props.dateCreated)}</p>
                 </div>
-                <SideBySideVote upvoteScore='3.5k' userUpvoted='up' />
             </div>
-        )
-    }
+            <SideBySideVote upvoteScore={props.upvoteScore} userUpvoted={props.userUpvoted} />
+        </div>
+    )
 }
 
 export default ThreadDetailTop;

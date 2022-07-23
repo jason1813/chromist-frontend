@@ -9,10 +9,7 @@ function ListThread(props) {
     <Link
       to={`/threads/${props.id}`}
       style={{ textDecoration: 'none' }}
-      state={{
-        title: props.title,
-        description: props.description
-      }}
+      state={props}
     >
       <div className="ListThread">
         <div className="TextContent">
