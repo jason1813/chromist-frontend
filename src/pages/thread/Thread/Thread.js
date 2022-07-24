@@ -3,7 +3,6 @@ import './Thread.css';
 import React from 'react';
 import ThreadDetail from '../ThreadDetail/ThreadDetail';
 import Comments from '../Comments/Comments';
-import { Component } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 

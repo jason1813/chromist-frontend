@@ -1,5 +1,4 @@
 import './ThreadDetailTop.css';
-import { Component } from 'react';
 import React from 'react';
 import SideBySideVote from '../SideBySideVote/SideBySideVote';
 import DateFormatter from '../../../misc/js/DateFormatter';
