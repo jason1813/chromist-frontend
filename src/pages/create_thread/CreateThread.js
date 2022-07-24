@@ -1,14 +1,18 @@
 
 import './CreateThread.css';
 import React, { useState } from 'react';
-import { StyledButton, StyledSubmitButton, StyledCancelButton } from '../../misc/js/StyledComponents';
+import { StyledSubmitButton, StyledCancelButton } from '../../misc/js/StyledComponents';
 import Network from '../../network/Network';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addThread } from '../threads/threadSlice';
 
-function CreateThread(props) {
+function CreateThread() {
 
     const [title, setTitle] = useState(``)
     const [description, setDescription] = useState(``)
+
+    const dispatch = useDispatch()
 
     const navigate = useNavigate()
 
@@ -16,6 +20,7 @@ function CreateThread(props) {
         event.preventDefault()
 
         Network.postNewThread(title, description).then(data => {
+            dispatch(addThread(data))
             navigate(`/threads/${data.id}`, { replace: true, state: data })
         }).catch(error => {
             alert(`NETWORK ERROR: Thread could not be posted`)

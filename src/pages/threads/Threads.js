@@ -1,48 +1,46 @@
 import './Threads.css';
-import { Component } from 'react';
+import { Component, useEffect } from 'react';
 import React from 'react';
 import ListThread from './ListThread.js'
 import NetworkCall from '../../network/NetworkCall';
 import BottomBar from './BottomBar.js'
+import { useSelector, useDispatch } from 'react-redux'
+import { setThreadData, addThread } from './threadSlice'
 
-class Threads extends Component {
+function Threads() {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            threadData: [],
-        }
-    }
+    const threadData = useSelector((state) => state.thread.threadData)
+    const dispatch = useDispatch()
 
-    componentDidMount() {
+    useEffect(() => {
         NetworkCall.getThreads.then(data => {
-            this.setState({ threadData: data })
+            dispatch(setThreadData(data))
         })
-    }
+    })
 
-    render() {
+    const threadsArray = (threadItem) => {
+        return Object.keys(threadItem)
+            .map((threadKey) => threadItem[threadKey]);
+    };
 
-        const threadProps = this.state.threadData.map((threadDataItem) =>
-            <ListThread
-                key={threadDataItem.id}
-                id={threadDataItem.id}
-                dateCreated={threadDataItem.dateCreated}
-                author={threadDataItem.author}
-                title={threadDataItem.title}
-                description={threadDataItem.description}
-                numberOfComments={threadDataItem.numberOfComments}
-                upvoteScore={threadDataItem.upvoteScore}
-                userUpvoted={threadDataItem.userUpvoted}
-            />
-        )
-
-        return (
-            <div className="threads">
-                {threadProps}
-                <BottomBar isNext={true} isPrevious={false} />
-            </div>
-        )
-    }
+    return (
+        <div className="threads">
+            {threadsArray(threadData).map((threadDataItem) =>
+                <ListThread
+                    key={threadDataItem.id}
+                    id={threadDataItem.id}
+                    dateCreated={threadDataItem.dateCreated}
+                    author={threadDataItem.author}
+                    title={threadDataItem.title}
+                    description={threadDataItem.description}
+                    numberOfComments={threadDataItem.numberOfComments}
+                    upvoteScore={threadDataItem.upvoteScore}
+                    userUpvoted={threadDataItem.userUpvoted}
+                />
+            )}
+            <BottomBar isNext={true} isPrevious={false} />
+        </div>
+    )
 }
 
 export default Threads;
