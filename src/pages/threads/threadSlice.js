@@ -3,20 +3,21 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const threadSlice = createSlice({
   name: 'thread',
-  initialState: { threadData: {} },
+  initialState: { threadData: [] },
   reducers: {
     addThread: (state, action) => {
-      state.threadData[action.payload['id']] = action.payload
+      state.threadData.push(action.payload)
+      console.log(`data from slice = ${state.threadData}`)
     },
 
     setThreadData: (state, action) => {
-        action.payload.forEach((threadDataItem) => {
-          state.threadData[threadDataItem['id']] = threadDataItem
-        })
+      state.threadData = action.payload
     }
   },
 })
 
 export const { addThread, setThreadData } = threadSlice.actions
+
+export const selectThreadData = (state) => state.thread.threadData
 
 export default threadSlice.reducer

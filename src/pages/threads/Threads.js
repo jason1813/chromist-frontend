@@ -1,31 +1,28 @@
 import './Threads.css';
-import { Component, useEffect } from 'react';
+import { useEffect } from 'react';
 import React from 'react';
 import ListThread from './ListThread.js'
 import NetworkCall from '../../network/NetworkCall';
 import BottomBar from './BottomBar.js'
 import { useSelector, useDispatch } from 'react-redux'
-import { setThreadData, addThread } from './threadSlice'
+import { setThreadData, selectThreadData } from './threadSlice'
 
 function Threads() {
 
-    const threadData = useSelector((state) => state.thread.threadData)
+    const threadData = useSelector(selectThreadData)
     const dispatch = useDispatch()
 
     useEffect(() => {
+        if (threadData.length !== 0) { return }
+        
         NetworkCall.getThreads.then(data => {
             dispatch(setThreadData(data))
         })
-    })
-
-    const threadsArray = (threadItem) => {
-        return Object.keys(threadItem)
-            .map((threadKey) => threadItem[threadKey]);
-    };
+    }, [])
 
     return (
         <div className="threads">
-            {threadsArray(threadData).map((threadDataItem) =>
+            {threadData.map((threadDataItem) =>
                 <ListThread
                     key={threadDataItem.id}
                     id={threadDataItem.id}

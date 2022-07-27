@@ -13,7 +13,6 @@ function CreateThread() {
     const [description, setDescription] = useState(``)
 
     const dispatch = useDispatch()
-
     const navigate = useNavigate()
 
     const handleSubmit = event => {
