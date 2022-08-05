@@ -6,30 +6,29 @@ import { Link } from "react-router-dom";
 function ListThread(props) {
 
   return (
-    <Link
-      to={`/threads/${props.id}`}
-      style={{ textDecoration: 'none' }}
-      state={props}
-    >
-      <div className="ListThread">
-        <div className="TextContent">
-          <h1 className='ListThread-title'>
-            {props.title}
-          </h1>
+    <div className="ListThread">
+      <Link
+        to={`/threads/${props.id}`}
+        style={{ textDecoration: 'none' }}
+        state={props}
+        className="ListThread-link"
+      >
+        <h1 className='ListThread-title'>
+          {props.title}
+        </h1>
 
-          <div className='ListThread-info'>
-            <p className='ListThread-author'>
-              {props.author.username}
-            </p>
-            <p className='ListThread-number-of-comments'>
-              {props.numberOfComments} comments
-            </p>
-          </div>
+        <div className='ListThread-info'>
+          <p className='ListThread-author'>
+            {props.author.username}
+          </p>
+          <p className='ListThread-number-of-comments'>
+            {props.numberOfComments} comments
+          </p>
         </div>
+      </Link>
 
-        <ListThreadVote upvoteScore={props.upvoteScore} userUpvoted={props.userUpvoted} />
-      </div>
-    </Link>
+      <ListThreadVote upvoteScore={props.upvoteScore} userUpvoted={props.userUpvoted} />
+    </div>
   );
 }
 
