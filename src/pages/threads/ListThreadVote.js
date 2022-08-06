@@ -9,34 +9,38 @@ function ListThreadVote(props) {
   const [voteScore, setVoteScore] = useState(props.upvoteScore)
 
   const upVoteHit = () => {
-
     if (voteStatus === Constants.voteStatus.NEUTRAL) {
       setVoteStatus(Constants.voteStatus.UP)
       setVoteScore(voteScore+1)
+      props.setVoteData(Constants.voteStatus.UP, voteScore+1)
 
     } else if (voteStatus === Constants.voteStatus.DOWN) {
       setVoteStatus(Constants.voteStatus.UP)
       setVoteScore(voteScore+2)
+      props.setVoteData(Constants.voteStatus.UP, voteScore+2)
 
     } else if (voteStatus === Constants.voteStatus.UP) {
       setVoteStatus(Constants.voteStatus.NEUTRAL)
       setVoteScore(voteScore-1)
+      props.setVoteData(Constants.voteStatus.NEUTRAL, voteScore-1)
     }
   }
 
   const downVoteHit = () => {
-
     if (voteStatus === Constants.voteStatus.NEUTRAL) {
       setVoteStatus(Constants.voteStatus.DOWN)
       setVoteScore(voteScore-1)
+      props.setVoteData(Constants.voteStatus.DOWN, voteScore-1)
 
     } else if (voteStatus === Constants.voteStatus.DOWN) {
       setVoteStatus(Constants.voteStatus.NEUTRAL)
       setVoteScore(voteScore+1)
+      props.setVoteData(Constants.voteStatus.NEUTRAL, voteScore+1)
 
     } else if (voteStatus === Constants.voteStatus.UP) {
       setVoteStatus(Constants.voteStatus.DOWN)
       setVoteScore(voteScore-2)
+      props.setVoteData(Constants.voteStatus.DOWN, voteScore-2)
     }
   }
 

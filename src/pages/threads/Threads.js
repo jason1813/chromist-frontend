@@ -14,7 +14,7 @@ function Threads() {
 
     useEffect(() => {
         if (threadData.length !== 0) { return }
-        
+
         NetworkCall.getThreads.then(data => {
             dispatch(setThreadData(data))
         })
@@ -22,7 +22,7 @@ function Threads() {
 
     return (
         <div className="threads">
-            {threadData.map((threadDataItem) =>
+            {threadData.map((threadDataItem, index) =>
                 <ListThread
                     key={threadDataItem.id}
                     id={threadDataItem.id}
@@ -33,6 +33,14 @@ function Threads() {
                     numberOfComments={threadDataItem.numberOfComments}
                     upvoteScore={threadDataItem.upvoteScore}
                     userUpvoted={threadDataItem.userUpvoted}
+                    setVoteData={
+                        (voteStatus, voteScore) => {
+                            let newThreadData = structuredClone(threadData)
+                            newThreadData[index].userUpvoted = voteStatus
+                            newThreadData[index].upvoteScore = voteScore
+                            dispatch(setThreadData(newThreadData))
+                        }
+                    }
                 />
             )}
             <BottomBar isNext={true} isPrevious={false} />
