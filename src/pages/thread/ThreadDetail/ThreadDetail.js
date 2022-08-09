@@ -8,7 +8,8 @@ function ThreadDetail(props) {
         author: props.author,
         dateCreated: props.dateCreated,
         upvoteScore: props.upvoteScore,
-        userUpvoted: props.userUpvoted
+        userUpvoted: props.userUpvoted,
+        setVoteData: props.setVoteData
     }
 
     return (

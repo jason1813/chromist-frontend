@@ -5,42 +5,27 @@ import Constants from '../../misc/js/Constants';
 
 function ListThreadVote(props) {
 
-  const [voteStatus, setVoteStatus] = useState(props.userUpvoted)
-  const [voteScore, setVoteScore] = useState(props.upvoteScore)
-
   const upVoteHit = () => {
-    if (voteStatus === Constants.voteStatus.NEUTRAL) {
-      setVoteStatus(Constants.voteStatus.UP)
-      setVoteScore(voteScore+1)
-      props.setVoteData(Constants.voteStatus.UP, voteScore+1)
+    if (props.userUpvoted === Constants.voteStatus.NEUTRAL) {
+      props.setVoteData(Constants.voteStatus.UP, props.upvoteScore+1)
 
-    } else if (voteStatus === Constants.voteStatus.DOWN) {
-      setVoteStatus(Constants.voteStatus.UP)
-      setVoteScore(voteScore+2)
-      props.setVoteData(Constants.voteStatus.UP, voteScore+2)
+    } else if (props.userUpvoted === Constants.voteStatus.DOWN) {
+      props.setVoteData(Constants.voteStatus.UP, props.upvoteScore+2)
 
-    } else if (voteStatus === Constants.voteStatus.UP) {
-      setVoteStatus(Constants.voteStatus.NEUTRAL)
-      setVoteScore(voteScore-1)
-      props.setVoteData(Constants.voteStatus.NEUTRAL, voteScore-1)
+    } else if (props.userUpvoted === Constants.voteStatus.UP) {
+      props.setVoteData(Constants.voteStatus.NEUTRAL, props.upvoteScore-1)
     }
   }
 
   const downVoteHit = () => {
-    if (voteStatus === Constants.voteStatus.NEUTRAL) {
-      setVoteStatus(Constants.voteStatus.DOWN)
-      setVoteScore(voteScore-1)
-      props.setVoteData(Constants.voteStatus.DOWN, voteScore-1)
+    if (props.userUpvoted === Constants.voteStatus.NEUTRAL) {
+      props.setVoteData(Constants.voteStatus.DOWN, props.upvoteScore-1)
 
-    } else if (voteStatus === Constants.voteStatus.DOWN) {
-      setVoteStatus(Constants.voteStatus.NEUTRAL)
-      setVoteScore(voteScore+1)
-      props.setVoteData(Constants.voteStatus.NEUTRAL, voteScore+1)
+    } else if (props.userUpvoted === Constants.voteStatus.DOWN) {
+      props.setVoteData(Constants.voteStatus.NEUTRAL, props.upvoteScore+1)
 
-    } else if (voteStatus === Constants.voteStatus.UP) {
-      setVoteStatus(Constants.voteStatus.DOWN)
-      setVoteScore(voteScore-2)
-      props.setVoteData(Constants.voteStatus.DOWN, voteScore-2)
+    } else if (props.userUpvoted === Constants.voteStatus.UP) {
+      props.setVoteData(Constants.voteStatus.DOWN, props.upvoteScore-2)
     }
   }
 
@@ -52,7 +37,7 @@ function ListThreadVote(props) {
         src={require('../../misc/img/up-arrow.png')}
         alt="up arrow"
         style={
-          voteStatus === Constants.voteStatus.UP ? {
+          props.userUpvoted === Constants.voteStatus.UP ? {
             filter: 'var(--honolulu-filter)'
           } : {
             filter: 'var(--gray-filter)'
@@ -62,7 +47,7 @@ function ListThreadVote(props) {
       />
 
       <p className='ListThreadVote-upvote-score'>
-        {voteScore}
+        {props.upvoteScore}
       </p>
 
       <img
@@ -70,7 +55,7 @@ function ListThreadVote(props) {
         src={require('../../misc/img/down-arrow.png')}
         alt="down arrow"
         style={
-          voteStatus === Constants.voteStatus.DOWN ? {
+          props.userUpvoted === Constants.voteStatus.DOWN ? {
             filter: 'var(--honolulu-filter)'
           } : {
             filter: 'var(--gray-filter)'

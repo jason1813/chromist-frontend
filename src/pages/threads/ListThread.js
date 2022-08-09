@@ -5,15 +5,12 @@ import { Link } from "react-router-dom";
 
 function ListThread(props) {
 
-  let propsClone = {...props}
-  delete propsClone.setVoteData
-
   return (
     <div className="ListThread">
       <Link
         to={`/threads/${props.id}`}
         style={{ textDecoration: 'none' }}
-        state={propsClone}
+        state={{index: props.index}}
         className="ListThread-link"
       >
         <h1 className='ListThread-title'>

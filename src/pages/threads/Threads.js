@@ -41,6 +41,7 @@ function Threads() {
                             dispatch(setThreadData(newThreadData))
                         }
                     }
+                    index={index}
                 />
             )}
             <BottomBar isNext={true} isPrevious={false} />
