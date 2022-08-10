@@ -12,7 +12,9 @@ class Comment extends Component {
         super(props);
         this.state = {
             replies: [],
-            expandContent: true
+            expandContent: true,
+            userUpvoted: props.userUpvoted,
+            upvoteScore: props.upvoteScore
         }
     }
 
@@ -52,12 +54,18 @@ class Comment extends Component {
                             id={this.props.id}
                             author={this.props.author}
                             text={this.props.text}
-                            userUpvoted={this.props.userUpvoted}
-                            upvoteScore={this.props.upvoteScore}
+                            userUpvoted={this.state.userUpvoted}
+                            upvoteScore={this.state.upvoteScore}
                             replies={this.state.replies}
                             replyCount={this.props.replyCount}
                             callback={(replies) => {
                                 this.setState({ replies: replies })
+                            }}
+                            setVoteData={(voteStatus, voteScore) => {
+                                this.setState({
+                                    userUpvoted: voteStatus,
+                                    upvoteScore: voteScore
+                                })
                             }}
                         />
                     }
@@ -73,7 +81,11 @@ class Comment extends Component {
         return (
             <div className='comment-content'>
                 <p className='comment-text'>{props.text}</p>
-                <SideBySideVote userUpvoted={props.userUpvoted} upvoteScore={props.upvoteScore} />
+                <SideBySideVote
+                    userUpvoted={props.userUpvoted}
+                    upvoteScore={props.upvoteScore}
+                    setVoteData={props.setVoteData}
+                />
                 {
                     props.replies.length !== 0 &&
                     <div className='replies'>
