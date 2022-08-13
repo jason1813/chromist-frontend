@@ -59,6 +59,36 @@ class NetworkCall {
         .catch(error => reject(error))
     })
   }
+
+  static voteOnThread(threadID, voteStatus) {
+    return new Promise((resolve, reject) => {
+      fetch(`${baseUrl}/threads/${threadID}/upvote`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          upvote: voteStatus
+        })
+      })
+        .then(res => res.json())
+        .then(data => resolve(data))
+        .catch(error => reject(error))
+    })
+  }
+
+  static voteOnComment(commentID, voteStatus) {
+    return new Promise((resolve, reject) => {
+      fetch(`${baseUrl}/comments/${commentID}/upvote`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          upvote: voteStatus
+        })
+      })
+        .then(res => res.json())
+        .then(data => resolve(data))
+        .catch(error => reject(error))
+    })
+  }
 }
 
 export default NetworkCall;

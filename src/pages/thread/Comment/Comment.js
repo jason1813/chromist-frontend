@@ -5,6 +5,7 @@ import { Component } from 'react';
 import SideBySideVote from '../SideBySideVote/SideBySideVote';
 import NetworkCall from '../../../network/NetworkCall';
 import DateFormatter from '../../../misc/js/DateFormatter';
+import Network from '../../../network/Network';
 
 class Comment extends Component {
 
@@ -66,6 +67,10 @@ class Comment extends Component {
                                     userUpvoted: voteStatus,
                                     upvoteScore: voteScore
                                 })
+
+                                Network.voteOnThread(this.props.id, voteStatus).then(data => {
+                                }).catch(error => { })
+
                             }}
                         />
                     }

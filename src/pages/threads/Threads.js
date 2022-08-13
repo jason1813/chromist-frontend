@@ -6,6 +6,7 @@ import NetworkCall from '../../network/NetworkCall';
 import BottomBar from './BottomBar.js'
 import { useSelector, useDispatch } from 'react-redux'
 import { setThreadData, selectThreadData } from './threadSlice'
+import Network from '../../network/Network';
 
 function Threads() {
 
@@ -39,6 +40,9 @@ function Threads() {
                             newThreadData[index].userUpvoted = voteStatus
                             newThreadData[index].upvoteScore = voteScore
                             dispatch(setThreadData(newThreadData))
+
+                            Network.voteOnThread(threadDataItem.id, voteStatus).then(data => {
+                            }).catch(error => { })
                         }
                     }
                     index={index}

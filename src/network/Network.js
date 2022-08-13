@@ -32,6 +32,22 @@ class Network {
                 .catch(error => reject(error))
         })
     }
+
+    static voteOnThread(threadID, voteStatus) {
+        return new Promise((resolve, reject) => {
+            NetworkCall.voteOnThread(threadID, voteStatus)
+                .then(data => resolve(data))
+                .catch(error => reject(error))
+        })
+    }
+
+    static voteOnComment(commentID, voteStatus) {
+        return new Promise((resolve, reject) => {
+            NetworkCall.voteOnComment(commentID, voteStatus)
+                .then(data => resolve(data))
+                .catch(error => reject(error))
+        })
+    }
 }
 
 export default Network
