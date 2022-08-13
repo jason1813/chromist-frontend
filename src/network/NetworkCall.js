@@ -89,6 +89,21 @@ class NetworkCall {
         .catch(error => reject(error))
     })
   }
+
+  static postNewComment(threadID, text) {
+    return new Promise((resolve, reject) => {
+      fetch(`${baseUrl}/threads/${threadID}/comments`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: text
+        })
+      })
+        .then(res => res.json())
+        .then(data => resolve(data))
+        .catch(error => reject(error))
+    })
+  }
 }
 
 export default NetworkCall;

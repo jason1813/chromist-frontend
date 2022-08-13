@@ -4,6 +4,7 @@ import { Component } from 'react';
 import React from 'react';
 import NetworkCall from '../../../network/NetworkCall';
 import Comment from '../Comment/Comment';
+import CreateComment from '../CreateComment/CreateComment';
 
 class Comments extends Component {
 
@@ -21,13 +22,18 @@ class Comments extends Component {
     }
 
     render() {
-
         const comments = this.state.comments.map((comment) =>
             <Comment key={comment.id} {...comment} />
         )
 
         return (
             <div className="comments">
+                <CreateComment 
+                    addComment={(data) => {
+                        this.setState({ comments: [data, ...this.state.comments] })
+                    }}
+                />
+
                 {comments}
             </div>
         )

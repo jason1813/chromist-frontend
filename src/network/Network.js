@@ -48,6 +48,14 @@ class Network {
                 .catch(error => reject(error))
         })
     }
+
+    static postNewComment(threadID, text) {
+        return new Promise((resolve, reject) => {
+            NetworkCall.postNewComment(threadID, text)
+                .then(data => resolve(data))
+                .catch(error => reject(error))
+        })
+    }
 }
 
 export default Network

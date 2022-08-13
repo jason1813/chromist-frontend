@@ -3,3 +3,9 @@
     padding: 8px;
     background-color: white;
 }
+
+.comments-make-comment {
+    font-size: 19px;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
