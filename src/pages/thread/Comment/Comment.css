@@ -60,3 +60,13 @@
     margin-top: 0px;
     margin-bottom: 17px;
 }
+
+.comment-vote-reply {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.comment-reply-link {
+    margin-left: 15px;
+}

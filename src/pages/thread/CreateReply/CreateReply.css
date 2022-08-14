@@ -1,0 +1,23 @@
+.createreply-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 7px;
+}
+
+.createreply-text {
+    font-size: 15px;
+    resize: vertical;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.createreply-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+}
+
+.createreply-cancel, .createreply-post {
+    flex-grow: 1;
+}

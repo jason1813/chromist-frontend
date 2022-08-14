@@ -6,6 +6,8 @@ import SideBySideVote from '../SideBySideVote/SideBySideVote';
 import NetworkCall from '../../../network/NetworkCall';
 import DateFormatter from '../../../misc/js/DateFormatter';
 import Network from '../../../network/Network';
+import CreateReply from '../CreateReply/CreateReply';
+import CommentContent from './CommentContent';
 
 class Comment extends Component {
 
@@ -15,7 +17,8 @@ class Comment extends Component {
             replies: [],
             expandContent: true,
             userUpvoted: props.userUpvoted,
-            upvoteScore: props.upvoteScore
+            upvoteScore: props.upvoteScore,
+            showCreateReply: false
         }
     }
 
@@ -51,7 +54,7 @@ class Comment extends Component {
                     </div>
                     {
                         this.state.expandContent &&
-                        <this.CommentContent
+                        <CommentContent
                             id={this.props.id}
                             author={this.props.author}
                             text={this.props.text}
@@ -75,53 +78,6 @@ class Comment extends Component {
                         />
                     }
                 </div>
-            </div>
-        )
-    }
-
-    CommentContent(props) {
-
-        const moreRepliesCount = props.replyCount - props.replies.length
-
-        return (
-            <div className='comment-content'>
-                <p className='comment-text'>{props.text}</p>
-                <SideBySideVote
-                    userUpvoted={props.userUpvoted}
-                    upvoteScore={props.upvoteScore}
-                    setVoteData={props.setVoteData}
-                />
-                {
-                    props.replies.length !== 0 &&
-                    <div className='replies'>
-                        {
-                            props.replies.map((reply) =>
-                                <Comment
-                                    key={reply.id}
-                                    author={reply.author.username}
-                                    text={reply.text}
-                                    userUpvoted={reply.userUpvoted}
-                                    upvoteScore={reply.upvoteScore}
-                                    replyCount={reply.replyCount}
-                                    dateCreated={reply.dateCreated}
-                                    replies={[]}
-                                    isReply={true}
-                                />
-                            )
-                        }
-                    </div>
-                }
-                {
-                    moreRepliesCount > 0 &&
-                    <a className='comment-more-replies' href="/#" onClick={
-                        (e) => {
-                            NetworkCall.getReplies(props.id, props.replies.length).then(data => {
-                                props.callback(data)
-                            })
-                            e.preventDefault()
-                        }
-                    }>{moreRepliesCount} more replies</a>
-                }
             </div>
         )
     }

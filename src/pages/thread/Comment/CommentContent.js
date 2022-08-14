@@ -1,0 +1,73 @@
+import { Component, useState } from "react";
+import NetworkCall from "../../../network/NetworkCall";
+import CreateReply from "../CreateReply/CreateReply";
+import SideBySideVote from "../SideBySideVote/SideBySideVote";
+import Comment from "./Comment";
+
+
+function CommentContent(props) {
+
+    const [showCreateReply, setShowCreateReply] = useState(false)
+
+    const moreRepliesCount = props.replyCount - props.replies.length
+
+    return (
+        <div className='comment-content'>
+            <p className='comment-text'>{props.text}</p>
+            <div className='comment-vote-reply'>
+                <SideBySideVote
+                    userUpvoted={props.userUpvoted}
+                    upvoteScore={props.upvoteScore}
+                    setVoteData={props.setVoteData}
+                />
+                <a
+                    className='comment-reply-link'
+                    href="/#"
+                    onClick={(e) => {
+                        setShowCreateReply(true)
+                        e.preventDefault()
+                    }}
+                >reply
+                </a>
+            </div>
+            {showCreateReply &&
+                <CreateReply 
+                    cancelAction={() => setShowCreateReply(false)} 
+                />
+            }
+            {
+                props.replies.length !== 0 &&
+                <div className='replies'>
+                    {
+                        props.replies.map((reply) =>
+                            <Comment
+                                key={reply.id}
+                                author={reply.author.username}
+                                text={reply.text}
+                                userUpvoted={reply.userUpvoted}
+                                upvoteScore={reply.upvoteScore}
+                                replyCount={reply.replyCount}
+                                dateCreated={reply.dateCreated}
+                                replies={[]}
+                                isReply={true}
+                            />
+                        )
+                    }
+                </div>
+            }
+            {
+                moreRepliesCount > 0 &&
+                <a className='comment-more-replies' href="/#" onClick={
+                    (e) => {
+                        NetworkCall.getReplies(props.id, props.replies.length).then(data => {
+                            props.callback(data)
+                        })
+                        e.preventDefault()
+                    }
+                }>{moreRepliesCount} more replies</a>
+            }
+        </div>
+    )
+}
+
+export default CommentContent

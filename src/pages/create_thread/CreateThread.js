@@ -52,13 +52,13 @@ function CreateThread() {
                     className='createthread-cancel'
                     onClick={() => navigate(-1)}
                 >
-                    Cancel
+                    CANCEL
                 </StyledCancelButton>
                 <StyledSubmitButton
                     disabled={!title}
                     className='createthread-post'
                     primary
-                    value='Post'
+                    value='POST'
                 />
             </div>
         </form>
