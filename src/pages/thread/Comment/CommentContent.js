@@ -8,8 +8,10 @@ import Comment from "./Comment";
 function CommentContent(props) {
 
     const [showCreateReply, setShowCreateReply] = useState(false)
+    const [replies, setReplies] = useState([])
+    const [replyCount, setReplyCount] = useState(props.replyCount)
 
-    const moreRepliesCount = props.replyCount - props.replies.length
+    const moreRepliesCount = replyCount - replies.length
 
     return (
         <div className='comment-content'>
@@ -32,14 +34,22 @@ function CommentContent(props) {
             </div>
             {showCreateReply &&
                 <CreateReply 
-                    cancelAction={() => setShowCreateReply(false)} 
+                    cancelAction={() => setShowCreateReply(false)}
+                    id={props.id}
+                    addReply={
+                        (data) => {
+                            setReplies([data, ...replies])
+                            setReplyCount(replyCount + 1)
+                            setShowCreateReply(false)
+                        }
+                    }
                 />
             }
             {
-                props.replies.length !== 0 &&
+                replies.length !== 0 &&
                 <div className='replies'>
                     {
-                        props.replies.map((reply) =>
+                        replies.map((reply) =>
                             <Comment
                                 key={reply.id}
                                 author={reply.author.username}
@@ -59,10 +69,10 @@ function CommentContent(props) {
                 moreRepliesCount > 0 &&
                 <a className='comment-more-replies' href="/#" onClick={
                     (e) => {
-                        NetworkCall.getReplies(props.id, props.replies.length).then(data => {
-                            props.callback(data)
-                        })
                         e.preventDefault()
+                        NetworkCall.getReplies(props.id, replies.length).then(data => {
+                            setReplies([...replies, ...data])
+                        })
                     }
                 }>{moreRepliesCount} more replies</a>
             }

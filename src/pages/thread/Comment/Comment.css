@@ -68,5 +68,6 @@
 }
 
 .comment-reply-link {
+    color: var(--usafa);
     margin-left: 15px;
 }

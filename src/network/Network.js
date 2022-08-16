@@ -56,6 +56,14 @@ class Network {
                 .catch(error => reject(error))
         })
     }
+
+    static postNewReply(commentID, text) {
+        return new Promise((resolve, reject) => {
+            NetworkCall.postNewReply(commentID, text)
+                .then(data => resolve(data))
+                .catch(error => reject(error))
+        })
+    }
 }
 
 export default Network

@@ -14,11 +14,9 @@ class Comment extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            replies: [],
             expandContent: true,
             userUpvoted: props.userUpvoted,
             upvoteScore: props.upvoteScore,
-            showCreateReply: false
         }
     }
 
@@ -60,11 +58,7 @@ class Comment extends Component {
                             text={this.props.text}
                             userUpvoted={this.state.userUpvoted}
                             upvoteScore={this.state.upvoteScore}
-                            replies={this.state.replies}
                             replyCount={this.props.replyCount}
-                            callback={(replies) => {
-                                this.setState({ replies: replies })
-                            }}
                             setVoteData={(voteStatus, voteScore) => {
                                 this.setState({
                                     userUpvoted: voteStatus,

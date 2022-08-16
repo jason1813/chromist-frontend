@@ -14,10 +14,8 @@ function CreateReply(props) {
 
         setDisableSubmitButton(true)
 
-        Network.postNewReply(replyText).then(data => {
+        Network.postNewReply(props.id, replyText).then(data => {
             props.addReply(data)
-            setDisableSubmitButton(false)
-            setReplyText('')
         }).catch(error => {
             alert(`NETWORK ERROR: Reply could not be posted`)
             setDisableSubmitButton(false)
