@@ -1,4 +1,5 @@
 import { Component, useState } from "react";
+import Network from "../../../network/Network";
 import NetworkCall from "../../../network/NetworkCall";
 import CreateReply from "../CreateReply/CreateReply";
 import SideBySideVote from "../SideBySideVote/SideBySideVote";
@@ -10,6 +11,8 @@ function CommentContent(props) {
     const [showCreateReply, setShowCreateReply] = useState(false)
     const [replies, setReplies] = useState([])
     const [replyCount, setReplyCount] = useState(props.replyCount)
+    const [voteStatus, setVoteStatus] = useState(props.userUpvoted)
+    const [voteScore, setVoteScore] = useState(props.upvoteScore)
 
     const moreRepliesCount = replyCount - replies.length
 
@@ -18,9 +21,15 @@ function CommentContent(props) {
             <p className='comment-text'>{props.text}</p>
             <div className='comment-vote-reply'>
                 <SideBySideVote
-                    userUpvoted={props.userUpvoted}
-                    upvoteScore={props.upvoteScore}
-                    setVoteData={props.setVoteData}
+                    userUpvoted={voteStatus}
+                    upvoteScore={voteScore}
+                    setVoteData={(voteStatus, voteScore) => {
+                        setVoteStatus(voteStatus)
+                        setVoteScore(voteScore)
+
+                        Network.voteOnThread(props.id, voteStatus).then(data => {
+                        }).catch(error => { })
+                    }}
                 />
                 <a
                     className='comment-reply-link'
@@ -33,7 +42,7 @@ function CommentContent(props) {
                 </a>
             </div>
             {showCreateReply &&
-                <CreateReply 
+                <CreateReply
                     cancelAction={() => setShowCreateReply(false)}
                     id={props.id}
                     addReply={

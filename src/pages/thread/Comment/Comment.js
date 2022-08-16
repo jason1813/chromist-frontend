@@ -14,9 +14,7 @@ class Comment extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            expandContent: true,
-            userUpvoted: props.userUpvoted,
-            upvoteScore: props.upvoteScore,
+            expandContent: true
         }
     }
 
@@ -56,19 +54,9 @@ class Comment extends Component {
                             id={this.props.id}
                             author={this.props.author}
                             text={this.props.text}
-                            userUpvoted={this.state.userUpvoted}
-                            upvoteScore={this.state.upvoteScore}
+                            userUpvoted={this.props.userUpvoted}
+                            upvoteScore={this.props.upvoteScore}
                             replyCount={this.props.replyCount}
-                            setVoteData={(voteStatus, voteScore) => {
-                                this.setState({
-                                    userUpvoted: voteStatus,
-                                    upvoteScore: voteScore
-                                })
-
-                                Network.voteOnThread(this.props.id, voteStatus).then(data => {
-                                }).catch(error => { })
-
-                            }}
                         />
                     }
                 </div>
