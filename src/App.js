@@ -27,16 +27,17 @@ class App extends Component {
   render() {
 
     document.body.style.backgroundColor = "var(--oxford)";
+    const loggedIn = Cookie.getCookie('token') ? true : false
 
     return (
       <Router>
         {/* <NavBar isLoggedIn={this.state.loggedIn} /> */}
-        <NavBar isLoggedIn={Cookie.getCookie(`token`) ? true : false} />
+        <NavBar isLoggedIn={loggedIn} />
         <div className='app'>
           <Routes>
-            <Route exact path="/" element={<Threads />} />
+            <Route exact path="/" element={<Threads loggedIn={loggedIn} />} />
             <Route path="/new-thread" element={<CreateThread/>} />
-            <Route exact path="/threads/:id" element={<Thread />} />
+            <Route exact path="/threads/:id" element={<Thread loggedIn={loggedIn}/>} />
             <Route exact path="/signin" element={<SignIn /*setLoginStatus={this.setLoginStatus}*/ />} />
             {/* <Route path="/" element={<SideBySideVote upvoteScore='4' userUpvoted="up" />} /> */}
             {/* <Route path="/" element={<Comment

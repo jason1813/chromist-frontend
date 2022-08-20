@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setThreadData, selectThreadData } from './threadSlice'
 import Network from '../../network/Network';
 
-function Threads() {
+function Threads(props) {
 
     const threadData = useSelector(selectThreadData)
     const dispatch = useDispatch()
@@ -34,6 +34,7 @@ function Threads() {
                     numberOfComments={threadDataItem.numberOfComments}
                     upvoteScore={threadDataItem.upvoteScore}
                     userUpvoted={threadDataItem.userUpvoted}
+                    loggedIn={props.loggedIn}
                     setVoteData={
                         (voteStatus, voteScore) => {
                             let newThreadData = structuredClone(threadData)

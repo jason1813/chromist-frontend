@@ -6,6 +6,8 @@ import Constants from '../../misc/js/Constants';
 function ListThreadVote(props) {
 
   const upVoteHit = () => {
+    if (!props.loggedIn) { return }
+
     if (props.userUpvoted === Constants.voteStatus.NEUTRAL) {
       props.setVoteData(Constants.voteStatus.UP, props.upvoteScore+1)
 
@@ -18,6 +20,8 @@ function ListThreadVote(props) {
   }
 
   const downVoteHit = () => {
+    if (!props.loggedIn) { return }
+
     if (props.userUpvoted === Constants.voteStatus.NEUTRAL) {
       props.setVoteData(Constants.voteStatus.DOWN, props.upvoteScore-1)
 

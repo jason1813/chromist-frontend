@@ -5,6 +5,8 @@ import Constants from '../../../misc/js/Constants';
 function SideBySideVote(props) {
 
   const upVoteHit = () => {
+    if (!props.loggedIn) { return }
+
     if (props.userUpvoted === Constants.voteStatus.NEUTRAL) {
       props.setVoteData(Constants.voteStatus.UP, props.upvoteScore+1)
 
@@ -17,6 +19,8 @@ function SideBySideVote(props) {
   }
 
   const downVoteHit = () => {
+    if (!props.loggedIn) { return }
+
     if (props.userUpvoted === Constants.voteStatus.NEUTRAL) {
       props.setVoteData(Constants.voteStatus.DOWN, props.upvoteScore-1)
 

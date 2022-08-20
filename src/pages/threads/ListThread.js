@@ -31,6 +31,7 @@ function ListThread(props) {
         upvoteScore={props.upvoteScore}
         userUpvoted={props.userUpvoted}
         setVoteData={props.setVoteData}
+        loggedIn={props.loggedIn}
       />
     </div>
   );

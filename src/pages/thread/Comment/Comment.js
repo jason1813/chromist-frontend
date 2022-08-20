@@ -56,6 +56,7 @@ class Comment extends Component {
                             text={this.props.text}
                             userUpvoted={this.props.userUpvoted}
                             upvoteScore={this.props.upvoteScore}
+                            loggedIn={this.props.loggedIn}
                             replyCount={this.props.replyCount}
                         />
                     }

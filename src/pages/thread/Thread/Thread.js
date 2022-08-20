@@ -9,7 +9,7 @@ import { setThreadData, selectThreadData } from '../../threads/threadSlice';
 import Network from '../../../network/Network';
 
 
-function Thread() {
+function Thread(props) {
 
     const { id } = useParams()
     const location = useLocation()
@@ -29,13 +29,14 @@ function Thread() {
 
             Network.voteOnThread(id, voteStatus).then(data => {
             }).catch(error => {})
-        }
+        },
+        loggedIn: props.loggedIn
     }
 
     return (
         <div className="thread">
             <ThreadDetail { ...singleThreadData } />
-            <Comments threadID={id} />
+            <Comments threadID={id} loggedIn={props.loggedIn} />
         </div>
     )
 }

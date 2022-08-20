@@ -23,16 +23,18 @@ class Comments extends Component {
 
     render() {
         const comments = this.state.comments.map((comment) =>
-            <Comment key={comment.id} {...comment} />
+            <Comment key={comment.id} {...comment} loggedIn={this.props.loggedIn} />
         )
 
         return (
             <div className="comments">
-                <CreateComment 
-                    addComment={(data) => {
-                        this.setState({ comments: [data, ...this.state.comments] })
-                    }}
-                />
+                {this.props.loggedIn &&
+                    <CreateComment
+                        addComment={(data) => {
+                            this.setState({ comments: [data, ...this.state.comments] })
+                        }}
+                    />
+                }
 
                 {comments}
             </div>

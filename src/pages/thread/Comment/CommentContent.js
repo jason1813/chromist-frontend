@@ -30,16 +30,19 @@ function CommentContent(props) {
                         Network.voteOnThread(props.id, voteStatus).then(data => {
                         }).catch(error => { })
                     }}
+                    loggedIn={props.loggedIn}
                 />
-                <a
-                    className='comment-reply-link'
-                    href="/#"
-                    onClick={(e) => {
-                        setShowCreateReply(true)
-                        e.preventDefault()
-                    }}
-                >reply
-                </a>
+                {props.loggedIn &&
+                    <a
+                        className='comment-reply-link'
+                        href="/#"
+                        onClick={(e) => {
+                            setShowCreateReply(true)
+                            e.preventDefault()
+                        }}
+                    >reply
+                    </a>
+                }
             </div>
             {showCreateReply &&
                 <CreateReply
@@ -69,6 +72,7 @@ function CommentContent(props) {
                                 dateCreated={reply.dateCreated}
                                 replies={[]}
                                 isReply={true}
+                                loggedIn={props.loggedIn}
                             />
                         )
                     }
