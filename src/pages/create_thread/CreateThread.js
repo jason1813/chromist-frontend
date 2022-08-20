@@ -20,7 +20,7 @@ function CreateThread() {
 
         Network.postNewThread(title, description).then(data => {
             dispatch(addThread(data))
-            navigate(`/threads/${data.id}`, { replace: true, state: data })
+            navigate(`/threads/${data.id}`, { replace: true, state: { index: 0 } })
         }).catch(error => {
             alert(`NETWORK ERROR: Thread could not be posted`)
         })
