@@ -10,6 +10,7 @@ import Thread from './pages/thread/Thread/Thread.js';
 import SignIn from './pages/signin/SignIn.js';
 import Cookie from './network/Cookie.js';
 import CreateThread from './pages/create_thread/CreateThread.js';
+import Constants from './misc/js/Constants.js';
 
 
 class App extends Component {
@@ -27,7 +28,7 @@ class App extends Component {
   render() {
 
     document.body.style.backgroundColor = "var(--oxford)";
-    const loggedIn = Cookie.getCookie('token') ? true : false
+    const loggedIn = Cookie.getCookie(Constants.TOKEN) ? true : false
 
     return (
       <Router>

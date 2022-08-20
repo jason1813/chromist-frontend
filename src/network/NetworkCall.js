@@ -1,3 +1,5 @@
+import Constants from "../misc/js/Constants"
+import Cookie from "./Cookie"
 
 const baseUrl = 'http://0.0.0.0:3001/v1'
 
@@ -48,7 +50,10 @@ class NetworkCall {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/threads`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${Cookie.getCookie(Constants.TOKEN)}`
+        },
         body: JSON.stringify({
           title: title,
           description: description
@@ -64,7 +69,10 @@ class NetworkCall {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/threads/${threadID}/upvote`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${Cookie.getCookie(Constants.TOKEN)}`
+        },
         body: JSON.stringify({
           upvote: voteStatus
         })
@@ -79,7 +87,10 @@ class NetworkCall {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/comments/${commentID}/upvote`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${Cookie.getCookie(Constants.TOKEN)}`
+        },
         body: JSON.stringify({
           upvote: voteStatus
         })
@@ -94,7 +105,10 @@ class NetworkCall {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/threads/${threadID}/comments`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${Cookie.getCookie(Constants.TOKEN)}`
+        },
         body: JSON.stringify({
           text: text
         })
@@ -109,7 +123,10 @@ class NetworkCall {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/comments/${commentID}/replies`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${Cookie.getCookie(Constants.TOKEN)}`
+        },
         body: JSON.stringify({
           text: text
         })

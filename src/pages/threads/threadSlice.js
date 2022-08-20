@@ -7,7 +7,6 @@ export const threadSlice = createSlice({
   reducers: {
     addThread: (state, action) => {
       state.threadData.unshift(action.payload)
-      console.log(`data from slice = ${state.threadData}`)
     },
 
     setThreadData: (state, action) => {
