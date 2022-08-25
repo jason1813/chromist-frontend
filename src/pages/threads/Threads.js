@@ -18,6 +18,8 @@ function Threads(props) {
 
         NetworkCall.getThreads.then(data => {
             dispatch(setThreadData(data))
+        }).catch(error => {
+            alert('NETWORK ERROR: A network error has occurred.')
         })
     }, [])
 
@@ -49,7 +51,7 @@ function Threads(props) {
                     index={index}
                 />
             )}
-            <BottomBar isNext={true} isPrevious={false} />
+            <BottomBar isNext={false} isPrevious={false} />
         </div>
     )
 }
