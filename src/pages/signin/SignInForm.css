@@ -1,27 +1,27 @@
-
 .signinform {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .signinform-header {
-    text-align: center;
-    margin: 0px;
+  text-align: center;
+  margin: 0px;
 }
 
 .signinform > input {
-    font-size: 25px;
-    margin-bottom: 0px;
+  font-size: 25px;
+  margin-bottom: 0px;
 }
 
 .signinform > input.error {
-    border: 3px solid #eb516d;
-    outline: none;
+  border: 3px solid #eb516d;
+  outline: none;
 }
 
-.signinform-username-error, .signinform-password-error {
-    color: red;
-    margin-top: 0px;
-    margin-bottom: 8px;
+.signinform-username-error,
+.signinform-password-error {
+  color: red;
+  margin-top: 0px;
+  margin-bottom: 8px;
 }

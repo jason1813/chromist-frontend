@@ -1,22 +1,21 @@
-
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 export const threadSlice = createSlice({
-  name: 'thread',
+  name: "thread",
   initialState: { threadData: [] },
   reducers: {
     addThread: (state, action) => {
-      state.threadData.unshift(action.payload)
+      state.threadData.unshift(action.payload);
     },
 
     setThreadData: (state, action) => {
-      state.threadData = action.payload
-    }
+      state.threadData = action.payload;
+    },
   },
-})
+});
 
-export const { addThread, setThreadData } = threadSlice.actions
+export const { addThread, setThreadData } = threadSlice.actions;
 
-export const selectThreadData = (state) => state.thread.threadData
+export const selectThreadData = (state) => state.thread.threadData;
 
-export default threadSlice.reducer
+export default threadSlice.reducer;

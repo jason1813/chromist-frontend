@@ -1,7 +1,7 @@
 .app {
-    position: relative;
-    top: 58px;
-    z-index: 0;
-    max-width: 800px;
-    margin: 0 auto;
+  position: relative;
+  top: 58px;
+  z-index: 0;
+  max-width: 800px;
+  margin: 0 auto;
 }

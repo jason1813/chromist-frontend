@@ -1,11 +1,10 @@
-
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  background: ${props => props.primary ? "var(--honolulu)" : "white"};
-  color: ${props => props.primary ? "white" : "var(--honolulu)"};
+  background: ${(props) => (props.primary ? "var(--honolulu)" : "white")};
+  color: ${(props) => (props.primary ? "white" : "var(--honolulu)")};
 
-  opacity: ${props => props.disabled ? "0.2" : "1.0"};
+  opacity: ${(props) => (props.disabled ? "0.2" : "1.0")};
 
   font-size: 1em;
   padding: 0.25em 1em;
@@ -14,11 +13,11 @@ const StyledButton = styled.button`
 `;
 
 const StyledSubmitButton = styled.input.attrs({
-  type: 'submit'
+  type: "submit",
 })`
-  background: ${props => props.primary ? "var(--honolulu)" : "white"};
-  color: ${props => props.primary ? "white" : "var(--honolulu)"};
-  opacity: ${props => props.disabled ? "0.5" : "1.0"};
+  background: ${(props) => (props.primary ? "var(--honolulu)" : "white")};
+  color: ${(props) => (props.primary ? "white" : "var(--honolulu)")};
+  opacity: ${(props) => (props.disabled ? "0.5" : "1.0")};
 
   font-size: 1em;
   padding: 0.25em 1em;
@@ -36,8 +35,4 @@ const StyledCancelButton = styled.button`
   border-radius: 3px;
 `;
 
-export {
-  StyledButton,
-  StyledSubmitButton,
-  StyledCancelButton
-}
+export { StyledButton, StyledSubmitButton, StyledCancelButton };

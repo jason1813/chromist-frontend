@@ -1,21 +1,20 @@
-
 .SideBySideVote {
-    height: 30px;
-    display:inline-flex;
-    flex-direction: row;
-    align-items: center;
+  height: 30px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.SideBySideVote-up-arrow{
-    height: 17px;
+.SideBySideVote-up-arrow {
+  height: 17px;
 }
 
 .SideBySideVote-upvote-score {
-    font-size: 17px;
-    color: var(--gray);
-    margin: 7px;
+  font-size: 17px;
+  color: var(--gray);
+  margin: 7px;
 }
 
-.SideBySideVote-down-arrow{
-    height: 17px;
+.SideBySideVote-down-arrow {
+  height: 17px;
 }
