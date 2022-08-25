@@ -29,10 +29,13 @@
 }
 
 .NavBar-right {
-    display: flex;
-    flex-direction: row;
     align-items: center;
     margin-right: 12px;
+}
+
+.NavBar-signed-in {
+    display: flex;
+    flex-direction: row;
 }
 
 .NavBar-profile {

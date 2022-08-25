@@ -2,6 +2,7 @@
 import { useNavigate, Link } from 'react-router-dom';
 import '../css/NavBar.css';
 import { StyledButton } from './StyledComponents';
+import ProfileMenu from './ProfileMenu';
 
 function NavBar(props) {
 
@@ -23,7 +24,7 @@ function NavBar(props) {
       <div className='NavBar-right'>
         {
           props.isLoggedIn ? (
-            <div>
+            <div className='NavBar-signed-in'>
               <Link to="/new-thread">
                 <img
                   className='NavBar-pencil'
@@ -31,11 +32,7 @@ function NavBar(props) {
                   alt="pencil"
                 />
               </Link>
-              <img
-                className='NavBar-profile'
-                src={require('../img/profile.png')}
-                alt="pencil"
-              />
+              <ProfileMenu />
             </div>
           ) : (
             <StyledButton primary onClick={() => navigate('/signin')}>LOGIN / SIGNUP</StyledButton>

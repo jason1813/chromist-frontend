@@ -5,12 +5,12 @@ import Constants from "../misc/js/Constants"
 
 class Network {
 
-    isLoggedIn = function() {
+    isLoggedIn = function () {
         return Cookie.getCookie(Constants.TOKEN) ? true : false
     }
 
-    authVerification = function() {
-        if(!this.isLoggedIn()) {
+    authVerification = function () {
+        if (!this.isLoggedIn()) {
             if (!alert('Your auth session has expired.')) {
                 document.location.href = '../'
                 return
@@ -26,7 +26,7 @@ class Network {
     static authIn(action, username, password) {
         return new Promise((resolve, reject) => {
             NetworkCall.authIn(action, username, password).then(data => {
-                Cookie.setCookie(`token`, `${data.token}`, 1)
+                Cookie.setCookie(Constants.TOKEN, `${data.token}`, 1)
                 resolve(data)
             })
                 .catch(error => {
@@ -35,6 +35,27 @@ class Network {
                             SignUpBackEndErrorDisplayer(error) :
                             LoginBackendErrorDisplayer(error)
                     )
+                })
+        })
+    }
+
+    static authOut() {
+        return new Promise((resolve, reject) => {
+            if (!Cookie.getCookie(Constants.TOKEN)) {
+                resolve({})
+                return
+            }
+
+            NetworkCall.authOut().then(data => {
+                Cookie.deleteCookie(Constants.TOKEN)
+                resolve(data)
+            })
+                .catch(error => {
+                    //         if (error.token already expired) {
+                    //     Cookie.deleteCookie(Constants.TOKEN)
+                    //     resolve()
+                    // } else {
+                    reject(error)
                 })
         })
     }

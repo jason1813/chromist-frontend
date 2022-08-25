@@ -46,11 +46,26 @@ class NetworkCall {
     })
   }
 
+  static authOut() {
+    return new Promise((resolve, reject) => {
+      fetch(`${baseUrl}/auth/tokens`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${Cookie.getCookie(Constants.TOKEN)}`
+        }
+      })
+        .then(res => { res.json() })
+        .then(data => resolve(data))
+        .catch(error => reject(error))
+    })
+  }
+
   static postNewThread(title, description) {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/threads`, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${Cookie.getCookie(Constants.TOKEN)}`
         },
@@ -69,7 +84,7 @@ class NetworkCall {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/threads/${threadID}/upvote`, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${Cookie.getCookie(Constants.TOKEN)}`
         },
@@ -87,7 +102,7 @@ class NetworkCall {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/comments/${commentID}/upvote`, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${Cookie.getCookie(Constants.TOKEN)}`
         },
@@ -105,7 +120,7 @@ class NetworkCall {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/threads/${threadID}/comments`, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${Cookie.getCookie(Constants.TOKEN)}`
         },
@@ -123,7 +138,7 @@ class NetworkCall {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/comments/${commentID}/replies`, {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${Cookie.getCookie(Constants.TOKEN)}`
         },
