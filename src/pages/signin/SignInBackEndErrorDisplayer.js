@@ -13,7 +13,7 @@ export function SignUpBackEndErrorDisplayer(error) {
 
 export function LoginBackendErrorDisplayer(error) {
   if (error.message === `Failed to fetch`) {
-    return { networkError: "Could not log in" };
+    return { networkError: 'Could not log in' };
   }
 
   if (error.message === `incorrect username`) {

@@ -1,8 +1,8 @@
-import "./SignInForm.css";
-import React, { useState } from "react";
-import { StyledSubmitButton } from "../../misc/js/StyledComponents";
-import SignInFrontEndMessageDisplayer from "./SignInFrontEndMessageDisplayer";
-import Network from "../../network/Network";
+import './SignInForm.css';
+import React, { useState } from 'react';
+import { StyledSubmitButton } from '../../misc/js/StyledComponents';
+import SignInFrontEndMessageDisplayer from './SignInFrontEndMessageDisplayer';
+import Network from '../../network/Network';
 
 function SignInForm(props) {
   const [username, setUsername] = useState(``);
@@ -36,7 +36,7 @@ function SignInForm(props) {
     Network.authIn(action, username, password)
       .then((data) => {
         // props.setLoginStatus(true)
-        document.location.href = "../";
+        document.location.href = '../';
       })
       .catch((error) => {
         if (error.networkError) {
@@ -49,14 +49,14 @@ function SignInForm(props) {
 
   const contentText = props.signup
     ? {
-        header: "SIGN UP",
-        buttonText: "SIGN UP",
-        linkText: "Log in",
+        header: 'SIGN UP',
+        buttonText: 'SIGN UP',
+        linkText: 'Log in',
       }
     : {
-        header: "LOG IN",
-        buttonText: "LOG IN",
-        linkText: "Sign up",
+        header: 'LOG IN',
+        buttonText: 'LOG IN',
+        linkText: 'Sign up',
       };
 
   return (
@@ -66,7 +66,7 @@ function SignInForm(props) {
         type="text"
         id="username"
         name="username"
-        className={loginError.usernameError ? "error" : ""}
+        className={loginError.usernameError ? 'error' : ''}
         placeholder="Username"
         maxLength={20}
         onChange={(e) => {
@@ -81,7 +81,7 @@ function SignInForm(props) {
         type="password"
         id="password"
         name="password"
-        className={loginError.passwordError ? "error" : ""}
+        className={loginError.passwordError ? 'error' : ''}
         placeholder="Password"
         maxLength={20}
         onChange={(e) => {

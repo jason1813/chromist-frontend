@@ -1,7 +1,7 @@
-import "./ThreadDetailTop.css";
-import React from "react";
-import SideBySideVote from "../SideBySideVote/SideBySideVote";
-import DateFormatter from "../../../misc/js/DateFormatter";
+import './ThreadDetailTop.css';
+import React from 'react';
+import SideBySideVote from '../SideBySideVote/SideBySideVote';
+import DateFormatter from '../../../misc/js/DateFormatter';
 
 function ThreadDetailTop(props) {
   return (
@@ -9,7 +9,7 @@ function ThreadDetailTop(props) {
       <div className="thread-detail-top-left-side">
         <img
           className="thread-detail-top-profile"
-          src={require("../../../misc/img/profile.png")}
+          src={require('../../../misc/img/profile.png')}
           alt="profile"
         />
         <div className="thread-detail-top-author-date">

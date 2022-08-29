@@ -1,12 +1,12 @@
-import "./Comment.css";
-import React from "react";
-import { Component } from "react";
-import SideBySideVote from "../SideBySideVote/SideBySideVote";
-import NetworkCall from "../../../network/NetworkCall";
-import DateFormatter from "../../../misc/js/DateFormatter";
-import Network from "../../../network/Network";
-import CreateReply from "../CreateReply/CreateReply";
-import CommentContent from "./CommentContent";
+import './Comment.css';
+import React from 'react';
+import { Component } from 'react';
+import SideBySideVote from '../SideBySideVote/SideBySideVote';
+import NetworkCall from '../../../network/NetworkCall';
+import DateFormatter from '../../../misc/js/DateFormatter';
+import Network from '../../../network/Network';
+import CreateReply from '../CreateReply/CreateReply';
+import CommentContent from './CommentContent';
 
 class Comment extends Component {
   constructor(props) {
@@ -23,11 +23,11 @@ class Comment extends Component {
         style={
           this.props.isReply
             ? {
-                marginTop: "6px",
-                marginLeft: "-5px",
+                marginTop: '6px',
+                marginLeft: '-5px',
               }
             : {
-                padding: "5px",
+                padding: '5px',
               }
         }
       >
@@ -39,7 +39,7 @@ class Comment extends Component {
         >
           <img
             className="comment-profile"
-            src={require("../../../misc/img/profile.png")}
+            src={require('../../../misc/img/profile.png')}
             alt="profile"
           />
           <hr className="comment-line" />

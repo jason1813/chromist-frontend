@@ -1,11 +1,11 @@
-import "./Thread.css";
-import React from "react";
-import ThreadDetail from "../ThreadDetail/ThreadDetail";
-import Comments from "../Comments/Comments";
-import { useLocation, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setThreadData, selectThreadData } from "../../threads/threadSlice";
-import Network from "../../../network/Network";
+import './Thread.css';
+import React from 'react';
+import ThreadDetail from '../ThreadDetail/ThreadDetail';
+import Comments from '../Comments/Comments';
+import { useLocation, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setThreadData, selectThreadData } from '../../threads/threadSlice';
+import Network from '../../../network/Network';
 
 function Thread(props) {
   const { id } = useParams();

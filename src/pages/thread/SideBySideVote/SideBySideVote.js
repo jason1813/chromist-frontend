@@ -1,5 +1,5 @@
-import "./SideBySideVote.css";
-import Constants from "../../../misc/js/Constants";
+import './SideBySideVote.css';
+import Constants from '../../../misc/js/Constants';
 
 function SideBySideVote(props) {
   const upVoteHit = () => {
@@ -34,15 +34,15 @@ function SideBySideVote(props) {
     <div className="SideBySideVote">
       <img
         className="SideBySideVote-up-arrow"
-        src={require("../../../misc/img/up-arrow.png")}
+        src={require('../../../misc/img/up-arrow.png')}
         alt="up arrow"
         style={
           props.userUpvoted === Constants.voteStatus.UP
             ? {
-                filter: "var(--honolulu-filter)",
+                filter: 'var(--honolulu-filter)',
               }
             : {
-                filter: "var(--gray-filter)",
+                filter: 'var(--gray-filter)',
               }
         }
         onClick={upVoteHit}
@@ -52,15 +52,15 @@ function SideBySideVote(props) {
 
       <img
         className="SideBySideVote-down-arrow"
-        src={require("../../../misc/img/down-arrow.png")}
+        src={require('../../../misc/img/down-arrow.png')}
         alt="down arrow"
         style={
           props.userUpvoted === Constants.voteStatus.DOWN
             ? {
-                filter: "var(--honolulu-filter)",
+                filter: 'var(--honolulu-filter)',
               }
             : {
-                filter: "var(--gray-filter)",
+                filter: 'var(--gray-filter)',
               }
         }
         onClick={downVoteHit}

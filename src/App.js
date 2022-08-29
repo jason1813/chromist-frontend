@@ -1,17 +1,17 @@
-import { Component } from "react";
-import NavBar from "./misc/js/NavBar.js";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Threads from "./pages/threads/Threads";
-import "./misc/css/App.css";
-import Thread from "./pages/thread/Thread/Thread.js";
-import SignIn from "./pages/signin/SignIn.js";
-import Cookie from "./network/Cookie.js";
-import CreateThread from "./pages/create_thread/CreateThread.js";
-import Constants from "./misc/js/Constants.js";
+import { Component } from 'react';
+import NavBar from './misc/js/NavBar.js';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Threads from './pages/threads/Threads';
+import './misc/css/App.css';
+import Thread from './pages/thread/Thread/Thread.js';
+import SignIn from './pages/signin/SignIn.js';
+import Cookie from './network/Cookie.js';
+import CreateThread from './pages/create_thread/CreateThread.js';
+import Constants from './misc/js/Constants.js';
 
 class App extends Component {
   render() {
-    document.body.style.backgroundColor = "var(--oxford)";
+    document.body.style.backgroundColor = 'var(--oxford)';
     const loggedIn = Cookie.getCookie(Constants.TOKEN) ? true : false;
 
     return (

@@ -1,7 +1,7 @@
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { useState } from "react";
-import Network from "../../network/Network";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { useState } from 'react';
+import Network from '../../network/Network';
 
 export default function ProfileMenu(props) {
   const [anchorEl, setAnchorEl] = useState(props.anchorEl);
@@ -19,7 +19,7 @@ export default function ProfileMenu(props) {
     event.preventDefault();
     Network.authOut()
       .then((data) => {
-        document.location.href = "../";
+        document.location.href = '../';
       })
       .catch((error) => {
         alert(`NETWORK ERROR: Could not log you out`);
@@ -30,7 +30,7 @@ export default function ProfileMenu(props) {
     <div className="ProfileMenu">
       <img
         className="NavBar-profile"
-        src={require("../img/profile.png")}
+        src={require('../img/profile.png')}
         alt="pencil"
         onClick={handleClick}
       />
@@ -41,7 +41,7 @@ export default function ProfileMenu(props) {
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          "aria-labelledby": "basic-button",
+          'aria-labelledby': 'basic-button',
         }}
       >
         <MenuItem onClick={handleLogout}>Logout</MenuItem>

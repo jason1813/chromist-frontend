@@ -1,7 +1,7 @@
-import Constants from "../misc/js/Constants";
-import Cookie from "./Cookie";
+import Constants from '../misc/js/Constants';
+import Cookie from './Cookie';
 
-const baseUrl = "http://0.0.0.0:3001/v1";
+const baseUrl = 'http://0.0.0.0:3001/v1';
 
 class NetworkCall {
   static getThreads = new Promise((resolve, reject) => {
@@ -36,8 +36,8 @@ class NetworkCall {
   static authIn(action, username, password) {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/auth/tokens?action=${action}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           username: username,
           password: password,
@@ -52,9 +52,9 @@ class NetworkCall {
   static authOut() {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/auth/tokens`, {
-        method: "DELETE",
+        method: 'DELETE',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
         },
       })
@@ -69,9 +69,9 @@ class NetworkCall {
   static postNewThread(title, description) {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/threads`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
         },
         body: JSON.stringify({
@@ -88,9 +88,9 @@ class NetworkCall {
   static voteOnThread(threadID, voteStatus) {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/threads/${threadID}/upvote`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
         },
         body: JSON.stringify({
@@ -106,9 +106,9 @@ class NetworkCall {
   static voteOnComment(commentID, voteStatus) {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/comments/${commentID}/upvote`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
         },
         body: JSON.stringify({
@@ -124,9 +124,9 @@ class NetworkCall {
   static postNewComment(threadID, text) {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/threads/${threadID}/comments`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
         },
         body: JSON.stringify({
@@ -142,9 +142,9 @@ class NetworkCall {
   static postNewReply(commentID, text) {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/comments/${commentID}/replies`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
         },
         body: JSON.stringify({

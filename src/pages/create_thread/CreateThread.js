@@ -1,13 +1,13 @@
-import "./CreateThread.css";
-import React, { useState } from "react";
+import './CreateThread.css';
+import React, { useState } from 'react';
 import {
   StyledSubmitButton,
   StyledCancelButton,
-} from "../../misc/js/StyledComponents";
-import Network from "../../network/Network";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addThread } from "../threads/threadSlice";
+} from '../../misc/js/StyledComponents';
+import Network from '../../network/Network';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addThread } from '../threads/threadSlice';
 
 function CreateThread() {
   const [title, setTitle] = useState(``);

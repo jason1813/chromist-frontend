@@ -1,8 +1,8 @@
 class Cookie {
   static getCookie(name) {
     return (
-      document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)")?.pop() ||
-      ""
+      document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() ||
+      ''
     );
   }
 
@@ -13,7 +13,7 @@ class Cookie {
 
   static deleteCookie(name) {
     document.cookie =
-      name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 }
 

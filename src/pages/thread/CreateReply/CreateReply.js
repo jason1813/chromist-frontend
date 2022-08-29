@@ -1,10 +1,10 @@
-import "./CreateReply.css";
-import React, { useState } from "react";
+import './CreateReply.css';
+import React, { useState } from 'react';
 import {
   StyledCancelButton,
   StyledSubmitButton,
-} from "../../../misc/js/StyledComponents";
-import Network from "../../../network/Network";
+} from '../../../misc/js/StyledComponents';
+import Network from '../../../network/Network';
 
 function CreateReply(props) {
   const [replyText, setReplyText] = useState(``);

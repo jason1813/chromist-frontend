@@ -1,7 +1,7 @@
-import { useNavigate, Link } from "react-router-dom";
-import "../css/NavBar.css";
-import { StyledButton } from "./StyledComponents";
-import ProfileMenu from "./ProfileMenu";
+import { useNavigate, Link } from 'react-router-dom';
+import '../css/NavBar.css';
+import { StyledButton } from './StyledComponents';
+import ProfileMenu from './ProfileMenu';
 
 function NavBar(props) {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ function NavBar(props) {
       <Link to="../" className="NavBar-left">
         <img
           className="NavBar-crosshairs"
-          src={require("../img/crosshairs.png")}
+          src={require('../img/crosshairs.png')}
           alt="crosshairs"
         />
 
@@ -24,14 +24,14 @@ function NavBar(props) {
             <Link to="/new-thread">
               <img
                 className="NavBar-pencil"
-                src={require("../img/pencil.png")}
+                src={require('../img/pencil.png')}
                 alt="pencil"
               />
             </Link>
             <ProfileMenu />
           </div>
         ) : (
-          <StyledButton primary onClick={() => navigate("/signin")}>
+          <StyledButton primary onClick={() => navigate('/signin')}>
             LOGIN / SIGNUP
           </StyledButton>
         )}

@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 export const threadSlice = createSlice({
-  name: "thread",
+  name: 'thread',
   initialState: { threadData: [] },
   reducers: {
     addThread: (state, action) => {

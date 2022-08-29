@@ -1,7 +1,7 @@
-import "./CreateComment.css";
-import React, { useState } from "react";
-import { StyledSubmitButton } from "../../../misc/js/StyledComponents";
-import Network from "../../../network/Network";
+import './CreateComment.css';
+import React, { useState } from 'react';
+import { StyledSubmitButton } from '../../../misc/js/StyledComponents';
+import Network from '../../../network/Network';
 
 function CreateComment(props) {
   const [commentText, setCommentText] = useState(``);
@@ -16,7 +16,7 @@ function CreateComment(props) {
       .then((data) => {
         props.addComment(data);
         setDisableCreateComment(false);
-        setCommentText("");
+        setCommentText('');
       })
       .catch((error) => {
         alert(`NETWORK ERROR: Comment could not be posted`);

@@ -1,12 +1,12 @@
-import "./Threads.css";
-import { useEffect } from "react";
-import React from "react";
-import ListThread from "./ListThread.js";
-import NetworkCall from "../../network/NetworkCall";
-import BottomBar from "./BottomBar.js";
-import { useSelector, useDispatch } from "react-redux";
-import { setThreadData, selectThreadData } from "./threadSlice";
-import Network from "../../network/Network";
+import './Threads.css';
+import { useEffect } from 'react';
+import React from 'react';
+import ListThread from './ListThread.js';
+import NetworkCall from '../../network/NetworkCall';
+import BottomBar from './BottomBar.js';
+import { useSelector, useDispatch } from 'react-redux';
+import { setThreadData, selectThreadData } from './threadSlice';
+import Network from '../../network/Network';
 
 function Threads(props) {
   const threadData = useSelector(selectThreadData);
@@ -22,7 +22,7 @@ function Threads(props) {
         dispatch(setThreadData(data));
       })
       .catch((error) => {
-        alert("NETWORK ERROR: A network error has occurred.");
+        alert('NETWORK ERROR: A network error has occurred.');
       });
   }, []);
 

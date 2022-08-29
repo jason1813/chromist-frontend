@@ -1,10 +1,10 @@
-import NetworkCall from "./NetworkCall";
-import Cookie from "./Cookie.js";
+import NetworkCall from './NetworkCall';
+import Cookie from './Cookie.js';
 import {
   SignUpBackEndErrorDisplayer,
   LoginBackendErrorDisplayer,
-} from "../pages/signin/SignInBackEndErrorDisplayer";
-import Constants from "../misc/js/Constants";
+} from '../pages/signin/SignInBackEndErrorDisplayer';
+import Constants from '../misc/js/Constants';
 
 class Network {
   isLoggedIn = function () {
@@ -13,16 +13,16 @@ class Network {
 
   authVerification = function () {
     if (!this.isLoggedIn()) {
-      if (!alert("Your auth session has expired.")) {
-        document.location.href = "../";
+      if (!alert('Your auth session has expired.')) {
+        document.location.href = '../';
         return;
       }
     }
   };
 
   static authinAction = {
-    SIGNUP: "signup",
-    LOGIN: "login",
+    SIGNUP: 'signup',
+    LOGIN: 'login',
   };
 
   static authIn(action, username, password) {

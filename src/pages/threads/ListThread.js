@@ -1,13 +1,13 @@
-import "./ListThread.css";
-import ListThreadVote from "./ListThreadVote.js";
-import { Link } from "react-router-dom";
+import './ListThread.css';
+import ListThreadVote from './ListThreadVote.js';
+import { Link } from 'react-router-dom';
 
 function ListThread(props) {
   return (
     <div className="ListThread">
       <Link
         to={`/threads/${props.id}`}
-        style={{ textDecoration: "none" }}
+        style={{ textDecoration: 'none' }}
         state={{ index: props.index }}
         className="ListThread-link"
       >

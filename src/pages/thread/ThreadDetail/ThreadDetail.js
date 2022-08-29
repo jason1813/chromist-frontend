@@ -1,6 +1,6 @@
-import "./ThreadDetail.css";
-import React from "react";
-import ThreadDetailTop from "../ThreadDetailTop/ThreadDetailTop";
+import './ThreadDetail.css';
+import React from 'react';
+import ThreadDetailTop from '../ThreadDetailTop/ThreadDetailTop';
 
 function ThreadDetail(props) {
   const threadDetailTopProps = {

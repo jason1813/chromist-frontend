@@ -1,9 +1,9 @@
-import "./Comments.css";
-import { Component } from "react";
-import React from "react";
-import NetworkCall from "../../../network/NetworkCall";
-import Comment from "../Comment/Comment";
-import CreateComment from "../CreateComment/CreateComment";
+import './Comments.css';
+import { Component } from 'react';
+import React from 'react';
+import NetworkCall from '../../../network/NetworkCall';
+import Comment from '../Comment/Comment';
+import CreateComment from '../CreateComment/CreateComment';
 
 class Comments extends Component {
   constructor(props) {

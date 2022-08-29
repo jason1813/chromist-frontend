@@ -1,7 +1,7 @@
-import "./SignIn.css";
-import React from "react";
-import { Component } from "react";
-import SignInForm from "./SignInForm";
+import './SignIn.css';
+import React from 'react';
+import { Component } from 'react';
+import SignInForm from './SignInForm';
 
 class SignIn extends Component {
   constructor(props) {
@@ -14,12 +14,12 @@ class SignIn extends Component {
   render() {
     const contentText = this.state.signup
       ? {
-          questionText: "Already have an account?",
-          linkText: "Log in",
+          questionText: 'Already have an account?',
+          linkText: 'Log in',
         }
       : {
           questionText: "Don't have an account?",
-          linkText: "Sign up",
+          linkText: 'Sign up',
         };
 
     return (

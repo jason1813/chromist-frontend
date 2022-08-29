@@ -1,9 +1,9 @@
-import { Component, useState } from "react";
-import Network from "../../../network/Network";
-import NetworkCall from "../../../network/NetworkCall";
-import CreateReply from "../CreateReply/CreateReply";
-import SideBySideVote from "../SideBySideVote/SideBySideVote";
-import Comment from "./Comment";
+import { Component, useState } from 'react';
+import Network from '../../../network/Network';
+import NetworkCall from '../../../network/NetworkCall';
+import CreateReply from '../CreateReply/CreateReply';
+import SideBySideVote from '../SideBySideVote/SideBySideVote';
+import Comment from './Comment';
 
 function CommentContent(props) {
   const [showCreateReply, setShowCreateReply] = useState(false);
