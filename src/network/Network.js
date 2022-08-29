@@ -7,11 +7,11 @@ import {
 import Constants from '../misc/js/Constants';
 
 class Network {
-  isLoggedIn = function () {
+  static isLoggedIn = function () {
     return Cookie.getCookie(Constants.TOKEN) ? true : false;
   };
 
-  authVerification = function () {
+  static authVerification = function () {
     if (!this.isLoggedIn()) {
       if (!alert('Your auth session has expired.')) {
         document.location.href = '../';
@@ -29,7 +29,7 @@ class Network {
     return new Promise((resolve, reject) => {
       NetworkCall.authIn(action, username, password)
         .then((data) => {
-          Cookie.setCookie(Constants.TOKEN, `${data.token}`, 1);
+          Cookie.setCookie(Constants.TOKEN, `${data.token}`, 60);
           resolve(data);
         })
         .catch((error) => {
