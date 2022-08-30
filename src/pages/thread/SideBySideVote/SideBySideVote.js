@@ -7,12 +7,12 @@ function SideBySideVote(props) {
       return;
     }
 
-    if (props.userUpvoted === Constants.voteStatus.NEUTRAL) {
-      props.setVoteData(Constants.voteStatus.UP, props.upvoteScore + 1);
-    } else if (props.userUpvoted === Constants.voteStatus.DOWN) {
-      props.setVoteData(Constants.voteStatus.UP, props.upvoteScore + 2);
-    } else if (props.userUpvoted === Constants.voteStatus.UP) {
-      props.setVoteData(Constants.voteStatus.NEUTRAL, props.upvoteScore - 1);
+    if (props.voteStatus === Constants.voteStatus.NEUTRAL) {
+      props.setVoteData(Constants.voteStatus.UP, props.voteScore + 1);
+    } else if (props.voteStatus === Constants.voteStatus.DOWN) {
+      props.setVoteData(Constants.voteStatus.UP, props.voteScore + 2);
+    } else if (props.voteStatus === Constants.voteStatus.UP) {
+      props.setVoteData(Constants.voteStatus.NEUTRAL, props.voteScore - 1);
     }
   };
 
@@ -21,12 +21,12 @@ function SideBySideVote(props) {
       return;
     }
 
-    if (props.userUpvoted === Constants.voteStatus.NEUTRAL) {
-      props.setVoteData(Constants.voteStatus.DOWN, props.upvoteScore - 1);
-    } else if (props.userUpvoted === Constants.voteStatus.DOWN) {
-      props.setVoteData(Constants.voteStatus.NEUTRAL, props.upvoteScore + 1);
-    } else if (props.userUpvoted === Constants.voteStatus.UP) {
-      props.setVoteData(Constants.voteStatus.DOWN, props.upvoteScore - 2);
+    if (props.voteStatus === Constants.voteStatus.NEUTRAL) {
+      props.setVoteData(Constants.voteStatus.DOWN, props.voteScore - 1);
+    } else if (props.voteStatus === Constants.voteStatus.DOWN) {
+      props.setVoteData(Constants.voteStatus.NEUTRAL, props.voteScore + 1);
+    } else if (props.voteStatus === Constants.voteStatus.UP) {
+      props.setVoteData(Constants.voteStatus.DOWN, props.voteScore - 2);
     }
   };
 
@@ -37,7 +37,7 @@ function SideBySideVote(props) {
         src={require('../../../misc/img/up-arrow.png')}
         alt="up arrow"
         style={
-          props.userUpvoted === Constants.voteStatus.UP
+          props.voteStatus === Constants.voteStatus.UP
             ? {
                 filter: 'var(--honolulu-filter)',
               }
@@ -48,14 +48,14 @@ function SideBySideVote(props) {
         onClick={upVoteHit}
       />
 
-      <p className="SideBySideVote-upvote-score">{props.upvoteScore}</p>
+      <p className="SideBySideVote-voteScore">{props.voteScore}</p>
 
       <img
         className="SideBySideVote-down-arrow"
         src={require('../../../misc/img/down-arrow.png')}
         alt="down arrow"
         style={
-          props.userUpvoted === Constants.voteStatus.DOWN
+          props.voteStatus === Constants.voteStatus.DOWN
             ? {
                 filter: 'var(--honolulu-filter)',
               }

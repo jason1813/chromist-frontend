@@ -56,8 +56,8 @@ class Comment extends Component {
               id={this.props.id}
               author={this.props.author}
               text={this.props.text}
-              userUpvoted={this.props.userUpvoted}
-              upvoteScore={this.props.upvoteScore}
+              voteStatus={this.props.voteStatus}
+              voteScore={this.props.voteScore}
               loggedIn={this.props.loggedIn}
               replyCount={this.props.replyCount}
             />

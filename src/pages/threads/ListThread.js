@@ -22,8 +22,8 @@ function ListThread(props) {
       </Link>
 
       <ListThreadVote
-        upvoteScore={props.upvoteScore}
-        userUpvoted={props.userUpvoted}
+        voteScore={props.voteScore}
+        voteStatus={props.voteStatus}
         setVoteData={props.setVoteData}
         loggedIn={props.loggedIn}
       />

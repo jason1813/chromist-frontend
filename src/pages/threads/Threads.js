@@ -37,13 +37,13 @@ function Threads(props) {
           title={threadDataItem.title}
           description={threadDataItem.description}
           numberOfComments={threadDataItem.numberOfComments}
-          upvoteScore={threadDataItem.upvoteScore}
-          userUpvoted={threadDataItem.userUpvoted}
+          voteScore={threadDataItem.voteScore}
+          voteStatus={threadDataItem.voteStatus}
           loggedIn={props.loggedIn}
           setVoteData={(voteStatus, voteScore) => {
             let newThreadData = structuredClone(threadData);
-            newThreadData[index].userUpvoted = voteStatus;
-            newThreadData[index].upvoteScore = voteScore;
+            newThreadData[index].voteStatus = voteStatus;
+            newThreadData[index].voteScore = voteScore;
             dispatch(setThreadData(newThreadData));
 
             Network.voteOnThread(threadDataItem.id, voteStatus)

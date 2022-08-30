@@ -6,8 +6,8 @@ function ThreadDetail(props) {
   const threadDetailTopProps = {
     author: props.author,
     dateCreated: props.dateCreated,
-    upvoteScore: props.upvoteScore,
-    userUpvoted: props.userUpvoted,
+    voteScore: props.voteScore,
+    voteStatus: props.voteStatus,
     setVoteData: props.setVoteData,
     loggedIn: props.loggedIn,
   };

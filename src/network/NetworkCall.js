@@ -87,14 +87,14 @@ class NetworkCall {
 
   static voteOnThread(threadID, voteStatus) {
     return new Promise((resolve, reject) => {
-      fetch(`${baseUrl}/threads/${threadID}/upvote`, {
+      fetch(`${baseUrl}/threads/${threadID}/voteStatus`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${Cookie.getToken()}`,
         },
         body: JSON.stringify({
-          upvote: voteStatus,
+          voteStatus: voteStatus,
         }),
       })
         .then((res) => res.json())
@@ -105,14 +105,14 @@ class NetworkCall {
 
   static voteOnComment(commentID, voteStatus) {
     return new Promise((resolve, reject) => {
-      fetch(`${baseUrl}/comments/${commentID}/upvote`, {
+      fetch(`${baseUrl}/comments/${commentID}/voteStatus`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${Cookie.getToken()}`,
         },
         body: JSON.stringify({
-          upvote: voteStatus,
+          voteStatus: voteStatus,
         }),
       })
         .then((res) => res.json())

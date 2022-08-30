@@ -9,8 +9,8 @@ function CommentContent(props) {
   const [showCreateReply, setShowCreateReply] = useState(false);
   const [replies, setReplies] = useState([]);
   const [replyCount, setReplyCount] = useState(props.replyCount);
-  const [voteStatus, setVoteStatus] = useState(props.userUpvoted);
-  const [voteScore, setVoteScore] = useState(props.upvoteScore);
+  const [voteStatus, setVoteStatus] = useState(props.voteStatus);
+  const [voteScore, setVoteScore] = useState(props.voteScore);
 
   const moreRepliesCount = replyCount - replies.length;
 
@@ -19,8 +19,8 @@ function CommentContent(props) {
       <p className="comment-text">{props.text}</p>
       <div className="comment-vote-reply">
         <SideBySideVote
-          userUpvoted={voteStatus}
-          upvoteScore={voteScore}
+          voteStatus={voteStatus}
+          voteScore={voteScore}
           setVoteData={(voteStatus, voteScore) => {
             setVoteStatus(voteStatus);
             setVoteScore(voteScore);
@@ -62,8 +62,8 @@ function CommentContent(props) {
               key={reply.id}
               author={reply.author.username}
               text={reply.text}
-              userUpvoted={reply.userUpvoted}
-              upvoteScore={reply.upvoteScore}
+              voteStatus={reply.voteStatus}
+              voteScore={reply.voteScore}
               replyCount={reply.replyCount}
               dateCreated={reply.dateCreated}
               replies={[]}
