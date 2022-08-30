@@ -55,7 +55,7 @@ class NetworkCall {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
+          Authorization: `Bearer ${Cookie.getToken()}`,
         },
       })
         .then((res) => {
@@ -72,7 +72,7 @@ class NetworkCall {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
+          Authorization: `Bearer ${Cookie.getToken()}`,
         },
         body: JSON.stringify({
           title: title,
@@ -91,7 +91,7 @@ class NetworkCall {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
+          Authorization: `Bearer ${Cookie.getToken()}`,
         },
         body: JSON.stringify({
           upvote: voteStatus,
@@ -109,7 +109,7 @@ class NetworkCall {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
+          Authorization: `Bearer ${Cookie.getToken()}`,
         },
         body: JSON.stringify({
           upvote: voteStatus,
@@ -127,7 +127,7 @@ class NetworkCall {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
+          Authorization: `Bearer ${Cookie.getToken()}`,
         },
         body: JSON.stringify({
           text: text,
@@ -145,7 +145,7 @@ class NetworkCall {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${Cookie.getCookie(Constants.TOKEN)}`,
+          Authorization: `Bearer ${Cookie.getToken()}`,
         },
         body: JSON.stringify({
           text: text,

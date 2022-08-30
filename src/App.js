@@ -12,7 +12,7 @@ import Constants from './misc/js/Constants.js';
 class App extends Component {
   render() {
     document.body.style.backgroundColor = 'var(--oxford)';
-    const loggedIn = Cookie.getCookie(Constants.TOKEN) ? true : false;
+    const loggedIn = Cookie.getToken() ? true : false;
 
     return (
       <Router>

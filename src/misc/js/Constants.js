@@ -4,8 +4,6 @@ class Constants {
     NEUTRAL: 'neutral',
     DOWN: 'down',
   };
-
-  static TOKEN = 'token';
 }
 
 export default Constants;

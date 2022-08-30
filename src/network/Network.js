@@ -8,7 +8,7 @@ import Constants from '../misc/js/Constants';
 
 class Network {
   static isLoggedIn = function () {
-    return Cookie.getCookie(Constants.TOKEN) ? true : false;
+    return Cookie.getToken() ? true : false;
   };
 
   static authVerification = function () {
@@ -29,7 +29,7 @@ class Network {
     return new Promise((resolve, reject) => {
       NetworkCall.authIn(action, username, password)
         .then((data) => {
-          Cookie.setCookie(Constants.TOKEN, `${data.token}`, 60);
+          Cookie.setToken(`${data.token}`, 60);
           resolve(data);
         })
         .catch((error) => {
@@ -44,19 +44,19 @@ class Network {
 
   static authOut() {
     return new Promise((resolve, reject) => {
-      if (!Cookie.getCookie(Constants.TOKEN)) {
+      if (!Cookie.getToken()) {
         resolve({});
         return;
       }
 
       NetworkCall.authOut()
         .then((data) => {
-          Cookie.deleteCookie(Constants.TOKEN);
+          Cookie.deleteToken();
           resolve(data);
         })
         .catch((error) => {
           //         if (error.token already expired) {
-          //     Cookie.deleteCookie(Constants.TOKEN)
+          //     Cookie.deleteToken()
           //     resolve()
           // } else {
           reject(error);
