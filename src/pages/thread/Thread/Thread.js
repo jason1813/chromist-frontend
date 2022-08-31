@@ -18,8 +18,8 @@ function Thread(props) {
 
   let singleThreadData = {
     ...allThreadData[index],
-    setVoteData: function (voteStatus, voteScore) {
-      let newThreadData = structuredClone(allThreadData);
+    setVoteData: (voteStatus, voteScore) => {
+      const newThreadData = structuredClone(allThreadData);
       newThreadData[index].voteStatus = voteStatus;
       newThreadData[index].voteScore = voteScore;
       dispatch(setThreadData(newThreadData));

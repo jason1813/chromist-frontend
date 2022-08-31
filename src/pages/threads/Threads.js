@@ -8,12 +8,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setThreadData, selectThreadData } from './threadSlice';
 import Network from '../../network/Network';
 
-function Threads(props) {
+export default function Threads(props) {
   const threadData = useSelector(selectThreadData);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (threadData.length !== 0) {
+    if (threadData.length > 0) {
       return;
     }
 
@@ -31,17 +31,9 @@ function Threads(props) {
       {threadData.map((threadDataItem, index) => (
         <ListThread
           key={threadDataItem.id}
-          id={threadDataItem.id}
-          dateCreated={threadDataItem.dateCreated}
-          author={threadDataItem.author}
-          title={threadDataItem.title}
-          description={threadDataItem.description}
-          numberOfComments={threadDataItem.numberOfComments}
-          voteScore={threadDataItem.voteScore}
-          voteStatus={threadDataItem.voteStatus}
           loggedIn={props.loggedIn}
           setVoteData={(voteStatus, voteScore) => {
-            let newThreadData = structuredClone(threadData);
+            const newThreadData = structuredClone(threadData);
             newThreadData[index].voteStatus = voteStatus;
             newThreadData[index].voteScore = voteScore;
             dispatch(setThreadData(newThreadData));
@@ -51,11 +43,10 @@ function Threads(props) {
               .catch((error) => {});
           }}
           index={index}
+          {...threadDataItem}
         />
       ))}
       <BottomBar isNext={false} isPrevious={false} />
     </div>
   );
 }
-
-export default Threads;
