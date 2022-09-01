@@ -1,6 +1,6 @@
 import './ThreadDetailTop.css';
 import React from 'react';
-import SideBySideVote from '../SideBySideVote/SideBySideVote';
+import SideBySideVote from '../../../misc/vote/SideBySideVote/SideBySideVote';
 import DateFormatter from '../../../misc/js/DateFormatter';
 
 function ThreadDetailTop(props) {

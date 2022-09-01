@@ -1,5 +1,5 @@
 import './ListThread.css';
-import ListThreadVote from './ListThreadVote.js';
+import VerticalVote from '../../misc/vote/VerticalVote/VerticalVote';
 import { Link } from 'react-router-dom';
 
 function ListThread(props) {
@@ -21,7 +21,7 @@ function ListThread(props) {
         </div>
       </Link>
 
-      <ListThreadVote
+      <VerticalVote
         voteScore={props.voteScore}
         voteStatus={props.voteStatus}
         setNewVoteStatus={props.setNewVoteStatus}

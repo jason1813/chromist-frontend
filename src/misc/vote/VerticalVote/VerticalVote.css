@@ -1,6 +1,4 @@
-@import '../../misc/css/colors.css';
-
-.ListThreadVote {
+.VerticalVote {
   height: 100px;
   width: 40px;
   display: flex;
@@ -10,7 +8,7 @@
   margin-left: 8px;
 }
 
-.ListThreadVote-up-arrow {
+.VerticalVote-up-arrow {
   width: 30px;
   margin-top: 10px;
   margin-bottom: 0px;
@@ -18,7 +16,7 @@
   margin-right: auto;
 }
 
-.ListThreadVote-voteScore {
+.VerticalVote-voteScore {
   text-align: center;
   color: black;
   min-width: 100%;
@@ -28,7 +26,7 @@
   color: var(--gray);
 }
 
-.ListThreadVote-down-arrow {
+.VerticalVote-down-arrow {
   width: 30px;
   margin-top: 0px;
   margin-bottom: 10px;

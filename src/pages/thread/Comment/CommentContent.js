@@ -1,12 +1,12 @@
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import Constants from '../../../misc/js/Constants';
 import Network from '../../../network/Network';
 import NetworkCall from '../../../network/NetworkCall';
 import CreateReply from '../CreateReply/CreateReply';
-import SideBySideVote from '../SideBySideVote/SideBySideVote';
+import SideBySideVote from '../../../misc/vote/SideBySideVote/SideBySideVote';
 import Comment from './Comment';
 
-function CommentContent(props) {
+export default function CommentContent(props) {
   const [showCreateReply, setShowCreateReply] = useState(false);
   const [replies, setReplies] = useState([]);
   const [replyCount, setReplyCount] = useState(props.replyCount);
@@ -102,5 +102,3 @@ function CommentContent(props) {
     </div>
   );
 }
-
-export default CommentContent;

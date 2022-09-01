@@ -1,24 +1,23 @@
-import './ListThreadVote.css';
-import Constants from '../../misc/js/Constants';
+import Constants from '../js/Constants';
 
-function ListThreadVote(props) {
+export default function Vote(props) {
   const voteHit = (voteStatusHit) => {
     if (!props.loggedIn) {
       return;
     }
 
     props.setNewVoteStatus(
-      props.voteStatus === voteStatusHit
+      voteStatusHit === props.voteStatus
         ? Constants.voteStatus.NEUTRAL
         : voteStatusHit
     );
   };
 
   return (
-    <div className="ListThreadVote">
+    <div className={props.className}>
       <img
-        className="ListThreadVote-up-arrow"
-        src={require('../../misc/img/up-arrow.png')}
+        className={`${props.className}-up-arrow`}
+        src={require('../img/up-arrow.png')}
         alt="up arrow"
         style={
           props.voteStatus === Constants.voteStatus.UP
@@ -32,11 +31,11 @@ function ListThreadVote(props) {
         onClick={() => voteHit(Constants.voteStatus.UP)}
       />
 
-      <p className="ListThreadVote-voteScore">{props.voteScore}</p>
+      <p className={`${props.className}-voteScore`}>{props.voteScore}</p>
 
       <img
-        className="ListThreadVote-down-arrow"
-        src={require('../../misc/img/down-arrow.png')}
+        className={`${props.className}-down-arrow`}
+        src={require('../img/down-arrow.png')}
         alt="down arrow"
         style={
           props.voteStatus === Constants.voteStatus.DOWN
@@ -52,5 +51,3 @@ function ListThreadVote(props) {
     </div>
   );
 }
-
-export default ListThreadVote;

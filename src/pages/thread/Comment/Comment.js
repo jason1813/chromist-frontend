@@ -1,11 +1,7 @@
 import './Comment.css';
 import React from 'react';
 import { Component } from 'react';
-import SideBySideVote from '../SideBySideVote/SideBySideVote';
-import NetworkCall from '../../../network/NetworkCall';
 import DateFormatter from '../../../misc/js/DateFormatter';
-import Network from '../../../network/Network';
-import CreateReply from '../CreateReply/CreateReply';
 import CommentContent from './CommentContent';
 
 class Comment extends Component {
@@ -51,17 +47,7 @@ class Comment extends Component {
               {DateFormatter.timeSince(new Date(this.props.dateCreated))}
             </p>
           </div>
-          {this.state.expandContent && (
-            <CommentContent
-              id={this.props.id}
-              author={this.props.author}
-              text={this.props.text}
-              voteStatus={this.props.voteStatus}
-              voteScore={this.props.voteScore}
-              loggedIn={this.props.loggedIn}
-              replyCount={this.props.replyCount}
-            />
-          )}
+          {this.state.expandContent && <CommentContent {...this.props} />}
         </div>
       </div>
     );
