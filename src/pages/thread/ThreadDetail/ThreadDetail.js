@@ -8,7 +8,7 @@ function ThreadDetail(props) {
     dateCreated: props.dateCreated,
     voteScore: props.voteScore,
     voteStatus: props.voteStatus,
-    setVoteData: props.setVoteData,
+    setNewVoteStatus: props.setNewVoteStatus,
     loggedIn: props.loggedIn,
   };
 

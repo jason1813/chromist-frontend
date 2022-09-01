@@ -4,7 +4,6 @@ import {
   SignUpBackEndErrorDisplayer,
   LoginBackendErrorDisplayer,
 } from '../pages/signin/SignInBackEndErrorDisplayer';
-import Constants from '../misc/js/Constants';
 
 class Network {
   static isLoggedIn = function () {
@@ -61,6 +60,14 @@ class Network {
           // } else {
           reject(error);
         });
+    });
+  }
+
+  static getThreads() {
+    return new Promise((resolve, reject) => {
+      NetworkCall.getThreads()
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
     });
   }
 

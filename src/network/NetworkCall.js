@@ -4,12 +4,14 @@ import Cookie from './Cookie';
 const baseUrl = 'http://0.0.0.0:3001/v1';
 
 class NetworkCall {
-  static getThreads = new Promise((resolve, reject) => {
-    fetch(`${baseUrl}/threads`)
-      .then((res) => res.json())
-      .then((data) => resolve(data))
-      .catch((error) => reject(error));
-  });
+  static getThreads() {
+    return new Promise((resolve, reject) => {
+      fetch(`${baseUrl}/threads`)
+        .then((res) => res.json())
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
 
   static getReplies(commentID, startIndex = 0, count = 5) {
     return new Promise((resolve, reject) => {

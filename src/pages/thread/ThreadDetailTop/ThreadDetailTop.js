@@ -22,7 +22,7 @@ function ThreadDetailTop(props) {
       <SideBySideVote
         voteScore={props.voteScore}
         voteStatus={props.voteStatus}
-        setVoteData={props.setVoteData}
+        setNewVoteStatus={props.setNewVoteStatus}
         loggedIn={props.loggedIn}
       />
     </div>

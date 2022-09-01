@@ -1,34 +1,17 @@
 import './ListThreadVote.css';
-import { useState } from 'react';
 import Constants from '../../misc/js/Constants';
 
 function ListThreadVote(props) {
-  const upVoteHit = () => {
+  const voteHit = (voteStatusHit) => {
     if (!props.loggedIn) {
       return;
     }
 
-    if (props.voteStatus === Constants.voteStatus.NEUTRAL) {
-      props.setVoteData(Constants.voteStatus.UP, props.voteScore + 1);
-    } else if (props.voteStatus === Constants.voteStatus.DOWN) {
-      props.setVoteData(Constants.voteStatus.UP, props.voteScore + 2);
-    } else if (props.voteStatus === Constants.voteStatus.UP) {
-      props.setVoteData(Constants.voteStatus.NEUTRAL, props.voteScore - 1);
-    }
-  };
-
-  const downVoteHit = () => {
-    if (!props.loggedIn) {
-      return;
-    }
-
-    if (props.voteStatus === Constants.voteStatus.NEUTRAL) {
-      props.setVoteData(Constants.voteStatus.DOWN, props.voteScore - 1);
-    } else if (props.voteStatus === Constants.voteStatus.DOWN) {
-      props.setVoteData(Constants.voteStatus.NEUTRAL, props.voteScore + 1);
-    } else if (props.voteStatus === Constants.voteStatus.UP) {
-      props.setVoteData(Constants.voteStatus.DOWN, props.voteScore - 2);
-    }
+    props.setNewVoteStatus(
+      props.voteStatus === voteStatusHit
+        ? Constants.voteStatus.NEUTRAL
+        : voteStatusHit
+    );
   };
 
   return (
@@ -46,7 +29,7 @@ function ListThreadVote(props) {
                 filter: 'var(--gray-filter)',
               }
         }
-        onClick={upVoteHit}
+        onClick={() => voteHit(Constants.voteStatus.UP)}
       />
 
       <p className="ListThreadVote-voteScore">{props.voteScore}</p>
@@ -64,7 +47,7 @@ function ListThreadVote(props) {
                 filter: 'var(--gray-filter)',
               }
         }
-        onClick={downVoteHit}
+        onClick={() => voteHit(Constants.voteStatus.DOWN)}
       />
     </div>
   );

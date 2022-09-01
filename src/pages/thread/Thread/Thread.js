@@ -4,8 +4,14 @@ import ThreadDetail from '../ThreadDetail/ThreadDetail';
 import Comments from '../Comments/Comments';
 import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setThreadData, selectThreadData } from '../../threads/threadSlice';
+import {
+  selectThreadData,
+  upvoteThread,
+  neutralvoteThread,
+  downvoteThread,
+} from '../../threads/threadSlice';
 import Network from '../../../network/Network';
+import Constants from '../../../misc/js/Constants';
 
 function Thread(props) {
   const { id } = useParams();
@@ -18,12 +24,14 @@ function Thread(props) {
 
   let singleThreadData = {
     ...allThreadData[index],
-    setVoteData: (voteStatus, voteScore) => {
-      const newThreadData = structuredClone(allThreadData);
-      newThreadData[index].voteStatus = voteStatus;
-      newThreadData[index].voteScore = voteScore;
-      dispatch(setThreadData(newThreadData));
-
+    setNewVoteStatus: (voteStatus) => {
+      if (voteStatus === Constants.voteStatus.UP) {
+        dispatch(upvoteThread(index));
+      } else if (voteStatus === Constants.voteStatus.NEUTRAL) {
+        dispatch(neutralvoteThread(index));
+      } else if (voteStatus === Constants.voteStatus.DOWN) {
+        dispatch(downvoteThread(index));
+      }
       Network.voteOnThread(id, voteStatus)
         .then((data) => {})
         .catch((error) => {});

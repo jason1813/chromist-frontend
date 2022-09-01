@@ -5,8 +5,15 @@ import ListThread from './ListThread.js';
 import NetworkCall from '../../network/NetworkCall';
 import BottomBar from './BottomBar.js';
 import { useSelector, useDispatch } from 'react-redux';
-import { setThreadData, selectThreadData } from './threadSlice';
+import {
+  selectThreadData,
+  upvoteThread,
+  neutralvoteThread,
+  downvoteThread,
+  setThreadData,
+} from './threadSlice';
 import Network from '../../network/Network';
+import Constants from '../../misc/js/Constants';
 
 export default function Threads(props) {
   const threadData = useSelector(selectThreadData);
@@ -17,7 +24,7 @@ export default function Threads(props) {
       return;
     }
 
-    NetworkCall.getThreads
+    Network.getThreads()
       .then((data) => {
         dispatch(setThreadData(data));
       })
@@ -32,13 +39,16 @@ export default function Threads(props) {
         <ListThread
           key={threadDataItem.id}
           loggedIn={props.loggedIn}
-          setVoteData={(voteStatus, voteScore) => {
-            const newThreadData = structuredClone(threadData);
-            newThreadData[index].voteStatus = voteStatus;
-            newThreadData[index].voteScore = voteScore;
-            dispatch(setThreadData(newThreadData));
+          setNewVoteStatus={(newVoteStatus) => {
+            if (newVoteStatus === Constants.voteStatus.UP) {
+              dispatch(upvoteThread(index));
+            } else if (newVoteStatus === Constants.voteStatus.NEUTRAL) {
+              dispatch(neutralvoteThread(index));
+            } else if (newVoteStatus === Constants.voteStatus.DOWN) {
+              dispatch(downvoteThread(index));
+            }
 
-            Network.voteOnThread(threadDataItem.id, voteStatus)
+            Network.voteOnThread(threadDataItem.id, newVoteStatus)
               .then((data) => {})
               .catch((error) => {});
           }}

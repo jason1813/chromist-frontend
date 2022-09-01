@@ -1,4 +1,5 @@
 import { Component, useState } from 'react';
+import Constants from '../../../misc/js/Constants';
 import Network from '../../../network/Network';
 import NetworkCall from '../../../network/NetworkCall';
 import CreateReply from '../CreateReply/CreateReply';
@@ -14,6 +15,11 @@ function CommentContent(props) {
 
   const moreRepliesCount = replyCount - replies.length;
 
+  const nonUserVoteScore = Constants.getNonUserVoteScore(
+    props.voteScore,
+    props.voteStatus
+  );
+
   return (
     <div className="comment-content">
       <p className="comment-text">{props.text}</p>
@@ -21,11 +27,17 @@ function CommentContent(props) {
         <SideBySideVote
           voteStatus={voteStatus}
           voteScore={voteScore}
-          setVoteData={(voteStatus, voteScore) => {
-            setVoteStatus(voteStatus);
-            setVoteScore(voteScore);
+          setNewVoteStatus={(newVoteStatus) => {
+            if (newVoteStatus === voteStatus) {
+              return;
+            }
 
-            Network.voteOnThread(props.id, voteStatus)
+            setVoteScore(
+              Constants.getVoteScore(nonUserVoteScore, newVoteStatus)
+            );
+            setVoteStatus(newVoteStatus);
+
+            Network.voteOnComment(props.id, newVoteStatus)
               .then((data) => {})
               .catch((error) => {});
           }}
