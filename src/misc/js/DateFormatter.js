@@ -1,4 +1,4 @@
-class DateFormatter {
+export default class DateFormatter {
   static isoToLongDateString(isoDate) {
     const date = new Date(isoDate);
     return date.toLocaleString([], { dateStyle: 'long', timeStyle: 'short' });
@@ -31,5 +31,3 @@ class DateFormatter {
     return Math.floor(seconds) + ' seconds ago';
   }
 }
-
-export default DateFormatter;

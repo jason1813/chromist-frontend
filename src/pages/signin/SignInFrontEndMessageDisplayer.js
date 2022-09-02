@@ -1,6 +1,6 @@
 import SignInFrontEndValidator from './SignInFrontEndValidator';
 
-class SignInFrontEndMessageDisplayer {
+export default class SignInFrontEndMessageDisplayer {
   static signupErrorMessage(username, password) {
     const signinValidator = new SignInFrontEndValidator(username, password);
 
@@ -28,5 +28,3 @@ class SignInFrontEndMessageDisplayer {
     }
   }
 }
-
-export default SignInFrontEndMessageDisplayer;

@@ -1,4 +1,4 @@
-class Cookie {
+export default class Cookie {
   static TOKEN = 'token';
 
   static getToken() {
@@ -21,5 +21,3 @@ class Cookie {
       this.TOKEN + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 }
-
-export default Cookie;

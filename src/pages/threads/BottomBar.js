@@ -1,7 +1,7 @@
 import './BottomBar.css';
 import { StyledButton } from '../../misc/js/StyledComponents';
 
-function BottomBar(props) {
+export default function BottomBar(props) {
   return (
     <div className="BottomBar">
       {props.isPrevious && (
@@ -18,5 +18,3 @@ function BottomBar(props) {
     </div>
   );
 }
-
-export default BottomBar;

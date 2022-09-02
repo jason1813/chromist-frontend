@@ -5,7 +5,7 @@ import NetworkCall from '../../../network/NetworkCall';
 import Comment from '../Comment/Comment';
 import CreateComment from '../CreateComment/CreateComment';
 
-class Comments extends Component {
+export default class Comments extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,5 +39,3 @@ class Comments extends Component {
     );
   }
 }
-
-export default Comments;

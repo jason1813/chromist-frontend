@@ -4,7 +4,7 @@ import { Component } from 'react';
 import DateFormatter from '../../../misc/js/DateFormatter';
 import CommentContent from './CommentContent';
 
-class Comment extends Component {
+export default class Comment extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,5 +53,3 @@ class Comment extends Component {
     );
   }
 }
-
-export default Comment;

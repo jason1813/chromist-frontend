@@ -6,7 +6,7 @@ import {
 } from '../../../misc/js/StyledComponents';
 import Network from '../../../network/Network';
 
-function CreateReply(props) {
+export default function CreateReply(props) {
   const [replyText, setReplyText] = useState(``);
   const [disableSubmitButton, setDisableSubmitButton] = useState(false);
 
@@ -55,5 +55,3 @@ function CreateReply(props) {
     </form>
   );
 }
-
-export default CreateReply;

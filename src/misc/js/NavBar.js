@@ -3,7 +3,7 @@ import '../css/NavBar.css';
 import { StyledButton } from './StyledComponents';
 import ProfileMenu from './ProfileMenu';
 
-function NavBar(props) {
+export default function NavBar(props) {
   const navigate = useNavigate();
 
   return (
@@ -39,5 +39,3 @@ function NavBar(props) {
     </div>
   );
 }
-
-export default NavBar;

@@ -2,7 +2,6 @@ import './Threads.css';
 import { useEffect } from 'react';
 import React from 'react';
 import ListThread from './ListThread.js';
-import NetworkCall from '../../network/NetworkCall';
 import BottomBar from './BottomBar.js';
 import { useSelector, useDispatch } from 'react-redux';
 import {

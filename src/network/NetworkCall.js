@@ -3,7 +3,7 @@ import Cookie from './Cookie';
 
 const baseUrl = 'http://0.0.0.0:3001/v1';
 
-class NetworkCall {
+export default class NetworkCall {
   static getThreads() {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/threads`)
@@ -159,5 +159,3 @@ class NetworkCall {
     });
   }
 }
-
-export default NetworkCall;

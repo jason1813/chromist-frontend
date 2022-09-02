@@ -2,7 +2,7 @@ import './ListThread.css';
 import VerticalVote from '../../misc/vote/VerticalVote/VerticalVote';
 import { Link } from 'react-router-dom';
 
-function ListThread(props) {
+export default function ListThread(props) {
   return (
     <div className="ListThread">
       <Link
@@ -30,5 +30,3 @@ function ListThread(props) {
     </div>
   );
 }
-
-export default ListThread;

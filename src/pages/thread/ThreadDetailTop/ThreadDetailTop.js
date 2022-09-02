@@ -3,7 +3,7 @@ import React from 'react';
 import SideBySideVote from '../../../misc/vote/SideBySideVote/SideBySideVote';
 import DateFormatter from '../../../misc/js/DateFormatter';
 
-function ThreadDetailTop(props) {
+export default function ThreadDetailTop(props) {
   return (
     <div className="thread-detail-top">
       <div className="thread-detail-top-left-side">
@@ -28,5 +28,3 @@ function ThreadDetailTop(props) {
     </div>
   );
 }
-
-export default ThreadDetailTop;

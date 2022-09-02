@@ -9,9 +9,9 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addThread } from '../threads/threadSlice';
 
-function CreateThread() {
-  const [title, setTitle] = useState(``);
-  const [description, setDescription] = useState(``);
+export default function CreateThread() {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -67,5 +67,3 @@ function CreateThread() {
     </form>
   );
 }
-
-export default CreateThread;

@@ -2,7 +2,7 @@ import './ThreadDetail.css';
 import React from 'react';
 import ThreadDetailTop from '../ThreadDetailTop/ThreadDetailTop';
 
-function ThreadDetail(props) {
+export default function ThreadDetail(props) {
   const threadDetailTopProps = {
     author: props.author,
     dateCreated: props.dateCreated,
@@ -20,5 +20,3 @@ function ThreadDetail(props) {
     </div>
   );
 }
-
-export default ThreadDetail;

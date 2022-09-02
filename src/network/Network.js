@@ -5,7 +5,7 @@ import {
   LoginBackendErrorDisplayer,
 } from '../pages/signin/SignInBackEndErrorDisplayer';
 
-class Network {
+export default class Network {
   static isLoggedIn = function () {
     return Cookie.getToken() ? true : false;
   };
@@ -120,5 +120,3 @@ class Network {
     });
   }
 }
-
-export default Network;

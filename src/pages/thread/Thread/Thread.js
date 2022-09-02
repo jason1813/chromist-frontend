@@ -13,7 +13,7 @@ import {
 import Network from '../../../network/Network';
 import Constants from '../../../misc/js/Constants';
 
-function Thread(props) {
+export default function Thread(props) {
   const { id } = useParams();
   const location = useLocation();
 
@@ -22,7 +22,7 @@ function Thread(props) {
 
   const index = location.state.index;
 
-  let singleThreadData = {
+  const singleThreadData = {
     ...allThreadData[index],
     setNewVoteStatus: (voteStatus) => {
       if (voteStatus === Constants.voteStatus.UP) {
@@ -46,5 +46,3 @@ function Thread(props) {
     </div>
   );
 }
-
-export default Thread;
