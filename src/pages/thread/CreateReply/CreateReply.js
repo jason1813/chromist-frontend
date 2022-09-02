@@ -7,7 +7,7 @@ import {
 import Network from '../../../network/Network';
 
 export default function CreateReply(props) {
-  const [replyText, setReplyText] = useState(``);
+  const [replyText, setReplyText] = useState('');
   const [disableSubmitButton, setDisableSubmitButton] = useState(false);
 
   const handleSubmit = (event) => {
