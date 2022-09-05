@@ -7,7 +7,7 @@ import {
 
 export default class Network {
   static authVerification = function () {
-    if (!Cookie.hasToken()) {
+    if (!Cookie.hasAuthToken()) {
       if (!alert('Your auth session has expired.')) {
         document.location.href = '../';
         return;
@@ -58,7 +58,7 @@ export default class Network {
   }
 
   static voteOnThread(threadID, voteStatus) {
-    if (!Cookie.hasToken()) {
+    if (!Cookie.hasAuthToken()) {
       return;
     }
     return new Promise((resolve, reject) => {
@@ -89,7 +89,7 @@ export default class Network {
   }
 
   static voteOnComment(commentID, voteStatus) {
-    if (!Cookie.hasToken()) {
+    if (!Cookie.hasAuthToken()) {
       return;
     }
     return new Promise((resolve, reject) => {
@@ -106,7 +106,7 @@ export default class Network {
     return new Promise((resolve, reject) => {
       NetworkCall.authIn(action, username, password)
         .then((data) => {
-          Cookie.setToken(`${data.token}`, 1);
+          Cookie.setAuthToken(`${data.token}`, 1);
           resolve(data);
         })
         .catch((error) => {
@@ -121,19 +121,19 @@ export default class Network {
 
   static authOut() {
     return new Promise((resolve, reject) => {
-      if (!Cookie.getToken()) {
+      if (!Cookie.getAuthToken()) {
         resolve({});
         return;
       }
 
       NetworkCall.authOut()
         .then((data) => {
-          Cookie.deleteToken();
+          Cookie.deleteAuthToken();
           resolve(data);
         })
         .catch((error) => {
           //         if (error.token already expired) {
-          //     Cookie.deleteToken()
+          //     Cookie.deleteAuthToken()
           //     resolve({})
           // } else {
           reject(error);

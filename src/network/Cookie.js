@@ -1,27 +1,27 @@
 export default class Cookie {
-  static TOKEN = 'token';
+  static AUTH_TOKEN = 'auth_token';
 
-  static hasToken() {
-    return this.getToken() ? true : false;
+  static hasAuthToken() {
+    return this.getAuthToken() ? true : false;
   }
 
-  static getToken() {
+  static getAuthToken() {
     return (
       document.cookie
-        .match('(^|;)\\s*' + this.TOKEN + '\\s*=\\s*([^;]+)')
+        .match('(^|;)\\s*' + this.AUTH_TOKEN + '\\s*=\\s*([^;]+)')
         ?.pop() || ''
     );
   }
 
-  static setToken(value, minutesValid = 60) {
+  static setAuthToken(value, minutesValid = 60) {
     let expirationDate = new Date(new Date().getTime() + minutesValid * 60000);
     document.cookie = `${
-      this.TOKEN
+      this.AUTH_TOKEN
     }=${value}; expires=${expirationDate.toUTCString()}`;
   }
 
-  static deleteToken() {
+  static deleteAuthToken() {
     document.cookie =
-      this.TOKEN + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      this.AUTH_TOKEN + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 }
