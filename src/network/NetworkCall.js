@@ -34,6 +34,15 @@ export default class NetworkCall {
     });
   }
 
+  static getThread(threadID) {
+    return new Promise((resolve, reject) => {
+      fetch(`${baseUrl}/threads/${threadID}`)
+        .then((res) => res.json())
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
   static getComments(threadID, startIndex = 0, count = 10) {
     return new Promise((resolve, reject) => {
       fetch(

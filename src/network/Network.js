@@ -40,9 +40,17 @@ export default class Network {
     });
   }
 
-  static getComments() {
+  static getThread(threadID) {
     return new Promise((resolve, reject) => {
-      NetworkCall.getComments()
+      NetworkCall.getThread(threadID)
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+  static getComments(threadID) {
+    return new Promise((resolve, reject) => {
+      NetworkCall.getComments(threadID)
         .then((data) => resolve(data))
         .catch((error) => reject(error));
     });
@@ -71,9 +79,9 @@ export default class Network {
   /*
                             COMMENTS
                                                               */
-  static getReplies() {
+  static getReplies(commentID, startIndex) {
     return new Promise((resolve, reject) => {
-      NetworkCall.getReplies()
+      NetworkCall.getReplies(commentID, startIndex)
         .then((data) => resolve(data))
         .catch((error) => reject(error));
     });
@@ -106,7 +114,7 @@ export default class Network {
     return new Promise((resolve, reject) => {
       NetworkCall.authIn(action, username, password)
         .then((data) => {
-          Cookie.setAuthToken(`${data.token}`, 1);
+          Cookie.setAuthToken(`${data.token}`, 60);
           resolve(data);
         })
         .catch((error) => {

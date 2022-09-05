@@ -11,7 +11,7 @@ import CreateThread from './pages/create_thread/CreateThread.js';
 class App extends Component {
   render() {
     document.body.style.backgroundColor = 'var(--oxford)';
-    const loggedIn = Cookie.getToken() ? true : false;
+    const loggedIn = Cookie.hasAuthToken();
 
     return (
       <Router>
