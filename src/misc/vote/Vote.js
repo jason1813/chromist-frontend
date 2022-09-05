@@ -1,16 +1,26 @@
+import { useState } from 'react';
 import Constants from '../js/Constants';
 
 export default function Vote(props) {
+  const [voteStatus, setVoteStatus] = useState(props.voteStatus);
+  const [voteScore, setVoteScore] = useState(props.voteScore);
+
   const voteHit = (voteStatusHit) => {
     if (!props.loggedIn) {
       return;
     }
 
-    props.setNewVoteStatus(
-      voteStatusHit === props.voteStatus
+    const newVoteStatus =
+      voteStatusHit === voteStatus
         ? Constants.voteStatus.NEUTRAL
-        : voteStatusHit
+        : voteStatusHit;
+
+    props.setNewVoteStatus(newVoteStatus);
+
+    setVoteScore(
+      Constants.getNewVoteScore(voteScore, voteStatus, newVoteStatus)
     );
+    setVoteStatus(newVoteStatus);
   };
 
   return (
@@ -20,7 +30,7 @@ export default function Vote(props) {
         src={require('../img/up-arrow.png')}
         alt="up arrow"
         style={
-          props.voteStatus === Constants.voteStatus.UP
+          voteStatus === Constants.voteStatus.UP
             ? {
                 filter: 'var(--honolulu-filter)',
               }
@@ -31,14 +41,14 @@ export default function Vote(props) {
         onClick={() => voteHit(Constants.voteStatus.UP)}
       />
 
-      <p className={`${props.className}-voteScore`}>{props.voteScore}</p>
+      <p className={`${props.className}-voteScore`}>{voteScore}</p>
 
       <img
         className={`${props.className}-down-arrow`}
         src={require('../img/down-arrow.png')}
         alt="down arrow"
         style={
-          props.voteStatus === Constants.voteStatus.DOWN
+          voteStatus === Constants.voteStatus.DOWN
             ? {
                 filter: 'var(--honolulu-filter)',
               }
