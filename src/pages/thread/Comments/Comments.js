@@ -1,15 +1,15 @@
 import './Comments.css';
 import { useEffect, useState } from 'react';
 import React from 'react';
-import NetworkCall from '../../../network/NetworkCall';
 import Comment from '../Comment/Comment';
 import CreateComment from '../CreateComment/CreateComment';
+import Network from '../../../network/Network';
 
 export default function Comments(props) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    NetworkCall.getComments(props.threadID).then((data) => {
+    Network.getComments(props.threadID).then((data) => {
       setComments(data);
     });
   }, []);

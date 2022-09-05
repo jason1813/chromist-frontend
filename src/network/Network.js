@@ -71,6 +71,22 @@ export default class Network {
     });
   }
 
+  static getReplies() {
+    return new Promise((resolve, reject) => {
+      NetworkCall.getReplies()
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+  static getComments() {
+    return new Promise((resolve, reject) => {
+      NetworkCall.getComments()
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
   static postNewThread(title, description) {
     this.authVerification();
     return new Promise((resolve, reject) => {

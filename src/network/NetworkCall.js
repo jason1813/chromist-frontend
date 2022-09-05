@@ -1,4 +1,3 @@
-import Constants from '../misc/js/Constants';
 import Cookie from './Cookie';
 
 const baseUrl = 'http://0.0.0.0:3001/v1';

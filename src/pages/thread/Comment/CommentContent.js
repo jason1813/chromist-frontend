@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Constants from '../../../misc/js/Constants';
 import Network from '../../../network/Network';
-import NetworkCall from '../../../network/NetworkCall';
 import CreateReply from '../CreateReply/CreateReply';
 import SideBySideVote from '../../../misc/vote/SideBySideVote/SideBySideVote';
 import Comment from './Comment';
@@ -91,7 +90,7 @@ export default function CommentContent(props) {
           href="/#"
           onClick={(e) => {
             e.preventDefault();
-            NetworkCall.getReplies(props.id, replies.length).then((data) => {
+            Network.getReplies(props.id, replies.length).then((data) => {
               setReplies([...replies, ...data]);
             });
           }}
