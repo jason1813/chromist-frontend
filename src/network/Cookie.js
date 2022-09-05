@@ -17,7 +17,7 @@ export default class Cookie {
     let expirationDate = new Date(new Date().getTime() + minutesValid * 60000);
     document.cookie = `${
       this.AUTH_TOKEN
-    }=${value}; expires=${expirationDate.toUTCString()}`;
+    }=${value}; expires=${expirationDate.toUTCString()}; Path=/;`;
   }
 
   static deleteAuthToken() {

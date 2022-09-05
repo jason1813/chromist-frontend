@@ -19,7 +19,7 @@ export default function Threads(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (threadData.length > 0) {
+    if (threadData.length > 1) {
       return;
     }
 
