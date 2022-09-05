@@ -16,7 +16,6 @@ export default function Vote(props) {
         : voteStatusHit;
 
     props.setNewVoteStatus(newVoteStatus);
-
     setVoteScore(
       Constants.getNewVoteScore(voteScore, voteStatus, newVoteStatus)
     );
