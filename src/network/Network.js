@@ -6,12 +6,8 @@ import {
 } from '../pages/signin/SignInBackEndErrorDisplayer';
 
 export default class Network {
-  static isLoggedIn = function () {
-    return Cookie.getToken() ? true : false;
-  };
-
   static authVerification = function () {
-    if (!this.isLoggedIn()) {
+    if (!Cookie.hasToken()) {
       if (!alert('Your auth session has expired.')) {
         document.location.href = '../';
         return;
@@ -62,7 +58,7 @@ export default class Network {
   }
 
   static voteOnThread(threadID, voteStatus) {
-    if (!this.isLoggedIn) {
+    if (!Cookie.hasToken()) {
       return;
     }
     return new Promise((resolve, reject) => {
@@ -93,7 +89,7 @@ export default class Network {
   }
 
   static voteOnComment(commentID, voteStatus) {
-    if (!this.isLoggedIn) {
+    if (!Cookie.hasToken()) {
       return;
     }
     return new Promise((resolve, reject) => {
@@ -110,7 +106,7 @@ export default class Network {
     return new Promise((resolve, reject) => {
       NetworkCall.authIn(action, username, password)
         .then((data) => {
-          Cookie.setToken(`${data.token}`, 60);
+          Cookie.setToken(`${data.token}`, 1);
           resolve(data);
         })
         .catch((error) => {

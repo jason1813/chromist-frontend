@@ -1,6 +1,10 @@
 export default class Cookie {
   static TOKEN = 'token';
 
+  static hasToken() {
+    return this.getToken() ? true : false;
+  }
+
   static getToken() {
     return (
       document.cookie

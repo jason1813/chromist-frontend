@@ -132,8 +132,8 @@ export default class NetworkCall {
   }
 
   /*
-                                AUTH
-                                                                  */
+                              AUTH
+                                                                */
   static authIn(action, username, password) {
     return new Promise((resolve, reject) => {
       fetch(`${baseUrl}/auth/tokens?action=${action}`, {
