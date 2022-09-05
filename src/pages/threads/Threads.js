@@ -30,7 +30,7 @@ export default function Threads(props) {
       .catch((error) => {
         alert('NETWORK ERROR: A network error has occurred.');
       });
-  }, []);
+  }, [dispatch, threadData.length]);
 
   return (
     <div className="threads">

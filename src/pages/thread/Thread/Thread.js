@@ -16,6 +16,7 @@ import Constants from '../../../misc/js/Constants';
 export default function Thread(props) {
   const { id } = useParams();
   const location = useLocation();
+  const locationState = location.state;
 
   const allThreadData = useSelector(selectThreadData);
   const dispatch = useDispatch();
@@ -40,11 +41,13 @@ export default function Thread(props) {
   };
 
   const [singleThreadData, setSingleThreadData] = useState(
-    location.state ? hasLocationSetSingleThreadData(location.state.index) : null
+    locationState && allThreadData.length
+      ? hasLocationSetSingleThreadData(locationState.index)
+      : null
   );
 
   useEffect(() => {
-    if (location.state) return;
+    if (locationState && allThreadData.length) return;
 
     Network.getThread(id)
       .then((data) => {
@@ -61,7 +64,7 @@ export default function Thread(props) {
       .catch((error) => {
         alert('NETWORK ERROR: A network error has occurred.');
       });
-  }, [props.loggedIn, id, dispatch, location.state]);
+  }, [props.loggedIn, id, locationState, allThreadData]);
 
   return (
     <div className="thread">

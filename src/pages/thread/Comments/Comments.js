@@ -12,7 +12,7 @@ export default function Comments(props) {
     Network.getComments(props.threadID).then((data) => {
       setComments(data);
     });
-  }, []);
+  }, [props.threadID]);
 
   const commentComponents = comments.map((comment) => (
     <Comment key={comment.id} {...comment} loggedIn={props.loggedIn} />
