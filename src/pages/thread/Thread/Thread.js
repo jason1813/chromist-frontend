@@ -1,5 +1,5 @@
 import './Thread.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ThreadDetail from '../ThreadDetail/ThreadDetail';
 import Comments from '../Comments/Comments';
 import { useLocation, useParams } from 'react-router-dom';
@@ -22,26 +22,30 @@ export default function Thread(props) {
 
   const index = location.state.index;
 
-  const singleThreadData = {
-    ...allThreadData[index],
-    setNewVoteStatus: (voteStatus) => {
-      if (voteStatus === Constants.voteStatus.UP) {
-        dispatch(upvoteThread(index));
-      } else if (voteStatus === Constants.voteStatus.NEUTRAL) {
-        dispatch(neutralvoteThread(index));
-      } else if (voteStatus === Constants.voteStatus.DOWN) {
-        dispatch(downvoteThread(index));
-      }
-      Network.voteOnThread(id, voteStatus)
-        .then((data) => {})
-        .catch((error) => {});
-    },
-    loggedIn: props.loggedIn,
-  };
+  const [singleThreadData, setSingleThreadData] = useState();
+
+  useEffect(() => {
+    setSingleThreadData({
+      ...allThreadData[index],
+      setNewVoteStatus: (voteStatus) => {
+        if (voteStatus === Constants.voteStatus.UP) {
+          dispatch(upvoteThread(index));
+        } else if (voteStatus === Constants.voteStatus.NEUTRAL) {
+          dispatch(neutralvoteThread(index));
+        } else if (voteStatus === Constants.voteStatus.DOWN) {
+          dispatch(downvoteThread(index));
+        }
+        Network.voteOnThread(id, voteStatus)
+          .then((data) => {})
+          .catch((error) => {});
+      },
+      loggedIn: props.loggedIn,
+    });
+  }, [allThreadData, index, props.loggedIn, id, dispatch]);
 
   return (
     <div className="thread">
-      <ThreadDetail {...singleThreadData} />
+      {singleThreadData && <ThreadDetail {...singleThreadData} />}
       <Comments threadID={id} loggedIn={props.loggedIn} />
     </div>
   );
