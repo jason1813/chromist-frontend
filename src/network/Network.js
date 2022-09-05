@@ -24,6 +24,88 @@ export default class Network {
     LOGIN: 'login',
   };
 
+  /*
+                                THREADS
+                                                                  */
+  static getThreads() {
+    return new Promise((resolve, reject) => {
+      NetworkCall.getThreads()
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+  static postNewThread(title, description) {
+    this.authVerification();
+    return new Promise((resolve, reject) => {
+      NetworkCall.postNewThread(title, description)
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+  static getComments() {
+    return new Promise((resolve, reject) => {
+      NetworkCall.getComments()
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+  static postNewComment(threadID, text) {
+    this.authVerification();
+    return new Promise((resolve, reject) => {
+      NetworkCall.postNewComment(threadID, text)
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+  static voteOnThread(threadID, voteStatus) {
+    if (!this.isLoggedIn) {
+      return;
+    }
+    return new Promise((resolve, reject) => {
+      NetworkCall.voteOnThread(threadID, voteStatus)
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+  /*
+                            COMMENTS
+                                                              */
+  static getReplies() {
+    return new Promise((resolve, reject) => {
+      NetworkCall.getReplies()
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+  static postNewReply(commentID, text) {
+    this.authVerification();
+    return new Promise((resolve, reject) => {
+      NetworkCall.postNewReply(commentID, text)
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+  static voteOnComment(commentID, voteStatus) {
+    if (!this.isLoggedIn) {
+      return;
+    }
+    return new Promise((resolve, reject) => {
+      NetworkCall.voteOnComment(commentID, voteStatus)
+        .then((data) => resolve(data))
+        .catch((error) => reject(error));
+    });
+  }
+
+  /*
+                              AUTH
+                                                                */
   static authIn(action, username, password) {
     return new Promise((resolve, reject) => {
       NetworkCall.authIn(action, username, password)
@@ -56,83 +138,10 @@ export default class Network {
         .catch((error) => {
           //         if (error.token already expired) {
           //     Cookie.deleteToken()
-          //     resolve()
+          //     resolve({})
           // } else {
           reject(error);
         });
-    });
-  }
-
-  static getThreads() {
-    return new Promise((resolve, reject) => {
-      NetworkCall.getThreads()
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
-    });
-  }
-
-  static getReplies() {
-    return new Promise((resolve, reject) => {
-      NetworkCall.getReplies()
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
-    });
-  }
-
-  static getComments() {
-    return new Promise((resolve, reject) => {
-      NetworkCall.getComments()
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
-    });
-  }
-
-  static postNewThread(title, description) {
-    this.authVerification();
-    return new Promise((resolve, reject) => {
-      NetworkCall.postNewThread(title, description)
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
-    });
-  }
-
-  static voteOnThread(threadID, voteStatus) {
-    if (!this.isLoggedIn) {
-      return;
-    }
-    return new Promise((resolve, reject) => {
-      NetworkCall.voteOnThread(threadID, voteStatus)
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
-    });
-  }
-
-  static voteOnComment(commentID, voteStatus) {
-    if (!this.isLoggedIn) {
-      return;
-    }
-    return new Promise((resolve, reject) => {
-      NetworkCall.voteOnComment(commentID, voteStatus)
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
-    });
-  }
-
-  static postNewComment(threadID, text) {
-    this.authVerification();
-    return new Promise((resolve, reject) => {
-      NetworkCall.postNewComment(threadID, text)
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
-    });
-  }
-
-  static postNewReply(commentID, text) {
-    this.authVerification();
-    return new Promise((resolve, reject) => {
-      NetworkCall.postNewReply(commentID, text)
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
     });
   }
 }
