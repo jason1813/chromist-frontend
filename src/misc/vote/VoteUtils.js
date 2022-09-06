@@ -1,4 +1,4 @@
-export default class Constants {
+export default class VoteUtils {
   static voteStatus = {
     UP: 'up',
     NEUTRAL: 'neutral',

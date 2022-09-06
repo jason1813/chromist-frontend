@@ -11,7 +11,7 @@ import {
   downvoteThread,
 } from '../../threads/threadSlice';
 import Network from '../../../network/Network';
-import Constants from '../../../misc/js/Constants';
+import VoteUtils from '../../../misc/vote/VoteUtils';
 
 export default function Thread(props) {
   const { id } = useParams();
@@ -25,11 +25,11 @@ export default function Thread(props) {
     return {
       ...allThreadData[index],
       setNewVoteStatus: (voteStatus) => {
-        if (voteStatus === Constants.voteStatus.UP) {
+        if (voteStatus === VoteUtils.voteStatus.UP) {
           dispatch(upvoteThread(index));
-        } else if (voteStatus === Constants.voteStatus.NEUTRAL) {
+        } else if (voteStatus === VoteUtils.voteStatus.NEUTRAL) {
           dispatch(neutralvoteThread(index));
-        } else if (voteStatus === Constants.voteStatus.DOWN) {
+        } else if (voteStatus === VoteUtils.voteStatus.DOWN) {
           dispatch(downvoteThread(index));
         }
         Network.voteOnThread(id, voteStatus)

@@ -12,7 +12,7 @@ import {
   setThreadData,
 } from './threadSlice';
 import Network from '../../network/Network';
-import Constants from '../../misc/js/Constants';
+import VoteUtils from '../../misc/vote/VoteUtils';
 
 export default function Threads(props) {
   const threadData = useSelector(selectThreadData);
@@ -39,11 +39,11 @@ export default function Threads(props) {
           key={threadDataItem.id}
           loggedIn={props.loggedIn}
           setNewVoteStatus={(newVoteStatus) => {
-            if (newVoteStatus === Constants.voteStatus.UP) {
+            if (newVoteStatus === VoteUtils.voteStatus.UP) {
               dispatch(upvoteThread(index));
-            } else if (newVoteStatus === Constants.voteStatus.NEUTRAL) {
+            } else if (newVoteStatus === VoteUtils.voteStatus.NEUTRAL) {
               dispatch(neutralvoteThread(index));
-            } else if (newVoteStatus === Constants.voteStatus.DOWN) {
+            } else if (newVoteStatus === VoteUtils.voteStatus.DOWN) {
               dispatch(downvoteThread(index));
             }
 

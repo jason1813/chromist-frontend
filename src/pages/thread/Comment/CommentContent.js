@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Constants from '../../../misc/js/Constants';
+import VoteUtils from '../../../misc/vote/VoteUtils';
 import Network from '../../../network/Network';
 import CreateReply from '../CreateReply/CreateReply';
 import SideBySideVote from '../../../misc/vote/SideBySideVote/SideBySideVote';
@@ -14,7 +14,7 @@ export default function CommentContent(props) {
 
   const moreRepliesCount = replyCount - replies.length;
 
-  const nonUserVoteScore = Constants.getNonUserVoteScore(
+  const nonUserVoteScore = VoteUtils.getNonUserVoteScore(
     props.voteScore,
     props.voteStatus
   );
@@ -32,7 +32,7 @@ export default function CommentContent(props) {
             }
 
             setVoteScore(
-              Constants.getVoteScore(nonUserVoteScore, newVoteStatus)
+              VoteUtils.getVoteScore(nonUserVoteScore, newVoteStatus)
             );
             setVoteStatus(newVoteStatus);
 

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import Constants from '../../misc/js/Constants';
+import VoteUtils from '../../misc/vote/VoteUtils';
 
 export const threadSlice = createSlice({
   name: 'thread',
@@ -16,56 +16,56 @@ export const threadSlice = createSlice({
     upvoteThread: (state, action) => {
       const oldVoteStatus = state.threadData[action.payload].voteStatus;
 
-      if (oldVoteStatus === Constants.voteStatus.UP) {
+      if (oldVoteStatus === VoteUtils.voteStatus.UP) {
         return;
       }
 
       const oldVoteScore = state.threadData[action.payload].voteScore;
-      const newVoteScore = Constants.getNewVoteScore(
+      const newVoteScore = VoteUtils.getNewVoteScore(
         oldVoteScore,
         oldVoteStatus,
-        Constants.voteStatus.UP
+        VoteUtils.voteStatus.UP
       );
 
       state.threadData[action.payload].voteScore = newVoteScore;
-      state.threadData[action.payload].voteStatus = Constants.voteStatus.UP;
+      state.threadData[action.payload].voteStatus = VoteUtils.voteStatus.UP;
     },
 
     downvoteThread: (state, action) => {
       const oldVoteStatus = state.threadData[action.payload].voteStatus;
 
-      if (oldVoteStatus === Constants.voteStatus.DOWN) {
+      if (oldVoteStatus === VoteUtils.voteStatus.DOWN) {
         return;
       }
 
       const oldVoteScore = state.threadData[action.payload].voteScore;
-      const newVoteScore = Constants.getNewVoteScore(
+      const newVoteScore = VoteUtils.getNewVoteScore(
         oldVoteScore,
         oldVoteStatus,
-        Constants.voteStatus.DOWN
+        VoteUtils.voteStatus.DOWN
       );
 
       state.threadData[action.payload].voteScore = newVoteScore;
-      state.threadData[action.payload].voteStatus = Constants.voteStatus.DOWN;
+      state.threadData[action.payload].voteStatus = VoteUtils.voteStatus.DOWN;
     },
 
     neutralvoteThread: (state, action) => {
       const oldVoteStatus = state.threadData[action.payload].voteStatus;
 
-      if (oldVoteStatus === Constants.voteStatus.NEUTRAL) {
+      if (oldVoteStatus === VoteUtils.voteStatus.NEUTRAL) {
         return;
       }
 
       const oldVoteScore = state.threadData[action.payload].voteScore;
-      const newVoteScore = Constants.getNewVoteScore(
+      const newVoteScore = VoteUtils.getNewVoteScore(
         oldVoteScore,
         oldVoteStatus,
-        Constants.voteStatus.NEUTRAL
+        VoteUtils.voteStatus.NEUTRAL
       );
 
       state.threadData[action.payload].voteScore = newVoteScore;
       state.threadData[action.payload].voteStatus =
-        Constants.voteStatus.NEUTRAL;
+        VoteUtils.voteStatus.NEUTRAL;
     },
   },
 });
