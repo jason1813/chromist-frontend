@@ -66,7 +66,7 @@ export default function CommentContent(props) {
           }}
         />
       )}
-      {replies.length !== 0 && (
+      {replies.length > 0 && (
         <div className="replies">
           {replies.map((reply) => (
             <Comment

@@ -35,7 +35,6 @@ function SignInForm(props) {
 
     Network.authIn(action, username, password)
       .then((data) => {
-        // props.setLoginStatus(true)
         document.location.href = '../';
       })
       .catch((error) => {

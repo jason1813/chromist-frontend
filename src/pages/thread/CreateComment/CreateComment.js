@@ -4,7 +4,7 @@ import { StyledSubmitButton } from '../../../misc/js/StyledComponents';
 import Network from '../../../network/Network';
 
 function CreateComment(props) {
-  const [commentText, setCommentText] = useState(``);
+  const [commentText, setCommentText] = useState('');
   const [disableCreateComment, setDisableCreateComment] = useState(false);
 
   const handleSubmit = (event) => {
