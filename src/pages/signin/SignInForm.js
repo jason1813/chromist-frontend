@@ -5,12 +5,12 @@ import SignInFrontEndMessageDisplayer from './SignInFrontEndMessageDisplayer';
 import Network from '../../network/Network';
 
 function SignInForm(props) {
-  const [username, setUsername] = useState(``);
-  const [password, setPassword] = useState(``);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const [loginError, setError] = useState({
-    usernameError: ``,
-    passwordError: ``,
+    usernameError: '',
+    passwordError: '',
   });
 
   const clearErrors = () => {

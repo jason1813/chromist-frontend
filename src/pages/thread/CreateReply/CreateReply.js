@@ -20,7 +20,7 @@ export default function CreateReply(props) {
         props.addReply(data);
       })
       .catch((error) => {
-        alert(`NETWORK ERROR: Reply could not be posted`);
+        alert('NETWORK ERROR: Reply could not be posted');
         setDisableSubmitButton(false);
       });
   };

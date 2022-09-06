@@ -19,7 +19,7 @@ function CreateComment(props) {
         setCommentText('');
       })
       .catch((error) => {
-        alert(`NETWORK ERROR: Comment could not be posted`);
+        alert('NETWORK ERROR: Comment could not be posted');
         setDisableCreateComment(false);
       });
   };
