@@ -9,36 +9,20 @@ export default function CommentContent(props) {
   const [showCreateReply, setShowCreateReply] = useState(false);
   const [replies, setReplies] = useState([]);
   const [replyCount, setReplyCount] = useState(props.replyCount);
-  const [voteStatus, setVoteStatus] = useState(props.voteStatus);
-  const [voteScore, setVoteScore] = useState(props.voteScore);
 
   const moreRepliesCount = replyCount - replies.length;
-
-  const nonUserVoteScore = VoteUtils.getNonUserVoteScore(
-    props.voteScore,
-    props.voteStatus
-  );
 
   return (
     <div className="comment-content">
       <p className="comment-text">{props.text}</p>
       <div className="comment-vote-reply">
         <SideBySideVote
-          voteStatus={voteStatus}
-          voteScore={voteScore}
+          voteStatus={props.voteStatus}
+          nonUserVoteScore={props.voteScore}
           setNewVoteStatus={(newVoteStatus) => {
-            if (newVoteStatus === voteStatus) {
-              return;
-            }
-
-            setVoteScore(
-              VoteUtils.getVoteScore(nonUserVoteScore, newVoteStatus)
-            );
-            setVoteStatus(newVoteStatus);
-
             Network.voteOnComment(props.id, newVoteStatus)
-              .then((data) => {})
-              .catch((error) => {});
+              .then(() => {})
+              .catch(() => {});
           }}
           loggedIn={props.loggedIn}
         />

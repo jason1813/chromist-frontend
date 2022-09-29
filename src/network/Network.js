@@ -67,7 +67,7 @@ export default class Network {
 
   static voteOnThread(threadID, voteStatus) {
     if (!Cookie.hasAuthToken()) {
-      return;
+      return new Promise((_resolve, _reject) => {});
     }
     return new Promise((resolve, reject) => {
       NetworkCall.voteOnThread(threadID, voteStatus)
@@ -98,7 +98,7 @@ export default class Network {
 
   static voteOnComment(commentID, voteStatus) {
     if (!Cookie.hasAuthToken()) {
-      return;
+      return new Promise((_resolve, _reject) => {});
     }
     return new Promise((resolve, reject) => {
       NetworkCall.voteOnComment(commentID, voteStatus)

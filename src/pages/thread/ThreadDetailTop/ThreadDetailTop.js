@@ -20,7 +20,7 @@ export default function ThreadDetailTop(props) {
         </div>
       </div>
       <SideBySideVote
-        voteScore={props.voteScore}
+        nonUserVoteScore={props.nonUserVoteScore}
         voteStatus={props.voteStatus}
         setNewVoteStatus={props.setNewVoteStatus}
         loggedIn={props.loggedIn}

@@ -15,14 +15,12 @@ export default function ListThread(props) {
 
         <div className="ListThread-info">
           <p className="ListThread-author">{props.author.username}</p>
-          <p className="ListThread-number-of-comments">
-            {props.numberOfComments} comments
-          </p>
+          <p className="ListThread-number-of-comments">{props.numberOfComments} comments</p>
         </div>
       </Link>
 
       <VerticalVote
-        voteScore={props.voteScore}
+        nonUserVoteScore={props.voteScore}
         voteStatus={props.voteStatus}
         setNewVoteStatus={props.setNewVoteStatus}
         loggedIn={props.loggedIn}
