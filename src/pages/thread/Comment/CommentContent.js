@@ -10,14 +10,9 @@ export default function CommentContent(props) {
   const [replies, setReplies] = useState([]);
   const [replyCount, setReplyCount] = useState(props.replyCount);
   const [voteStatus, setVoteStatus] = useState(props.voteStatus);
-  const [voteScore, setVoteScore] = useState(props.voteScore);
+  const [voteScore, setVoteScore] = useState(props.nonUserVoteScore + props.voteStatus);
 
   const moreRepliesCount = replyCount - replies.length;
-
-  const nonUserVoteScore = VoteUtils.getNonUserVoteScore(
-    props.voteScore,
-    props.voteStatus
-  );
 
   return (
     <div className="comment-content">
@@ -31,9 +26,7 @@ export default function CommentContent(props) {
               return;
             }
 
-            setVoteScore(
-              VoteUtils.getVoteScore(nonUserVoteScore, newVoteStatus)
-            );
+            setVoteScore(props.nonUserVoteScore + newVoteStatus);
             setVoteStatus(newVoteStatus);
 
             Network.voteOnComment(props.id, newVoteStatus)

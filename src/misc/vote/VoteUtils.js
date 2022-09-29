@@ -1,8 +1,8 @@
 export default class VoteUtils {
   static voteStatus = {
-    UP: 'up',
-    NEUTRAL: 'neutral',
-    DOWN: 'down',
+    UP: 1,
+    NEUTRAL: 0,
+    DOWN: -1,
   };
 
   static getNonUserVoteScore = (voteScore, voteStatus) => {
@@ -30,10 +30,7 @@ export default class VoteUtils {
       return oldVoteScore;
     }
 
-    const nonUserVoteScore = this.getNonUserVoteScore(
-      oldVoteScore,
-      oldVoteStatus
-    );
+    const nonUserVoteScore = this.getNonUserVoteScore(oldVoteScore, oldVoteStatus);
 
     return this.getVoteScore(nonUserVoteScore, newVoteStatus);
   };

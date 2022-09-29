@@ -6,7 +6,7 @@ export default function ThreadDetail(props) {
   const threadDetailTopProps = {
     author: props.author,
     dateCreated: props.dateCreated,
-    voteScore: props.voteScore,
+    nonUserVoteScore: props.nonUserVoteScore,
     voteStatus: props.voteStatus,
     setNewVoteStatus: props.setNewVoteStatus,
     loggedIn: props.loggedIn,

@@ -3,7 +3,7 @@ import VoteUtils from './VoteUtils';
 
 export default function Vote(props) {
   const [voteStatus, setVoteStatus] = useState(props.voteStatus);
-  const [voteScore, setVoteScore] = useState(props.voteScore);
+  const [voteScore, setVoteScore] = useState(props.nonUserVoteScore + props.voteStatus);
 
   const voteHit = (voteStatusHit) => {
     if (!props.loggedIn) {
@@ -11,14 +11,10 @@ export default function Vote(props) {
     }
 
     const newVoteStatus =
-      voteStatusHit === voteStatus
-        ? VoteUtils.voteStatus.NEUTRAL
-        : voteStatusHit;
+      voteStatusHit === voteStatus ? VoteUtils.voteStatus.NEUTRAL : voteStatusHit;
 
     props.setNewVoteStatus(newVoteStatus);
-    setVoteScore(
-      VoteUtils.getNewVoteScore(voteScore, voteStatus, newVoteStatus)
-    );
+    setVoteScore(props.nonUserVoteScore + newVoteStatus);
     setVoteStatus(newVoteStatus);
   };
 
