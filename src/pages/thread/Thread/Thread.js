@@ -33,8 +33,8 @@ export default function Thread(props) {
           dispatch(downvoteThread(index));
         }
         Network.voteOnThread(id, voteStatus)
-          .then((data) => {})
-          .catch((error) => {});
+          .then(() => {})
+          .catch(() => {});
       },
       loggedIn: props.loggedIn,
     };
@@ -55,8 +55,8 @@ export default function Thread(props) {
           ...data,
           setNewVoteStatus: (voteStatus) => {
             Network.voteOnThread(id, voteStatus)
-              .then((data) => {})
-              .catch((error) => {});
+              .then(() => {})
+              .catch(() => {});
           },
           loggedIn: props.loggedIn,
         });

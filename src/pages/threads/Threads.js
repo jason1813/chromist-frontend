@@ -48,8 +48,8 @@ export default function Threads(props) {
             }
 
             Network.voteOnThread(threadDataItem.id, newVoteStatus)
-              .then((data) => {})
-              .catch((error) => {});
+              .then(() => {})
+              .catch(() => {});
           }}
           index={index}
           {...threadDataItem}
