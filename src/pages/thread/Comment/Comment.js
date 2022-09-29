@@ -36,9 +36,7 @@ export default function Comment(props) {
       <div>
         <div className="comment-author-date">
           <p className="comment-author">{props.author.username}</p>
-          <p className="comment-date">
-            {DateFormatter.timeSince(new Date(props.dateCreated))}
-          </p>
+          <p className="comment-date">{DateFormatter.timeSince(new Date(props.createdAt))}</p>
         </div>
         {expandContent && <CommentContent {...props} />}
       </div>

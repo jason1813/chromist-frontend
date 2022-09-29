@@ -60,7 +60,7 @@ export default function CommentContent(props) {
               voteStatus={reply.voteStatus}
               voteScore={reply.voteScore}
               replyCount={reply.replyCount}
-              dateCreated={reply.dateCreated}
+              createdAt={reply.createdAt}
               replies={[]}
               isReply={true}
               loggedIn={props.loggedIn}

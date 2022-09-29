@@ -5,7 +5,7 @@ import ThreadDetailTop from '../ThreadDetailTop/ThreadDetailTop';
 export default function ThreadDetail(props) {
   const threadDetailTopProps = {
     author: props.author,
-    dateCreated: props.dateCreated,
+    createdAt: props.createdAt,
     nonUserVoteScore: props.voteScore,
     voteStatus: props.voteStatus,
     setNewVoteStatus: props.setNewVoteStatus,

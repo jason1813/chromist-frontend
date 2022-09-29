@@ -15,7 +15,7 @@ export default function ThreadDetailTop(props) {
         <div className="thread-detail-top-author-date">
           <p className="thread-detail-top-author">{props.author.username}</p>
           <p className="thread-detail-top-date">
-            {DateFormatter.isoToLongDateString(props.dateCreated)}
+            {DateFormatter.isoToLongDateString(props.createdAt)}
           </p>
         </div>
       </div>
