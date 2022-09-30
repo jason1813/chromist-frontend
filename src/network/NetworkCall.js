@@ -1,36 +1,45 @@
 import Cookie from './Cookie';
 
-const baseUrl = 'http://0.0.0.0:3001/v1';
+const baseUrl = 'http://0.0.0.0:3001';
 
 export default class NetworkCall {
-  /*
-                                THREADS
-                                                                  */
-  static getThreads() {
+  static basicFetch(fetchString, fetchObject = {}) {
+    const authToken = Cookie.getAuthToken();
+    const authHeaders = authToken
+      ? {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      : {};
+
     return new Promise((resolve, reject) => {
-      fetch(`${baseUrl}/threads`)
+      fetch(fetchString, {
+        ...authHeaders,
+        ...fetchObject,
+      })
+        .then(this.handleErrors)
         .then((res) => res.json())
         .then((data) => resolve(data))
         .catch((error) => reject(error));
     });
   }
 
+  /*
+                                THREADS
+                                                                  */
+  static getThreads() {
+    return this.basicFetch(`${baseUrl}/threads`);
+  }
+
   static postNewThread(title, description) {
-    return new Promise((resolve, reject) => {
-      fetch(`${baseUrl}/threads`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${Cookie.getAuthToken()}`,
-        },
-        body: JSON.stringify({
-          title: title,
-          description: description,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
+    return this.basicFetch(`${baseUrl}/threads`, {
+      method: 'POST',
+      body: JSON.stringify({
+        title: title,
+        description: description,
+      }),
     });
   }
 
@@ -45,9 +54,7 @@ export default class NetworkCall {
 
   static getComments(threadID, startIndex = 0, count = 10) {
     return new Promise((resolve, reject) => {
-      fetch(
-        `${baseUrl}/threads/${threadID}/comments?startIndex=${startIndex}&count=${count}`
-      )
+      fetch(`${baseUrl}/threads/${threadID}/comments?startIndex=${startIndex}&count=${count}`)
         .then((res) => res.json())
         .then((data) => resolve(data))
         .catch((error) => reject(error));
@@ -95,9 +102,7 @@ export default class NetworkCall {
                                                                   */
   static getReplies(commentID, startIndex = 0, count = 5) {
     return new Promise((resolve, reject) => {
-      fetch(
-        `${baseUrl}/comments/${commentID}/replies?startIndex=${startIndex}&count=${count}`
-      )
+      fetch(`${baseUrl}/comments/${commentID}/replies?startIndex=${startIndex}&count=${count}`)
         .then((res) => res.json())
         .then((data) => resolve(data))
         .catch((error) => reject(error));
@@ -153,7 +158,12 @@ export default class NetworkCall {
           password: password,
         }),
       })
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) {
+            return Promise.reject(res);
+          }
+          return res.json();
+        })
         .then((data) => resolve(data))
         .catch((error) => reject(error));
     });
@@ -168,9 +178,7 @@ export default class NetworkCall {
           Authorization: `Bearer ${Cookie.getAuthToken()}`,
         },
       })
-        .then((res) => {
-          res.json();
-        })
+        .then((res) => res.json())
         .then((data) => resolve(data))
         .catch((error) => reject(error));
     });

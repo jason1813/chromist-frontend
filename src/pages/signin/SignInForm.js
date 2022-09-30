@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import { StyledSubmitButton } from '../../misc/js/StyledComponents';
 import SignInFrontEndMessageDisplayer from './SignInFrontEndMessageDisplayer';
 import Network from '../../network/Network';
+import {
+  LoginBackendErrorDisplayer,
+  SignUpBackEndErrorDisplayer,
+} from './SignInBackEndErrorDisplayer';
 
 function SignInForm(props) {
   const [username, setUsername] = useState('');
@@ -29,9 +33,7 @@ function SignInForm(props) {
       return;
     }
 
-    const action = props.signup
-      ? Network.authinAction.SIGNUP
-      : Network.authinAction.LOGIN;
+    const action = props.signup ? Network.authinAction.SIGNUP : Network.authinAction.LOGIN;
 
     Network.authIn(action, username, password)
       .then((data) => {
@@ -40,7 +42,7 @@ function SignInForm(props) {
       .catch((error) => {
         if (error.networkError) {
           alert(`NETWORK ERROR: ${error.networkError}`);
-        } else if (error.usernameError) {
+        } else {
           setError(error);
         }
       });
