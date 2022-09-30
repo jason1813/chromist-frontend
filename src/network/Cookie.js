@@ -1,3 +1,5 @@
+window.Buffer = window.Buffer || require('buffer').Buffer;
+
 export default class Cookie {
   static AUTH_TOKEN = 'auth_token';
 
@@ -6,22 +8,18 @@ export default class Cookie {
   }
 
   static getAuthToken() {
-    return (
-      document.cookie
-        .match('(^|;)\\s*' + this.AUTH_TOKEN + '\\s*=\\s*([^;]+)')
-        ?.pop() || ''
-    );
+    return document.cookie.match('(^|;)\\s*' + this.AUTH_TOKEN + '\\s*=\\s*([^;]+)')?.pop() || '';
   }
 
-  static setAuthToken(value, minutesValid = 60) {
-    let expirationDate = new Date(new Date().getTime() + minutesValid * 60000);
+  static setAuthToken(token) {
+    const jwt = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+    const expirationDate = new Date(jwt.exp * 1000);
     document.cookie = `${
       this.AUTH_TOKEN
-    }=${value}; expires=${expirationDate.toUTCString()}; Path=/;`;
+    }=${token}; expires=${expirationDate.toUTCString()}; Path=/;`;
   }
 
   static deleteAuthToken() {
-    document.cookie =
-      this.AUTH_TOKEN + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = this.AUTH_TOKEN + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 }

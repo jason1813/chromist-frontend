@@ -114,7 +114,7 @@ export default class Network {
     return new Promise((resolve, reject) => {
       NetworkCall.authIn(action, username, password)
         .then((data) => {
-          Cookie.setAuthToken(`${data.token}`, 1);
+          Cookie.setAuthToken(data.access_token);
           resolve(data);
         })
         .catch((error) => {
