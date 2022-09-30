@@ -3,10 +3,6 @@ import React, { useState } from 'react';
 import { StyledSubmitButton } from '../../misc/js/StyledComponents';
 import SignInFrontEndMessageDisplayer from './SignInFrontEndMessageDisplayer';
 import Network from '../../network/Network';
-import {
-  LoginBackendErrorDisplayer,
-  SignUpBackEndErrorDisplayer,
-} from './SignInBackEndErrorDisplayer';
 
 function SignInForm(props) {
   const [username, setUsername] = useState('');
