@@ -2,10 +2,14 @@ import './CreateComment.css';
 import React, { useState } from 'react';
 import { StyledSubmitButton } from '../../../misc/js/StyledComponents';
 import Network from '../../../network/Network';
+import { useDispatch } from 'react-redux';
+import { increaseCommentCountOnThread } from '../../threads/threadSlice';
 
 function CreateComment(props) {
   const [commentText, setCommentText] = useState('');
   const [disableCreateComment, setDisableCreateComment] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,6 +19,7 @@ function CreateComment(props) {
     Network.postNewComment(props.threadID, commentText)
       .then((data) => {
         props.addComment(data);
+        dispatch(increaseCommentCountOnThread(props.threadIndex));
         setDisableCreateComment(false);
         setCommentText('');
       })

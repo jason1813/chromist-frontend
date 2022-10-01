@@ -26,6 +26,7 @@ export default function Comments(props) {
             setComments([data, ...comments]);
           }}
           threadID={props.threadID}
+          threadIndex={props.threadIndex}
         />
       )}
 

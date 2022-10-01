@@ -13,6 +13,10 @@ export const threadSlice = createSlice({
       state.threadData.unshift(action.payload);
     },
 
+    increaseCommentCountOnThread: (state, action) => {
+      state.threadData[action.payload].numberOfComments += 1;
+    },
+
     upvoteThread: (state, action) => {
       state.threadData[action.payload].voteStatus = VoteUtils.voteStatus.UP;
     },
@@ -27,8 +31,14 @@ export const threadSlice = createSlice({
   },
 });
 
-export const { setThreadData, addThread, upvoteThread, downvoteThread, neutralvoteThread } =
-  threadSlice.actions;
+export const {
+  setThreadData,
+  addThread,
+  upvoteThread,
+  downvoteThread,
+  neutralvoteThread,
+  increaseCommentCountOnThread,
+} = threadSlice.actions;
 
 export const selectThreadData = (state) => state.thread.threadData;
 
