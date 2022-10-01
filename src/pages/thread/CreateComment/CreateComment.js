@@ -12,7 +12,7 @@ function CreateComment(props) {
 
     setDisableCreateComment(true);
 
-    Network.postNewComment(commentText)
+    Network.postNewComment(props.threadID, commentText)
       .then((data) => {
         props.addComment(data);
         setDisableCreateComment(false);

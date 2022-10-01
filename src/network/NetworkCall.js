@@ -11,7 +11,7 @@ export default class NetworkCall {
   }
 
   static postNewThread(title, description) {
-    return this.basicFetch(`${baseUrl}/threads`, {
+    return basicFetch(`${baseUrl}/threads`, {
       method: 'POST',
       body: JSON.stringify({
         title: title,
@@ -38,7 +38,7 @@ export default class NetworkCall {
   }
 
   static voteOnThread(threadID, voteStatus) {
-    return basicFetch(`${baseUrl}/threads/${threadID}/voteStatus`, {
+    return basicFetch(`${baseUrl}/threads/${threadID}/vote`, {
       method: 'POST',
       body: JSON.stringify({
         voteStatus: voteStatus,
@@ -49,13 +49,8 @@ export default class NetworkCall {
   /*
                                 COMMENTS
                                                                   */
-  static getReplies(commentID, startIndex = 0, count = 5) {
-    return new Promise((resolve, reject) => {
-      fetch(`${baseUrl}/comments/${commentID}/replies?startIndex=${startIndex}&count=${count}`)
-        .then((res) => res.json())
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
-    });
+  static getReplies(commentID, startIndex = 0) {
+    return basicFetch(`${baseUrl}/comments/${commentID}/replies?startIndex=${startIndex}`);
   }
 
   static postNewReply(commentID, text) {
@@ -68,7 +63,7 @@ export default class NetworkCall {
   }
 
   static voteOnComment(commentID, voteStatus) {
-    return basicFetch(`${baseUrl}/comments/${commentID}/voteStatus`, {
+    return basicFetch(`${baseUrl}/comments/${commentID}/vote`, {
       method: 'POST',
       body: JSON.stringify({
         voteStatus: voteStatus,

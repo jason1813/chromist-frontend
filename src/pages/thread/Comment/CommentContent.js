@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import VoteUtils from '../../../misc/vote/VoteUtils';
 import Network from '../../../network/Network';
 import CreateReply from '../CreateReply/CreateReply';
 import SideBySideVote from '../../../misc/vote/SideBySideVote/SideBySideVote';
@@ -8,7 +7,7 @@ import Comment from './Comment';
 export default function CommentContent(props) {
   const [showCreateReply, setShowCreateReply] = useState(false);
   const [replies, setReplies] = useState([]);
-  const [replyCount, setReplyCount] = useState(props.replyCount);
+  const [replyCount, setReplyCount] = useState(props.numberOfReplies);
 
   const moreRepliesCount = replyCount - replies.length;
 
@@ -54,13 +53,8 @@ export default function CommentContent(props) {
         <div className="replies">
           {replies.map((reply) => (
             <Comment
+              {...reply}
               key={reply.id}
-              author={reply.author.username}
-              text={reply.text}
-              voteStatus={reply.voteStatus}
-              voteScore={reply.voteScore}
-              replyCount={reply.replyCount}
-              createdAt={reply.createdAt}
               replies={[]}
               isReply={true}
               loggedIn={props.loggedIn}
