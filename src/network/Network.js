@@ -128,24 +128,6 @@ export default class Network {
   }
 
   static authOut() {
-    return new Promise((resolve, reject) => {
-      if (!Cookie.getAuthToken()) {
-        resolve({});
-        return;
-      }
-
-      NetworkCall.authOut()
-        .then((data) => {
-          Cookie.deleteAuthToken();
-          resolve(data);
-        })
-        .catch((error) => {
-          //         if (error.token already expired) {
-          //     Cookie.deleteAuthToken()
-          //     resolve({})
-          // } else {
-          reject(error);
-        });
-    });
+    Cookie.deleteAuthToken();
   }
 }

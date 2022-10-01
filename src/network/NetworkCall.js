@@ -1,4 +1,3 @@
-import Cookie from './Cookie';
 import basicFetch from './NetworkCallUtils';
 
 const baseUrl = 'http://0.0.0.0:3001';
@@ -88,16 +87,6 @@ export default class NetworkCall {
         username: username,
         password: password,
       }),
-    });
-  }
-
-  static authOut() {
-    return basicFetch(`${baseUrl}/auth/tokens`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${Cookie.getAuthToken()}`,
-      },
     });
   }
 }

@@ -17,13 +17,8 @@ export default function ProfileMenu(props) {
 
   const handleLogout = (event) => {
     event.preventDefault();
-    Network.authOut()
-      .then((data) => {
-        document.location.href = '../';
-      })
-      .catch((error) => {
-        alert(`NETWORK ERROR: Could not log you out`);
-      });
+    Network.authOut();
+    document.location.href = '../';
   };
 
   return (
