@@ -75,3 +75,7 @@
   color: var(--usafa);
   margin-left: 15px;
 }
+
+.comment-hidden {
+  display: none;
+}

@@ -18,7 +18,7 @@ export default function Comments(props) {
     <Comment key={comment.id} {...comment} loggedIn={props.loggedIn} />
   ));
 
-  if (!comments.length) {
+  if (!comments.length && !props.loggedIn) {
     return;
   }
 

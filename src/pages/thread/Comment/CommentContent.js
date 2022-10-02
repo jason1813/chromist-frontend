@@ -44,7 +44,7 @@ export default function CommentContent(props) {
           id={props.id}
           addReply={(data) => {
             setReplies([data, ...replies]);
-            setReplyCount(replyCount + 1);
+            setReplyCount((replyCount) => replyCount + 1);
             setShowCreateReply(false);
           }}
         />
