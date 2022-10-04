@@ -3,10 +3,10 @@ import VoteUtils from '../../misc/vote/VoteUtils';
 
 export const threadSlice = createSlice({
   name: 'thread',
-  initialState: { threadData: [] },
+  initialState: { threadData: [], moreThreadsExist: true },
   reducers: {
-    setThreadData: (state, action) => {
-      state.threadData = action.payload;
+    addThreads: (state, action) => {
+      state.threadData.push(...action.payload);
     },
 
     addThread: (state, action) => {
@@ -28,18 +28,24 @@ export const threadSlice = createSlice({
     neutralvoteThread: (state, action) => {
       state.threadData[action.payload].voteStatus = VoteUtils.voteStatus.NEUTRAL;
     },
+
+    setMoreThreadsExist: (state, action) => {
+      state.moreThreadsExist = action.payload;
+    },
   },
 });
 
 export const {
-  setThreadData,
+  addThreads,
   addThread,
   upvoteThread,
   downvoteThread,
   neutralvoteThread,
   increaseCommentCountOnThread,
+  setMoreThreadsExist,
 } = threadSlice.actions;
 
 export const selectThreadData = (state) => state.thread.threadData;
+export const selectMoreThreadsExist = (state) => state.thread.moreThreadsExist;
 
 export default threadSlice.reducer;

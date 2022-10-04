@@ -23,9 +23,9 @@ export default class Network {
   /*
                                 THREADS
                                                                   */
-  static getThreads() {
+  static getThreads(startIndex = 0) {
     return new Promise((resolve, reject) => {
-      NetworkCall.getThreads()
+      NetworkCall.getThreads(startIndex)
         .then((data) => resolve(data))
         .catch((error) => reject(error));
     });

@@ -6,8 +6,8 @@ export default class NetworkCall {
   /*
                                 THREADS
                                                                   */
-  static getThreads() {
-    return basicFetch(`${baseUrl}/threads`);
+  static getThreads(startIndex) {
+    return basicFetch(`${baseUrl}/threads?startIndex=${startIndex}`);
   }
 
   static postNewThread(title, description) {

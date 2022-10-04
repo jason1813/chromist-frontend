@@ -1,36 +1,48 @@
 import './Threads.css';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import React from 'react';
 import ListThread from './ListThread.js';
-import BottomBar from './BottomBar.js';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectThreadData,
   upvoteThread,
   neutralvoteThread,
   downvoteThread,
-  setThreadData,
+  addThreads,
+  selectMoreThreadsExist,
+  setMoreThreadsExist,
 } from './threadSlice';
 import Network from '../../network/Network';
 import VoteUtils from '../../misc/vote/VoteUtils';
+import { StyledButton } from '../../misc/js/StyledComponents';
 
 export default function Threads(props) {
   const threadData = useSelector(selectThreadData);
   const dispatch = useDispatch();
+  const moreThreadsExist = useSelector(selectMoreThreadsExist);
 
-  useEffect(() => {
-    if (threadData.length > 1) {
-      return;
-    }
-
-    Network.getThreads()
+  const getThreads = useCallback(() => {
+    Network.getThreads(threadData.length)
       .then((data) => {
-        dispatch(setThreadData(data));
+        dispatch(addThreads(data));
+        dispatch(setMoreThreadsExist(data.length === 25));
       })
       .catch((error) => {
         alert('NETWORK ERROR: A network error has occurred.');
       });
   }, [dispatch, threadData.length]);
+
+  const loadMoreThreads = (event) => {
+    event.preventDefault();
+    getThreads();
+  };
+
+  useEffect(() => {
+    if (threadData.length > 1) {
+      return;
+    }
+    getThreads();
+  }, [getThreads, threadData.length]);
 
   return (
     <div className="threads">
@@ -55,7 +67,11 @@ export default function Threads(props) {
           {...threadDataItem}
         />
       ))}
-      <BottomBar isNext={false} isPrevious={false} />
+      {moreThreadsExist && (
+        <StyledButton primary className="threads-load-more" onClick={loadMoreThreads}>
+          LOAD MORE
+        </StyledButton>
+      )}
     </div>
   );
 }
