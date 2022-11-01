@@ -69,7 +69,7 @@ export default function Thread(props) {
   return (
     <div className="thread">
       {singleThreadData && <ThreadDetail {...singleThreadData} />}
-      <Comments threadID={id} loggedIn={props.loggedIn} threadIndex={locationState.index} />
+      <Comments threadID={id} loggedIn={props.loggedIn} threadIndex={locationState?.index} />
     </div>
   );
 }

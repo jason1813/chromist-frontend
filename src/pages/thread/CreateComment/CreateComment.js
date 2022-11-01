@@ -19,7 +19,10 @@ function CreateComment(props) {
     Network.postNewComment(props.threadID, commentText)
       .then((data) => {
         props.addComment(data);
-        dispatch(increaseCommentCountOnThread(props.threadIndex));
+
+        if (props.threadIndex) {
+          dispatch(increaseCommentCountOnThread(props.threadIndex));
+        }
         setDisableCreateComment(false);
         setCommentText('');
       })
