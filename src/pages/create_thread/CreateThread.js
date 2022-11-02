@@ -1,9 +1,6 @@
 import './CreateThread.css';
 import React, { useState } from 'react';
-import {
-  StyledSubmitButton,
-  StyledCancelButton,
-} from '../../misc/js/StyledComponents';
+import { StyledSubmitButton, StyledCancelButton } from '../../misc/js/StyledComponents';
 import Network from '../../network/Network';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -37,7 +34,7 @@ export default function CreateThread() {
         name="title"
         className="createthread-title"
         placeholder="Title"
-        maxLength={85}
+        maxLength={100}
         onChange={(e) => setTitle(e.target.value)}
       />
       <textarea
@@ -46,7 +43,7 @@ export default function CreateThread() {
         className="createthread-description"
         placeholder="Description"
         rows="8"
-        maxLength={1000}
+        maxLength={3000}
         onChange={(e) => setDescription(e.target.value)}
       />
       <div className="createthread-buttons">
@@ -57,12 +54,7 @@ export default function CreateThread() {
         >
           CANCEL
         </StyledCancelButton>
-        <StyledSubmitButton
-          disabled={!title}
-          className="createthread-post"
-          primary
-          value="POST"
-        />
+        <StyledSubmitButton disabled={!title} className="createthread-post" primary value="POST" />
       </div>
     </form>
   );

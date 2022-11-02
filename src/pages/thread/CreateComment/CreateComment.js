@@ -40,7 +40,7 @@ function CreateComment(props) {
         className="createcomment-text"
         placeholder="Leave a comment"
         rows="4"
-        maxLength={2000}
+        maxLength={6000}
         onChange={(e) => setCommentText(e.target.value)}
         value={commentText}
       />

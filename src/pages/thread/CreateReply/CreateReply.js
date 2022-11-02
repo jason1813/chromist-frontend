@@ -1,9 +1,6 @@
 import './CreateReply.css';
 import React, { useState } from 'react';
-import {
-  StyledCancelButton,
-  StyledSubmitButton,
-} from '../../../misc/js/StyledComponents';
+import { StyledCancelButton, StyledSubmitButton } from '../../../misc/js/StyledComponents';
 import Network from '../../../network/Network';
 
 export default function CreateReply(props) {
@@ -33,7 +30,7 @@ export default function CreateReply(props) {
         className="createreply-text"
         placeholder="Leave a reply"
         rows="4"
-        maxLength={2000}
+        maxLength={6000}
         onChange={(e) => setReplyText(e.target.value)}
         value={replyText}
       />
